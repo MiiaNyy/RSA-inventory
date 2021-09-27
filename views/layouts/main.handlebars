@@ -10,7 +10,7 @@
             integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
             crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/86237f722d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
     <title>{{title}}</title>
 </head>
 <body>
@@ -28,11 +28,71 @@
                 <a class="nav-link" href="/create">Create new</a>
             </li>
         </ul>
-
     </nav>
-    <div class="container mt-4 main">
-        <!-- Where we want to output the rest of the template/views use triple curly braces -->
-        {{{body}}}
+
+    <div id="mySidebar" class="sidebar">
+
+        <button onclick="w3_close()">x close</button>
+        <p class="text-center">Filter</p>
+        <div class="category">
+            <p class="category__btn" onclick="toggleDropDown(this)">Size
+                <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
+            </p>
+            <div class="category__drop-down">
+                {{# each sizes}}
+                    <a class="dropdown-item" href="/categories/sizes/{{this}}">{{this}}</a>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="category">
+            <p class="category__btn" onclick="toggleDropDown(this)">Species
+                <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
+            </p>
+            <div class="category__drop-down">
+                {{# each animals}}
+                    <a class="dropdown-item" href="/categories/species/{{this}}">{{this}}</a>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="category">
+            <p class="category__btn" onclick="toggleDropDown(this)">Price
+                <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
+            </p>
+            <div class="category__drop-down">
+                <a class="dropdown-item" href="/categories/price/budget">0€ - 20€</a>
+                <a class="dropdown-item" href="/categories/price/medium">21€ - 50€</a>
+                <a class="dropdown-item" href="/categories/price/high">50€ - 100€</a>
+                <a class="dropdown-item" href="/categories/price/premium">100€ < </a>
+
+            </div>
+        </div>
 
     </div>
+
+    <div id="content">
+
+        <div class="container mt-4 main">
+            <button id="openNav" style="display: none" onclick="w3_open()">&#9776;</button>
+            <!-- Where we want to output the rest of the template/views use triple curly braces -->
+            {{{body}}}
+
+        </div>
+
+    </div>
+
+
+    <script src="../../javascript/main.js">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
 </body>

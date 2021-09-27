@@ -12,17 +12,15 @@ dotenv.config();
 const app = express();
 
 const homepageRouter = require("./routes/index");
-const categoryRouter = require("./routes/categories");
+const categoryRouter = require("./routes/categories/categories");
 
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
             app.listen(process.env.PORT || 3000);
-    
             /* Generate random data
              for (let i = 0; i < 10; i++) {
              getRandomAnimal();
              }*/
-    
             console.log("Started listening to port... ")
         })
         .catch(err => console.log('Error happened when fetching database:', err));
@@ -40,8 +38,6 @@ app.use(express.urlencoded({extended: false}));
 
 app.use('/', homepageRouter);
 app.use('/categories', categoryRouter);
-
-
 
 
 function getRandomAnimal () {
