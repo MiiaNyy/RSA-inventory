@@ -6,7 +6,7 @@ const stuffedAnimalSchema = new Schema({
         type: String,
         required: true,
     },
-    species: {
+    animal: {
         type: String,
         required: true,
     },

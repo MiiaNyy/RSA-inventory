@@ -8,6 +8,8 @@ const dotenv = require("dotenv");
 const faker = require("faker");
 const StuffedAnimal = require("./modules/stuffedAnimal");
 
+const {animals, sizes} = require("./helpers/speciesAndSizes");
+
 dotenv.config();
 const app = express();
 
@@ -17,7 +19,8 @@ const categoryRouter = require("./routes/categories/categories");
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
             app.listen(process.env.PORT || 3000);
-            /* Generate random data
+            /*
+             //Generate random data
              for (let i = 0; i < 10; i++) {
              getRandomAnimal();
              }*/
@@ -43,7 +46,7 @@ app.use('/categories', categoryRouter);
 function getRandomAnimal () {
     const newItem = {
         color: faker.commerce.color(),
-        species: animals[Math.floor(Math.random() * animals.length)],
+        animal: animals[Math.floor(Math.random() * animals.length)],
         name: faker.name.firstName(),
         size: sizes[Math.floor(Math.random() * sizes.length)],
         description: faker.lorem.words(),
