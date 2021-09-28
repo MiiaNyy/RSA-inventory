@@ -8,13 +8,14 @@ const dotenv = require("dotenv");
 const faker = require("faker");
 const StuffedAnimal = require("./modules/stuffedAnimal");
 
-const {animals, sizes} = require("./helpers/speciesAndSizes");
+const {animals, sizes} = require("./helpers/animalsAndSizes");
 
 dotenv.config();
 const app = express();
 
-const homepageRouter = require("./routes/index");
+const homepageRouter = require("./routes/homepage");
 const categoryRouter = require("./routes/categories/categories");
+const itemRouter = require("./routes/items/items");
 
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
@@ -23,7 +24,9 @@ mongoose.connect(process.env.CONNECTIONSTRING)
              //Generate random data
              for (let i = 0; i < 10; i++) {
              getRandomAnimal();
-             }*/
+             }
+             */
+    
             console.log("Started listening to port... ")
         })
         .catch(err => console.log('Error happened when fetching database:', err));
@@ -41,6 +44,7 @@ app.use(express.urlencoded({extended: false}));
 
 app.use('/', homepageRouter);
 app.use('/categories', categoryRouter);
+app.use('/item', itemRouter);
 
 
 function getRandomAnimal () {
@@ -49,7 +53,8 @@ function getRandomAnimal () {
         animal: animals[Math.floor(Math.random() * animals.length)],
         name: faker.name.firstName(),
         size: sizes[Math.floor(Math.random() * sizes.length)],
-        description: faker.lorem.words(),
+        description: faker.lorem.paragraph(),
+        
         price: Math.floor(Math.random() * 520),
         numberInStock: Math.floor(Math.random() * 100)
     }
@@ -58,6 +63,7 @@ function getRandomAnimal () {
     animal.save()
           .then(() => {
               console.log('New document added')
+        
           })
           .catch(e => console.log(e))
 }

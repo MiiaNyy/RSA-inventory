@@ -15,3 +15,12 @@ function w3_close () {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("openNav").style.display = "inline-block";
 }
+
+function makeItemDetailGetRequest (id) {
+    const endpoint = `/details/${ id }`;
+    
+    fetch(endpoint, {method: 'GET'})
+        .then((response) => response.json())
+        .then(data => window.location.href = data.redirect)
+        .catch(e => console.log(e));
+}

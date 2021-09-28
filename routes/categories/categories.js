@@ -5,8 +5,8 @@ const sizesRouter = require("./sizes");
 const pricesRouter = require("./prices");
 const animalRouter = require("./animals");
 
-const animals = require("../../helpers/speciesAndSizes").animals;
-const sizes = require("../../helpers/speciesAndSizes").sizes;
+const animals = require("../../helpers/animalsAndSizes").animals;
+const sizes = require("../../helpers/animalsAndSizes").sizes;
 
 
 router.get('/', (req, res) => {

@@ -29,7 +29,7 @@ const stuffedAnimalSchema = new Schema({
     numberInStock: {
         type: Number,
         required: true,
-    }
+    },
     
 }, {timestamps: true});
 

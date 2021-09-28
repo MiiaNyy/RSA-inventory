@@ -3,7 +3,7 @@ const router = express.Router();
 
 const StuffedAnimal = require("../../modules/stuffedAnimal");
 
-const {animals, sizes} = require("../../helpers/speciesAndSizes");
+const {animals, sizes} = require("../../helpers/animalsAndSizes");
 
 router.get('/', (req, res) => {
     res.send('<h1>Animals page</h1>')
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     StuffedAnimal.find({animal: req.params.id}).sort({animal: 1}).lean()
                  .then(result => {
-                     res.render('index', {
+                     res.render('inventoryTable', {
                          title: `Animals`,
                          info:
                              {title: `Animals: ${ req.params.id }`},

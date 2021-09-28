@@ -3,7 +3,7 @@ const router = express.Router();
 
 const StuffedAnimal = require("../../modules/stuffedAnimal");
 
-const {animals, sizes} = require("../../helpers/speciesAndSizes");
+const {animals, sizes} = require("../../helpers/animalsAndSizes");
 
 router.get('/', (req, res) => {
     res.send('<h1>Prices page</h1>')
@@ -13,7 +13,7 @@ router.get('/:id', (req, res) => {
     if ( req.params.id === 'premium' ) {
         StuffedAnimal.find({price: {$gte: 101}}).sort({price: 1}).lean()
                      .then(result => {
-                         res.render('index', {
+                         res.render('inventoryTable', {
                              title: `Category price`,
                              info:
                                  {title: `Price: 101 € <`},
@@ -23,12 +23,12 @@ router.get('/:id', (req, res) => {
                          })
                      })
                      .catch(e => console.log(e))
-    
+        
     } else {
         const [minPrice, maxPrice] = getPriceRange(req.params.id);
         StuffedAnimal.find({price: {$gte: minPrice, $lte: maxPrice}}).sort({price: 1}).lean()
                      .then(result => {
-                         res.render('index', {
+                         res.render('inventoryTable', {
                              title: `Category price`,
                              info:
                                  {title: `Price: ${ minPrice } - ${ maxPrice }€`},
