@@ -4,6 +4,7 @@ const router = express.Router();
 const sizesRouter = require("./sizes");
 const pricesRouter = require("./prices");
 const animalRouter = require("./animals");
+const colorRouter = require("./colors");
 
 const animals = require("../../helpers/animalsAndSizes").animals;
 const sizes = require("../../helpers/animalsAndSizes").sizes;
@@ -16,6 +17,7 @@ router.get('/', (req, res) => {
 router.use('/sizes', sizesRouter);
 router.use('/price', pricesRouter);
 router.use('/animal', animalRouter);
+router.use('/color', colorRouter);
 
 
 module.exports = router;

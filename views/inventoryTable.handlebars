@@ -1,5 +1,5 @@
 <div class="container">
-    <div style="max-width: 600px; border: 2px solid darkgray" class="container mb-4">
+    <div style="max-width: 600px;" class="container mb-4">
         <h5 class="text-center mb-4"> {{info.title}}</h5>
         <p>{{info.text}}</p>
     </div>
@@ -14,7 +14,7 @@
             <th scope="col">Animal</th>
             <th scope="col">Size</th>
             <th scope="col">Price</th>
-            <th scope="col">Stock</th>
+            <th scope="col">Color</th>
         </tr>
         </thead>
         <tbody>
@@ -24,7 +24,9 @@
                 <td>{{this.name}} the {{this.animal}}</td>
                 <td>{{this.size}}</td>
                 <td>{{this.price}}€</td>
-                <td>{{this.numberInStock}}</td>
+                <td>
+                    <div style="background-color: {{this.color}}" class="item__clr"></div>
+                </td>
             </tr>
         {{/each}}
         </tbody>

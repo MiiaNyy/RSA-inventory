@@ -49,7 +49,7 @@ app.use('/item', itemRouter);
 
 function getRandomAnimal () {
     const newItem = {
-        color: faker.commerce.color(),
+        color: '#' + Math.floor(Math.random() * 16777215).toString(16),
         animal: animals[Math.floor(Math.random() * animals.length)],
         name: faker.name.firstName(),
         size: sizes[Math.floor(Math.random() * sizes.length)],

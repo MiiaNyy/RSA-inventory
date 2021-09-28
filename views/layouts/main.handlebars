@@ -74,10 +74,13 @@
                 <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
             </p>
             <div class="category__drop-down">
-                <a class="dropdown-item" href="/categories/price/budget">color</a>
-                <a class="dropdown-item" href="/categories/price/medium">color</a>
-                <a class="dropdown-item" href="/categories/price/high">color</a>
-                <a class="dropdown-item" href="/categories/price/premium">color </a>
+                <form action="/categories/color" method="POST" id="clrForm">
+                    <input type="color" id="color" name="color"
+                           value="#e66465">
+                    <label for="color"></label>
+                    <input type="submit" value="search">
+                </form>
+
             </div>
         </div>
 
@@ -85,8 +88,8 @@
 
     <div id="content">
 
-        <div class="container mt-4 main">
-            <button id="openNav" style="display: none" onclick="w3_open()">&#9776;</button>
+        <div style="relative" class="container mt-4 main">
+            <button id="openNav" style="position: absolute; display: none" onclick="w3_open()">&#9776;</button>
             <!-- Where we want to output the rest of the template/views use triple curly braces -->
             {{{body}}}
 

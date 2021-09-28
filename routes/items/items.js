@@ -13,6 +13,8 @@ router.get('/details/:id', (req, res) => {
                      res.render('itemDetails', {
                          title: "Rafael's stuffed animals",
                          item: result,
+                         animals,
+                         sizes,
                      })
                  })
                  .catch(e => console.log(e))
