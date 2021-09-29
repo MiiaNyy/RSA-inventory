@@ -10,6 +10,7 @@ const categorySchema = new Schema({
         type: String,
         required: true,
     },
+    subcategories: [{name: String, url: String}],
     url: {
         type: String,
         required: true,

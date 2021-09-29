@@ -5,10 +5,8 @@ const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const dotenv = require("dotenv");
 
-const faker = require("faker");
-const StuffedAnimal = require("./modules/stuffedAnimal");
-
-const {animals, sizes} = require("./helpers/animalsAndSizes");
+const createStuffedAnimalDoc = require("./helpers/populateDB/createStuffedAnimalDoc").createStuffedAnimalDoc;
+const createCategoryDoc = require("./helpers/populateDB/createStuffedAnimalDoc").createCategoryDoc;
 
 dotenv.config();
 const app = express();
@@ -20,13 +18,14 @@ const itemRouter = require("./routes/items/items");
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
             app.listen(process.env.PORT || 3000);
+            
+            
+            createCategoryDoc();
             /*
-             //Generate random data
+             //Generate random stuffed animal document
              for (let i = 0; i < 10; i++) {
-             getRandomAnimal();
-             }
-             */
-    
+             createStuffedAnimalDoc();
+             }*/
             console.log("Started listening to port... ")
         })
         .catch(err => console.log('Error happened when fetching database:', err));
@@ -47,24 +46,5 @@ app.use('/categories', categoryRouter);
 app.use('/item', itemRouter);
 
 
-function getRandomAnimal () {
-    const newItem = {
-        color: '#' + Math.floor(Math.random() * 16777215).toString(16),
-        animal: animals[Math.floor(Math.random() * animals.length)],
-        name: faker.name.firstName(),
-        size: sizes[Math.floor(Math.random() * sizes.length)],
-        description: faker.lorem.paragraph(),
-        
-        price: Math.floor(Math.random() * 520),
-        numberInStock: Math.floor(Math.random() * 100)
-    }
-    
-    const animal = new StuffedAnimal(newItem);
-    animal.save()
-          .then(() => {
-              console.log('New document added')
-        
-          })
-          .catch(e => console.log(e))
-}
+
 
