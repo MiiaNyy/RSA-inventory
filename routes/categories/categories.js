@@ -19,6 +19,10 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/create', (req, res) => {
+    res.send('<h2>create new category</h2>')
+})
+
 router.use('/sizes', sizesRouter);
 router.use('/price', pricesRouter);
 router.use('/animal', animalRouter);

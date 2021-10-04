@@ -3,9 +3,6 @@ const StuffedAnimal = require("../modules/stuffedAnimal");
 const Category = require("../modules/categories");
 const router = express.Router();
 
-const animals = require("../helpers/animalsAndSizes").animals;
-const sizes = require("../helpers/animalsAndSizes").sizes;
-
 router.get('/', async (req, res) => {
     try {
         const categories = await Category.find({}).lean();
@@ -20,6 +17,7 @@ router.get('/', async (req, res) => {
             },
             categories,
             items: inventory,
+            sidebarIsNeeded: true,
         })
     } catch (e) {
         console.log('Error happened during category and inventory fetching:', e)

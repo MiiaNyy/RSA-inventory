@@ -30,6 +30,10 @@ const stuffedAnimalSchema = new Schema({
         type: Number,
         required: true,
     },
+    url: {
+        type: String,
+        required: true,
+    }
     
 }, {timestamps: true});
 

@@ -31,7 +31,6 @@ h1, h2, h3, h4, h5, h6, p {
 
 .flex {
     display: flex;
-    border: 2px solid pink;
 }
 
 .categories {
@@ -40,14 +39,8 @@ h1, h2, h3, h4, h5, h6, p {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    margin: 1em auto 0;
+    margin: 2em auto 0;
 }
-
-.category {
-    border: 2px solid greenyellow;
-    width: 130px;
-}
-
 
 .main {
 }
@@ -85,7 +78,6 @@ h1, h2, h3, h4, h5, h6, p {
 .category {
     margin: 0 auto;
     padding: 0.5em;
-    border: 2px solid yellowgreen;
 }
 
 .category__btn {

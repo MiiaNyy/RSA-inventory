@@ -2,43 +2,29 @@ const express = require("express");
 const router = express.Router();
 
 const StuffedAnimal = require("../../modules/stuffedAnimal");
-
-const {animals, sizes} = require("../../helpers/animalsAndSizes");
+const Category = require("../../modules/categories");
 
 router.get('/', (req, res) => {
     res.send('<h1>Prices page</h1>')
 })
 
-router.get('/:id', (req, res) => {
-    if ( req.params.id === 'premium' ) {
-        StuffedAnimal.find({price: {$gte: 101}}).sort({price: 1}).lean()
-                     .then(result => {
-                         res.render('inventoryTable', {
-                             title: `Category price`,
-                             info:
-                                 {title: `Price: 101 € <`},
-                             animals,
-                             sizes,
-                             items: result
-                         })
-                     })
-                     .catch(e => console.log(e))
+router.get('/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const [minPrice, maxPrice] = getPriceRange(id);
+        const items = await StuffedAnimal.find({price: {$gte: minPrice, $lte: maxPrice}}).sort({price: 1}).lean();
+        const categories = await Category.find({}).lean();
         
-    } else {
-        const [minPrice, maxPrice] = getPriceRange(req.params.id);
-        StuffedAnimal.find({price: {$gte: minPrice, $lte: maxPrice}}).sort({price: 1}).lean()
-                     .then(result => {
-                         res.render('inventoryTable', {
-                             title: `Category price`,
-                             info:
-                                 {title: `Price: ${ minPrice } - ${ maxPrice }€`},
-                             animals,
-                             sizes,
-                             items: result
-                         })
-                     })
-                     .catch(e => console.log(e))
-        
+        res.render('inventoryTable', {
+            title: `Category price`,
+            info:
+                {title: `Price: ${ minPrice }€ ${ id !== 'premium' ? '- ' + maxPrice + '€' : '>' }`},
+            categories,
+            items,
+            sidebarIsNeeded: true,
+        })
+    } catch (e) {
+        console.log(e);
     }
 })
 

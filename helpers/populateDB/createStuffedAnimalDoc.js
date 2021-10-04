@@ -8,7 +8,7 @@ const sizeCategory = new Category({
     name: 'Sizes',
     description: 'Here you can see all of the different sizes that we offer our stuffed animals',
     subcategories: getSubcategories(sizes, 'size'),
-    url: '/categories/size'
+    url: '/category/size'
 });
 
 
@@ -16,20 +16,20 @@ const animalCategory = new Category({
     name: 'Animals',
     description: 'Here you can see all different animal species that we offer our stuffed animals',
     subcategories: getSubcategories(animals, 'animal'),
-    url: '/categories/animal'
+    url: '/category/animal'
 });
 
 const priceCategory = new Category({
     name: 'Prices',
     description: 'Our prices range from 0€ to 520€',
     subcategories: getSubcategories(prices, 'price'),
-    url: '/categories/price'
+    url: '/category/price'
 });
 
 const colorCategory = new Category({
     name: 'Colors',
     description: 'We have wide range of different pastel color stuffed animals',
-    url: '/categories/color'
+    url: '/category/color'
 });
 
 async function createCategoryDoc () {
@@ -70,7 +70,7 @@ function createStuffedAnimalDoc () {
         description: faker.lorem.paragraph(),
         
         price: Math.floor(Math.random() * 520),
-        numberInStock: Math.floor(Math.random() * 100)
+        numberInStock: Math.floor(Math.random() * 100),
     }
     
     const animal = new StuffedAnimal(newItem);

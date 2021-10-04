@@ -18,8 +18,7 @@ const itemRouter = require("./routes/items/items");
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
             app.listen(process.env.PORT || 3000);
-    
-    
+            
             //createCategoryDoc();
             /*
              //Generate random stuffed animal document
@@ -42,7 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.use('/', homepageRouter);
-app.use('/categories', categoryRouter);
+app.use('/category', categoryRouter);
 app.use('/item', itemRouter);
 
 

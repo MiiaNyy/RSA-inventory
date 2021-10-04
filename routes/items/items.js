@@ -1,23 +1,37 @@
 const express = require("express");
 const StuffedAnimal = require("../../modules/stuffedAnimal");
+const Category = require("../../modules/categories");
 const router = express.Router();
 
-const animals = require("../../helpers/animalsAndSizes").animals;
-const sizes = require("../../helpers/animalsAndSizes").sizes;
+router.get('/create', async (req, res) => {
+    try {
+        const animalSizes = await Category.find({name: 'Sizes'}).lean();
+        const animalBreeds = await Category.find({name: 'Animals'}).lean();
+        res.render('createItem', {
+            title: "Create new item to inventory",
+            animalSizes,
+            animalBreeds,
+        })
+    } catch (e) {
+        console.log(e);
+    }
+})
 
-router.get('/:id', (req, res) => {
-    const id = req.params.id;
-    StuffedAnimal.findById(id).lean()
-                 .then(result => {
-                     console.log(result);
-                     res.render('itemDetails', {
-                         title: "Rafael's stuffed animals",
-                         item: result,
-                         animals,
-                         sizes,
-                     })
-                 })
-                 .catch(e => console.log(e))
+router.get('/:id', async (req, res) => {
+    try {
+        const item = await StuffedAnimal.findById(req.params.id).lean();
+        const categories = await Category.find({}).lean();
+        
+        res.render('itemDetails', {
+            title: "Rafael's stuffed animals",
+            item,
+            categories,
+            sidebarIsNeeded: true,
+        })
+    } catch (e) {
+        console.log(e);
+    }
+    
 })
 
 module.exports = router;
