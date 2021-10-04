@@ -1,11 +1,23 @@
 <form action="/item" method="post">
     <h2>Create new stuffed animal item</h2>
+
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name">
     </div>
+
     <div class="form-group">
-        <label for="breed">Breed</label>
+        <label for="price" class="form-label">Price</label>
+        <input type="range"
+               class="form-range"
+               id="price"
+               min="0" max="520" step="1"
+               onchange="document.getElementById('rangeValue').innerText = document.getElementById('price').value + '€'">
+        <span id="rangeValue">260€<!-- Default value --></span>
+    </div>
+
+    <div class="form-group">
+        <label for="breed">Animal breed</label>
         <select class="form-control" id="breed">
             {{# animalBreeds}}
                 {{# this.subcategories}}
@@ -28,7 +40,7 @@
 
     <div class="form-group">
         <label for="color">Color</label>
-        <input type="color" class="form-control" id="color">
+        <input type="color" value="#ffa8a8" class="form-control" id="color">
     </div>
     <div class="form-group">
         <label for="description">Description</label>
