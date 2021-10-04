@@ -34,41 +34,25 @@
 
         <button onclick="w3_close()">x close</button>
         <p class="text-center">Filter</p>
-        <div class="category">
-            <p class="category__btn" onclick="toggleDropDown(this)">Size
-                <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
-            </p>
-            <div class="category__drop-down">
-                {{# each sizes}}
-                    <a class="dropdown-item" href="/categories/sizes/{{this}}">{{this}}</a>
-                {{/each}}
+
+        {{# each categories}}
+            <div class="category">
+                <p class="category__btn" onclick="toggleDropDown(this)">{{this.name}}
+                    <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
+                </p>
+                <div class="category__drop-down">
+                    {{# each this.subcategories}}
+                        <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
+                    {{/each}}
+                </div>
             </div>
-        </div>
 
-        <div class="category">
-            <p class="category__btn" onclick="toggleDropDown(this)">Species
-                <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
-            </p>
-            <div class="category__drop-down">
-                {{# each animals}}
-                    <a class="dropdown-item" href="/categories/animal/{{this}}">{{this}}</a>
-                {{/each}}
-            </div>
-        </div>
+        {{/each}}
 
-        <div class="category">
-            <p class="category__btn" onclick="toggleDropDown(this)">Price
-                <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
-            </p>
-            <div class="category__drop-down">
-                <a class="dropdown-item" href="/categories/price/budget">0€ - 20€</a>
-                <a class="dropdown-item" href="/categories/price/medium">21€ - 50€</a>
-                <a class="dropdown-item" href="/categories/price/high">50€ - 100€</a>
-                <a class="dropdown-item" href="/categories/price/premium">100€ < </a>
 
-            </div>
-        </div>
 
+
+        <!--
         <div class="category">
             <p class="category__btn" onclick="toggleDropDown(this)">Color
                 <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
@@ -83,6 +67,8 @@
 
             </div>
         </div>
+        -->
+
 
     </div>
 

@@ -1,1 +1,18 @@
 <h2 class="text-center">All of the categories listed</h2>
+
+<div  class="categories flex">
+
+    {{#each categories}}
+        <div class="category">
+            <p class="text-center">{{this.name}}</p>
+            <ul>
+                {{# each this.subcategories}}
+                    <li>
+                        <a href={{this.url}}>{{this.name}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/each}}
+</div>
+

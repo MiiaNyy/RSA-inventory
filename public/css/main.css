@@ -34,6 +34,21 @@ h1, h2, h3, h4, h5, h6, p {
     border: 2px solid pink;
 }
 
+.categories {
+    width: 95%;
+    max-width: 600px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 1em auto 0;
+}
+
+.category {
+    border: 2px solid greenyellow;
+    width: 130px;
+}
+
+
 .main {
 }
 

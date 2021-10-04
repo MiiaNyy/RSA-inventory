@@ -5,9 +5,9 @@ const router = express.Router();
 const animals = require("../../helpers/animalsAndSizes").animals;
 const sizes = require("../../helpers/animalsAndSizes").sizes;
 
-router.get('/details/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const id = req.params.id;
-    StuffedAnimal.findById(req.params.id).lean()
+    StuffedAnimal.findById(id).lean()
                  .then(result => {
                      console.log(result);
                      res.render('itemDetails', {

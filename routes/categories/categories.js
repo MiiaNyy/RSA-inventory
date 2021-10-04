@@ -5,13 +5,18 @@ const sizesRouter = require("./sizes");
 const pricesRouter = require("./prices");
 const animalRouter = require("./animals");
 const colorRouter = require("./colors");
+const Category = require("../../modules/categories");
 
-const animals = require("../../helpers/animalsAndSizes").animals;
-const sizes = require("../../helpers/animalsAndSizes").sizes;
-
-
-router.get('/', (req, res) => {
-    res.render('categories', {title: "Categories", animals, sizes})
+router.get('/', async (req, res) => {
+    try {
+        const categories = await Category.find({}).lean();
+        res.render('categories', {
+            title: "Categories",
+            categories,
+        })
+    } catch (e) {
+        console.log('Error happened:', e)
+    }
 })
 
 router.use('/sizes', sizesRouter);
