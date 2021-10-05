@@ -69,7 +69,7 @@ function createStuffedAnimalDoc () {
         size: sizes[Math.floor(Math.random() * sizes.length)],
         description: faker.lorem.paragraph(),
         
-        price: Math.floor(Math.random() * 520),
+        price: Math.floor(Math.random() * 200),
         numberInStock: Math.floor(Math.random() * 100),
     }
     

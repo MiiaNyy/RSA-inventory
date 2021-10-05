@@ -1,51 +1,65 @@
-<form action="/item" method="post">
-    <h2>Create new stuffed animal item</h2>
 
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name">
-    </div>
+<div style="margin-left: -200px">
+    <h2 class="text-center">Create new stuffed animal item</h2>
+    <form action="/item" method="POST" class="item-form">
 
-    <div class="form-group">
-        <label for="price" class="form-label">Price</label>
-        <input type="range"
-               class="form-range"
-               id="price"
-               min="0" max="520" step="1"
-               onchange="document.getElementById('rangeValue').innerText = document.getElementById('price').value + '€'">
-        <span id="rangeValue">260€<!-- Default value --></span>
-    </div>
+        <div class="form-group ">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
 
-    <div class="form-group">
-        <label for="breed">Animal breed</label>
-        <select class="form-control" id="breed">
-            {{# animalBreeds}}
-                {{# this.subcategories}}
-                    <option>{{this.name}}</option>
-                {{/this.subcategories}}
-            {{/animalBreeds}}
-        </select>
-    </div>
+        <div class="form-group ">
+            <label for="animal">Animal breed</label>
+            <select class="form-control" id="animal" name="animal" required>
+                {{# animalBreeds}}
+                    {{# this.subcategories}}
+                        <option>{{this.name}}</option>
+                    {{/this.subcategories}}
+                {{/animalBreeds}}
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label for="size">Size</label>
-        <select class="form-control" id="size">
-            {{# animalSizes}}
-                {{# this.subcategories}}
-                    <option>{{this.name}}</option>
-                {{/this.subcategories}}
-            {{/animalSizes}}
-        </select>
-    </div>
 
-    <div class="form-group">
-        <label for="color">Color</label>
-        <input type="color" value="#ffa8a8" class="form-control" id="color">
-    </div>
-    <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="3"></textarea>
-    </div>
+        <div class="flex-container">
+            <div class="form-group flex-container__item">
+                <label for="size">Size</label>
+                <select class="form-control" id="size" name="size" required>
+                    {{# animalSizes}}
+                        {{# this.subcategories}}
+                            <option>{{this.name}}</option>
+                        {{/this.subcategories}}
+                    {{/animalSizes}}
+                </select>
+            </div>
 
-</form>
+            <div class="form-group flex-container__item">
+                <label for="color">Color</label>
+                <input type="color" value="#ffa8a8" class="form-control" id="color" name="color" required>
+            </div>
+        </div>
+
+        <div class="flex-container">
+
+            <div class="form-group flex-container__item">
+                <label for="price">Price €</label>
+                <input type="number" min="1" class="form-control" id="price" name="price" required>
+            </div>
+
+            <div class="form-group flex-container__item">
+                <label for="stock">Number in stock</label>
+                <input type="number" min="1" class="form-control" id="stock" name="stock" required>
+            </div>
+        </div>
+
+
+        <div style="margin-top: 1em" class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3" name="description" required></textarea>
+        </div>
+
+        <input type="submit" value="Create new">
+
+    </form>
+
+</div>
 

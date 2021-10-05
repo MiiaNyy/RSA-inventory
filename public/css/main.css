@@ -118,6 +118,28 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
+.item-form {
+    width: 100%;
+    max-width: 300px;
+    margin: 1em auto 0;
+}
+
+/* Selects all .item-forms direct children that are divs */
+.item-form > div {
+    margin-bottom: 1em;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-container__item {
+    width: 40%;
+}
+
+
+
 .dropDownVisible {
     display: block;
 }
