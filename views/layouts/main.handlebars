@@ -40,7 +40,7 @@
             {{# each categories}}
                 <div class="category">
                     <p class="category__btn" onclick="toggleDropDown(this)">{{this.name}}
-                        <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
+                        <i class="fas fa-sort-down transition"></i>
                     </p>
                     <div class="category__drop-down">
                         {{# each this.subcategories}}
@@ -50,22 +50,6 @@
                 </div>
 
             {{/each}}
-            <!--
-            <div class="category">
-                <p class="category__btn" onclick="toggleDropDown(this)">Color
-                    <i style="transition: all 0.3s ease-in-out;" class="fas fa-sort-down"></i>
-                </p>
-                <div class="category__drop-down">
-                    <form action="/categories/color" method="POST" id="clrForm">
-                        <input type="color" id="color" name="color"
-                               value="#e66465">
-                        <label for="color"></label>
-                        <input type="submit" value="search">
-                    </form>
-
-                </div>
-            </div>
-            -->
         </div>
     {{/if}}
 
@@ -79,12 +63,22 @@
             {{{body}}}
 
         </div>
-
+        <!--
+        <div class="chat-container chat-container__closed">
+            <div class="toggle-chat-bot">
+                <p style="cursor: pointer" onclick=openChatBot()>Click me to open chat bot</p>
+            </div>
+            <div class="chat-bot">
+                <span onclick=closeChatBot()>x</span>
+                <iframe src='https://webchat.botframework.com/embed/kb-quickstart-bot?s=LhyxGaj4JN8.s1k3Er81JuSLNQ-zYsrf3uQ9-KDIOzsXsr4bQeQCeR8'
+                        style='max-width: 400px; width: 100%; min-height: 500px;'></iframe>
+            </div>
+        </div>
+        -->
     </div>
 
 
-    <script src="../../javascript/main.js">
-    </script>
+    <script src="../../javascript/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>

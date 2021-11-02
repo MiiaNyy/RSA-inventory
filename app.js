@@ -14,6 +14,7 @@ const app = express();
 const homepageRouter = require("./routes/homepage");
 const categoryRouter = require("./routes/categories/categories");
 const itemRouter = require("./routes/items/items");
+const apiRouter = require("./routes/api/api")
 
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
@@ -42,6 +43,7 @@ app.use(express.urlencoded({extended: false}));
 app.use('/', homepageRouter);
 app.use('/category', categoryRouter);
 app.use('/item', itemRouter);
+app.use('/api', apiRouter)
 
 
 

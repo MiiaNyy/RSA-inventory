@@ -11,9 +11,16 @@
         <thead>
         <tr>
             <th scope="col"></th>
-            <th scope="col">Animal</th>
-            <th scope="col">Size</th>
-            <th scope="col">Price</th>
+            <th id="animal-category" scope="col">Animal
+                <a href="/"></a>
+                <i class="fas fa-sort-down transition" onclick="rearrangeItemOrder(this)"></i>
+            </th>
+            <th id="size-category" scope="col">Size
+                <i class="fas fa-sort-down transition" onclick="rearrangeItemOrder(this)"></i>
+            </th>
+            <th id="price-category" scope="col">Price
+                <i class="fas fa-sort-down transition" onclick="rearrangeItemOrder(this)"></i>
+            </th>
             <th scope="col">Color</th>
         </tr>
         </thead>

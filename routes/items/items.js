@@ -4,21 +4,12 @@ const {body, validationResult} = require('express-validator');
 
 const StuffedAnimal = require("../../modules/stuffedAnimal");
 const Category = require("../../modules/categories");
+const validateNewItemForm = require("../../middleware/validateNewItemForm");
 
-function validateNewItemForm () {
-    return [
-        body('name', 'Name is too short').trim().isLength({min: 2}).escape(),
-        body('animal', 'Must choose animal breed').trim(),
-        body('size', 'Must choose size').trim(),
-        body('color', 'Choose color').isHexColor(),
-        body('price', 'Only numbers and must be over 0').isInt({min: 1}).escape(),
-        body('stock', 'Only numbers and must be over 0').isInt({min: 1}).escape(),
-    ]
-}
-
-router.post('/', validateNewItemForm(), (req, res) => {
+router.post('/', validateNewItemForm(), async (req, res) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
+    console.log('New post request! Body is: ', req.body)
     
     if ( !errors.isEmpty() ) {
         // There are errors. Render form again with sanitized values/errors messages.
@@ -26,7 +17,13 @@ router.post('/', validateNewItemForm(), (req, res) => {
         return res.status(400).json({errors: errors.array()});
     } else {
         // Data from form is valid.
-        res.json(req.body);
+        try {
+            const stuffedAnimal = new StuffedAnimal(req.body)
+            await stuffedAnimal.save();
+            res.redirect('/');
+        } catch (e) {
+            console.log(e)
+        }
     }
 })
 
@@ -48,6 +45,7 @@ router.get('/:id', async (req, res) => {
     try {
         const item = await StuffedAnimal.findById(req.params.id).lean();
         const categories = await Category.find({}).lean();
+        console.log('Get request detected! ID:', req.params.id);
         
         res.render('itemDetails', {
             title: "Rafael's stuffed animals",
@@ -60,6 +58,8 @@ router.get('/:id', async (req, res) => {
     }
     
 })
+
+
 
 
 module.exports = router;

@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
             info: {
                 title: 'Welcome to the stores inventory app',
                 text: 'Below you can browse all of the items in the current store inventory. You can' +
-                    ' also search specific items by category or price'
+                    ' search specific items by three different category: size, price or animal.'
             },
             categories,
             items: inventory,
