@@ -22,6 +22,7 @@ router.get('/:id', async (req, res) => {
             categories,
             items,
             sidebarIsNeeded: true,
+            moveElementToRight: 'margin-left',
         })
     } catch (e) {
         console.log(e);

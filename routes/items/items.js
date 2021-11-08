@@ -35,6 +35,7 @@ router.get('/create', async (req, res) => {
             title: "Create new item to inventory",
             animalSizes,
             animalBreeds,
+            moveElementToRight: '',
         })
     } catch (e) {
         console.log(e);
@@ -52,6 +53,7 @@ router.get('/:id', async (req, res) => {
             item,
             categories,
             sidebarIsNeeded: true,
+            moveElementToRight: 'margin-left',
         })
     } catch (e) {
         console.log(e);

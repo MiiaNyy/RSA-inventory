@@ -18,6 +18,7 @@ router.get('/', async (req, res) => {
             categories,
             items: inventory,
             sidebarIsNeeded: true,
+            moveElementToRight: 'margin-left',
         })
     } catch (e) {
         console.log('Error happened during category and inventory fetching:', e)

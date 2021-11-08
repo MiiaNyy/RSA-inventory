@@ -14,7 +14,8 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <nav style="padding: 1em 2em" class="navbar navbar-light bg-light justify-content-center">
+    <nav style="padding: 1em 2em; gap: 2em " class="navbar navbar-dark bg-dark justify-content-center
+{{moveElementToRight}}">
         <a class="navbar-brand">Rafael's stuffed animals</a>
 
         <ul class="navbar nav">
@@ -32,11 +33,17 @@
 
     {{#if sidebarIsNeeded}}
 
-        <div id="sidebar" class="sidebar">
-            <span id="openNav" style="display: none" onclick="w3_open()">&#9776;</span>
+        <div id="sidebar" class="sidebar bg-dark">
+            <div id="openNav" style="display: none" onclick="openNav()">
+                <i style="cursor: pointer" class="fas fa-bars"></i>
+            </div>
             <div id="sidebar__content">
-                <button onclick="w3_close()">x close</button>
-                <p class="text-center">Filter</p>
+                <div class="text-center" onclick="closeNav()">
+                    <i style="cursor: pointer" class="fas fa-times"></i>
+                </div>
+                <p class="text-center sidebar__title">Categories</p>
+
+                <hr>
 
                 {{# each categories}}
                     <div class="category">
@@ -59,7 +66,7 @@
 
 
 
-    <div id="content">
+    <div id="content" class="{{moveElementToRight}}">
 
         <div style="position: relative;" class="container mt-4 main">
             <!-- Where we want to output the rest of the template/views use triple curly braces -->

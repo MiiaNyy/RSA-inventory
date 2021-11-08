@@ -1,20 +1,22 @@
-<div style="margin-left: -200px">
-    <h2 class="text-center">All of the categories listed</h2>
+<div class="container-flex">
+    <button class="btn" onclick="goBackToPreviousPage()"><i class="fas fa-arrow-left"></i> Back</button>
+    <div>
+        <h2 class="text-center">All of the categories listed</h2>
+        <div class="categories">
+            {{#each categories}}
+                <div style="width: 130px;" class="category">
+                    <p class="text-center"><a href={{this.url}}>{{this.name}}</a></p>
+                    <ul>
+                        {{# each this.subcategories}}
+                            <li>
+                                <a href={{this.url}}>{{this.name}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/each}}
+        </div>
 
-    <div class="categories flex">
-
-        {{#each categories}}
-            <div style="width: 130px;" class="category">
-                <p class="text-center"><a href={{this.url}}>{{this.name}}</a></p>
-                <ul>
-                    {{# each this.subcategories}}
-                        <li>
-                            <a href={{this.url}}>{{this.name}}</a>
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
-        {{/each}}
     </div>
 </div>
 
