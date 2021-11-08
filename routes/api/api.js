@@ -6,7 +6,6 @@ const {validationResult} = require('express-validator');
 const validateNewItemForm = require("../../middleware/validateNewItemForm");
 
 router.post('/', validateNewItemForm(), async (req, res) => {
-    
     const errors = validationResult(req);
     console.log('New post request! Body is: ', req.body)
     
@@ -24,17 +23,30 @@ router.post('/', validateNewItemForm(), async (req, res) => {
     }
 })
 
+router.delete('/:id', async (req, res) => {
+    try {
+        StuffedAnimal.findByIdAndRemove(req.params.id, (err, docs) => {
+            if ( err ) {
+                console.log(err)
+            } else {
+                console.log("Removed item : ", docs);
+                res.send('Item removed successfully!')
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+})
+
 router.get('/:id', async (req, res) => {
     try {
         const item = await StuffedAnimal.findById(req.params.id).lean();
         console.log('item is: ', item);
         console.log('API get request detected! ID:', req.params.id);
         res.json(item);
-        
     } catch (e) {
         console.log(e);
     }
-    
 })
 
 module.exports = router;

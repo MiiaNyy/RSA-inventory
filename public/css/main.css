@@ -55,12 +55,13 @@ h1, h2, h3, h4, h5, h6, p {
     position: fixed;
     width: 90%;
     max-width: 200px;
-    padding: 1em;
+    padding: 0.5em;
     top: 0;
     left: 0;
-    background-color: #f8f9fa;
+    background-color: #efefef;
     overflow-x: hidden;
     transition: 0.5s;
+    z-index: 10;
 }
 
 .sidebar button {
@@ -75,7 +76,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 #content {
-    margin-left: 200px;
+    /*margin-left: 200px;*/
     transition: margin-left .5s;
 }
 
@@ -185,4 +186,10 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .toggle-chat-bot:hover {
     color: #f8f9fa;
+}
+
+@media (min-width: 700px) {
+    #content {
+        margin-left: 200px;
+    }
 }

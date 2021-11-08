@@ -14,7 +14,7 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <nav style="padding: 1em 2em" class="navbar navbar-light bg-light justify-content-between">
+    <nav style="padding: 1em 2em" class="navbar navbar-light bg-light justify-content-center">
         <a class="navbar-brand">Rafael's stuffed animals</a>
 
         <ul class="navbar nav">
@@ -32,24 +32,28 @@
 
     {{#if sidebarIsNeeded}}
 
-        <div id="mySidebar" class="sidebar">
+        <div id="sidebar" class="sidebar">
+            <span id="openNav" style="display: none" onclick="w3_open()">&#9776;</span>
+            <div id="sidebar__content">
+                <button onclick="w3_close()">x close</button>
+                <p class="text-center">Filter</p>
 
-            <button onclick="w3_close()">x close</button>
-            <p class="text-center">Filter</p>
-
-            {{# each categories}}
-                <div class="category">
-                    <p class="category__btn" onclick="toggleDropDown(this)">{{this.name}}
-                        <i class="fas fa-sort-down transition"></i>
-                    </p>
-                    <div class="category__drop-down">
-                        {{# each this.subcategories}}
-                            <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
-                        {{/each}}
+                {{# each categories}}
+                    <div class="category">
+                        <p class="category__btn" onclick="toggleDropDown(this)">{{this.name}}
+                            <i class="fas fa-sort-down transition"></i>
+                        </p>
+                        <div class="category__drop-down">
+                            {{# each this.subcategories}}
+                                <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
+                            {{/each}}
+                        </div>
                     </div>
-                </div>
 
-            {{/each}}
+                {{/each}}
+            </div>
+
+
         </div>
     {{/if}}
 
@@ -58,7 +62,6 @@
     <div id="content">
 
         <div style="position: relative;" class="container mt-4 main">
-            <button id="openNav" style="position: absolute; display: none" onclick="w3_open()">&#9776;</button>
             <!-- Where we want to output the rest of the template/views use triple curly braces -->
             {{{body}}}
 
