@@ -33,20 +33,20 @@
 
     {{#if sidebarIsNeeded}}
 
-        <div id="sidebar" class="sidebar bg-dark">
+        <div id="sidebar" class="sidebar ">
             <div id="openNav" style="display: none" onclick="openNav()">
-                <i style="cursor: pointer" class="fas fa-bars"></i>
+                <i class="fas fa-bars icon"></i>
             </div>
             <div id="sidebar__content">
                 <div class="text-center" onclick="closeNav()">
-                    <i style="cursor: pointer" class="fas fa-times"></i>
+                    <i class="fas fa-times icon__cross icon"></i>
                 </div>
                 <p class="text-center sidebar__title">Categories</p>
 
                 <hr>
 
                 {{# each categories}}
-                    <div class="category">
+                    <div class="sidebar__category">
                         <p class="category__btn" onclick="toggleDropDown(this)">{{this.name}}
                             <i class="fas fa-sort-down transition"></i>
                         </p>

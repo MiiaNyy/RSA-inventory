@@ -1,11 +1,12 @@
 <div class="container-flex">
     <button class="btn" onclick="goBackToPreviousPage()"><i class="fas fa-arrow-left"></i> Back</button>
-    <div>
+    <div class="container-flex__item">
         <h2 class="text-center">All of the categories listed</h2>
         <div class="categories">
             {{#each categories}}
-                <div style="width: 130px;" class="category">
-                    <p class="text-center"><a href={{this.url}}>{{this.name}}</a></p>
+                <div style="margin-bottom: 1em" class="categories__item">
+                    <p class="text-center"><a style="font-weight: bolder" href={{this.url}}>{{this.name}}</a></p>
+                    <hr>
                     <ul>
                         {{# each this.subcategories}}
                             <li>
