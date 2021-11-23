@@ -18,7 +18,7 @@ router.get('/:id', async (req, res) => {
         res.render('inventoryTable', {
             title: `Category price`,
             info:
-                {title: `Price: ${ minPrice }€ ${ id !== 'premium' ? '- ' + maxPrice + '€' : '>' }`},
+                {title: `Category price: ${id.toUpperCase()}`},
             categories,
             items,
             sidebarIsNeeded: true,

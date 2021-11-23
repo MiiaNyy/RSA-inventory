@@ -43,7 +43,7 @@ function rearrangeItemOrder (item) {
 
 // On smaller screens put sidebar on top of the main content. Bigger screens, move contents margin to left
 function moveNavAndMainContentToRight(amount) {
-    if ( screen.width >= 700 ) {
+    if ( screen.width >= 850 ) {
         // nav bar and main content. Elements that need to move when sidebar opens/closes
         const elements = document.querySelectorAll(".margin-left");
         elements.forEach(e => {

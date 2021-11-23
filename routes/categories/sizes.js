@@ -17,7 +17,7 @@ router.get('/:id', async (req, res) => {
         res.render('inventoryTable', {
             title: `Sizes`,
             info:
-                {title: `Size: ${ size }`},
+                {title: `Size: ${ size.toUpperCase() }`},
             categories,
             items: items,
             sidebarIsNeeded: true,

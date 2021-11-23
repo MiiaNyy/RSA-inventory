@@ -54,7 +54,7 @@ hr {
     width: 100%;
     max-width: 500px;
     padding: 1em 1em 1.5em;
-    margin: 0 auto 2em;
+    margin: 3em auto 2em;
 }
 
 .flex {
@@ -141,6 +141,7 @@ hr {
     font-size: 0.9rem;
     color: #f8f9fa;
     letter-spacing: 1px;
+    text-decoration: none;
     background-color: #212529;
 }
 
@@ -210,7 +211,7 @@ hr {
     transition: margin-left .5s;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 850px) {
     .margin-left {
         margin-left: 200px;
     }
@@ -303,11 +304,12 @@ hr {
 
 .flex-container {
     display: flex;
+    gap: 1em;
     justify-content: space-between;
 }
 
 .flex-container__item {
-    width: 40%;
+    width: 100%;
 }
 
 
