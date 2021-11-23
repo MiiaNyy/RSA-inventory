@@ -4,7 +4,7 @@ const {body, validationResult} = require('express-validator');
 
 const StuffedAnimal = require("../../modules/stuffedAnimal");
 const Category = require("../../modules/categories");
-const validateNewItemForm = require("../../middleware/validateNewItemForm");
+const validateNewItemForm = require("../../middleware/formValidation");
 
 router.post('/', validateNewItemForm(), async (req, res) => {
     // Extract the validation errors from a request.

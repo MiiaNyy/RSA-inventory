@@ -3,7 +3,7 @@ const StuffedAnimal = require("../../modules/stuffedAnimal");
 const express = require("express");
 const router = express.Router();
 const {validationResult} = require('express-validator');
-const validateNewItemForm = require("../../middleware/validateNewItemForm");
+const validateNewItemForm = require("../../middleware/formValidation");
 
 router.post('/', validateNewItemForm(), async (req, res) => {
     const errors = validationResult(req);

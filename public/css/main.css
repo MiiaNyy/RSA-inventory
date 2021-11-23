@@ -97,18 +97,26 @@ hr {
 .btn, .nav-btn {
     margin-bottom: 1em;
     padding: 0.3em 1em;
-    color: #d6b8ff;;
     letter-spacing: 1px;
-    background-color: #323232;
     border: none;
     border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
     transition: all 0.2s ease-in-out;
 }
 
-.btn:hover, .nav-btn:hover {
-    background-color: #d6b8ff;
+.btn {
     color: #27292c;
+    background-color: #d6b8ff;
+}
+
+.btn:hover{
+    color: #d6b8ff;;
+    background-color: #323232;
+}
+
+.nav-btn:hover {
+    color: #27292c;
+    background-color: #d6b8ff;
 }
 
 @media (min-width: 700px) {

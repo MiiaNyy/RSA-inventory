@@ -11,10 +11,14 @@ function validateNewItemForm () {
     ]
 }
 
-function validateUser() {
+function validateUser () {
     return [
-        body('name', 'Name is too short or missing').trim().isLength({min: 2, max: 50} ).escape(),
-        body('password', 'Not good password. Min length 10 and max length 50 characters').isLength({min: 2, max: 40}),
+        body('firstName', 'First name is too short or missing').trim().isLength({min: 2, max: 50}).escape(),
+        body('lastName', 'Last name is too short or missing').trim().isLength({min: 2, max: 50}).escape(),
+        body('password')
+            .isLength({min: 10, max: 40}).withMessage('Not good password. Min length 10 and max length 50 characters')
+            .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$.!%*#?&]/).withMessage('Must contain at least one' +
+            ' uppercase and at least one lower case character.'),
         body('email', 'Must be email').isEmail()
     ]
 }

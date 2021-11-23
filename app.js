@@ -15,6 +15,8 @@ const homepageRouter = require("./routes/homepage");
 const categoryRouter = require("./routes/categories/categories");
 const itemRouter = require("./routes/items/items");
 const apiRouter = require("./routes/api/api")
+const loginRouter = require("./routes/login");
+const signUpRouter = require("./routes/signUp");
 
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
@@ -41,6 +43,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: false}));
 
 app.use('/', homepageRouter);
+app.use('/login', loginRouter);
+app.use('/sign-up', signUpRouter);
+
 app.use('/category', categoryRouter);
 app.use('/item', itemRouter);
 app.use('/api', apiRouter)

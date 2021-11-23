@@ -1,6 +1,6 @@
 <div class="form__create box">
     <h2 class="text-center mb-2">New user registration</h2>
-    <form>
+    <form method="post" action="/sign-up">
         <div class="flex-container">
 
             <div class="form-group flex-container__item">
@@ -17,25 +17,24 @@
         </div>
 
         <div class="form-group mt-2">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
                    placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group mt-2">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
             <small class="form-text text-muted">Must be at at least 10 characters long</small>
         </div>
+
         <div class="text-center ">
-            <button type="submit" class="btn mt-4">Sign up</button>
+            <input class="btn" type="submit" value="Sign up">
             <div>
                 <small class="form-text text-muted">Already have an account? Login <a
                         href="/login">here</a></small>
             </div>
         </div>
-
-
     </form>
 
 </div>
