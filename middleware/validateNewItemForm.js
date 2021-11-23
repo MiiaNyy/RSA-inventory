@@ -11,4 +11,13 @@ function validateNewItemForm () {
     ]
 }
 
+function validateUser() {
+    return [
+        body('name', 'Name is too short or missing').trim().isLength({min: 2, max: 50} ).escape(),
+        body('password', 'Not good password. Min length 10 and max length 50 characters').isLength({min: 2, max: 40}),
+        body('email', 'Must be email').isEmail()
+    ]
+}
+
 module.exports = validateNewItemForm;
+module.exports = validateUser;

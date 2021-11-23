@@ -7,8 +7,8 @@
 
 
 <div style="max-width: 800px" class="container">
-    <table class="table table-hover">
-        <thead>
+    <table class="table table-hover box">
+        <thead class="box">
         <tr>
             <th scope="col"></th>
             <th id="animal-category" scope="col">Animal
@@ -24,7 +24,7 @@
             <th scope="col">Color</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="box">
         {{#each items}}
             <tr onclick="window.location=`/item/{{this._id}}`;" style="cursor: pointer">
                 <td></td>
