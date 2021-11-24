@@ -1,7 +1,7 @@
 <button class="btn" onclick="goBackToPreviousPage()"><i class="fas fa-arrow-left"></i> Back</button>
 
 <div class="item">
-    <h2>{{{item.name}}} the {{item.animal}}</h2>
+    <h2 class="text-center mb-3">{{{item.name}}} the {{item.animal}}</h2>
     <table class="table table-bordered ">
 
         <thead class="box">
@@ -25,9 +25,9 @@
         </tr>
         <tr>
             <th scope="row">Color</th>
-            <td class="flex">
-                <div style="background-color: {{item.color}}" class="item__clr"></div>
-                <span style="margin-left: 1em">{{item.color}}</span>
+            <td style="gap: 1em" class="d-flex">
+                <div style="background-color: {{item.color}}" class="clr-box"></div>
+                <span>{{item.color}}</span>
             </td>
         </tr>
         <tr>

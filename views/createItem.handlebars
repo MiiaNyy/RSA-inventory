@@ -1,13 +1,13 @@
-<div class="form__create box">
-    <h2 class="text-center">Create new stuffed animal item</h2>
-    <form action="/item" method="POST" class="item-form">
+<div class="form-template box">
+    <h2 class="text-center">Create new stuffed animal</h2>
+    <form action="/item" method="POST">
 
-        <div class="form-group ">
+        <div class="form-group mt-2">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Give it a name" required>
         </div>
 
-        <div class="form-group ">
+        <div class="form-group mt-2">
             <label for="animal">Animal breed</label>
             <select class="form-control" id="animal" name="animal" required>
                 {{# animalBreeds}}
@@ -19,8 +19,8 @@
         </div>
 
 
-        <div class="flex-container">
-            <div class="form-group flex-container__item">
+        <div class="d-flex justify-content-between mt-2">
+            <div class="form-group row-item">
                 <label for="size">Size</label>
                 <select class="form-control" id="size" name="size" required>
                     {{# animalSizes}}
@@ -31,20 +31,20 @@
                 </select>
             </div>
 
-            <div class="form-group flex-container__item">
+            <div class="form-group row-item">
                 <label for="color">Color</label>
                 <input type="color" value="#ffa8a8" class="form-control" id="color" name="color" required>
             </div>
         </div>
 
-        <div class="flex-container">
+        <div class="d-flex justify-content-between mt-2">
 
-            <div class="form-group flex-container__item">
+            <div class="form-group row-item">
                 <label for="price">Price €</label>
                 <input type="number" min="1" class="form-control" id="price" name="price" placeholder="25" required>
             </div>
 
-            <div class="form-group flex-container__item">
+            <div class="form-group row-item">
                 <label for="numberInStock">Number in stock</label>
                 <input type="number" min="1" class="form-control" id="numberInStock" name="numberInStock"
                        placeholder="5" required>
@@ -52,13 +52,15 @@
         </div>
 
 
-        <div style="margin-top: 1em" class="form-group">
+        <div class="form-group mt-2">
             <label for="description">Description</label>
             <textarea class="form-control" id="description" rows="3" name="description"
                       placeholder="Enter short description..." required></textarea>
         </div>
 
-        <input class="btn" type="submit" value="Create new">
+        <div class="text-center">
+            <input class="btn mt-5" type="submit" value="Create new">
+        </div>
 
     </form>
 

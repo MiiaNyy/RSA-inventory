@@ -14,8 +14,8 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <nav style="padding: 1em 2em; gap: 2em " class="navbar navbar-dark bg-dark {{moveElementToRight}}">
-        <div class="flex-item-2">
+    <nav class="navbar navbar-dark bg-dark {{moveElementToRight}}">
+        <div class="mx-auto text-center navbar-flex-item">
             <a class="navbar-brand">Rafael's stuffed animals</a>
 
             <ul class="navbar nav">
@@ -31,7 +31,7 @@
             </ul>
         </div>
 
-        <ul class="navbar nav flex-item-1">
+        <ul class="navbar nav mx-auto text-center">
             <li class="nav-item">
                 <a class="nav-link" href="/sign-up">Sign up</a>
             </li>
@@ -58,10 +58,10 @@
 
                 {{# each categories}}
                     <div class="sidebar__category">
-                        <p class="category__btn" onclick="toggleDropDown(this)">{{this.name}}
+                        <p class="sidebar__category__btn" onclick="toggleDropDown(this)">{{this.name}}
                             <i class="fas fa-sort-down transition"></i>
                         </p>
-                        <div class="category__drop-down">
+                        <div class="dropdown">
                             {{# each this.subcategories}}
                                 <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
                             {{/each}}
@@ -71,7 +71,6 @@
                 {{/each}}
             </div>
 
-
         </div>
     {{/if}}
 
@@ -79,7 +78,7 @@
 
     <div id="content" class="{{moveElementToRight}}">
 
-        <div style="position: relative;" class="container mt-4 main">
+        <div style="position: relative;" class="container mt-4">
             <!-- Where we want to output the rest of the template/views use triple curly braces -->
             {{{body}}}
 

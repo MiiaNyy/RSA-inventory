@@ -11,7 +11,7 @@ body {
     background-color: #e3e3e3;
 }
 
-@media (min-width: 600px){
+@media (min-width: 600px) {
     body {
         font-size: 1rem;
     }
@@ -27,8 +27,12 @@ button {
     transition: all 0.2s ease-in-out;
 }
 
+nav {
+    padding: 1em 2em;
+    gap: 2em
+}
 
-/*---TYPOGRAPHY---*/
+/* --- TYPOGRAPHY --- */
 
 h1, h2, h3, h4, h5, h6, p {
     margin-top: 0;
@@ -43,16 +47,24 @@ hr {
     margin: 0 auto 0.5em;
 }
 
+/* --- GENERAL --- */
 .box {
     border-radius: 10px;
     background-color: #f8f9fa;
     border-color: #bfbebe;
-    box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
 }
 
-.form__create {
+/* Cube that holds stuffed animals color */
+.clr-box {
+    width: 25px;
+    height: 25px;
+}
+
+/* Universal form styles */
+.form-template {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     padding: 1em 1em 1.5em;
     margin: 3em auto 2em;
 }
@@ -61,39 +73,40 @@ hr {
     display: flex;
 }
 
+/* Used in forms when two inputs are in the same row */
+.row-item {
+    width: 100%;
+}
+
+.row-item + .row-item {
+    margin-left: 1em
+}
+
 
 @media (min-width: 800px) {
     .container-flex {
         display: flex;
         align-items: baseline;
     }
+
     .container-flex__item {
         width: 80%;
         margin: 0 auto;
     }
 }
 
-
-
-
-.transition {
-    transition: all 0.3s ease-in-out;
+.margin-left {
+    margin-left: 30px;
+    transition: margin-left .5s;
 }
 
-.categories {
-    width: 95%;
-    max-width: 600px;
-    margin: 2em auto 0;
-}
-
-
-@media (min-width: 500px) {
-    .categories {
-        display: flex;
-        gap: 1em;
+@media (min-width: 850px) {
+    .margin-left {
+        margin-left: 200px;
     }
 }
 
+/* --- BUTTONS --- */
 .btn, .nav-btn {
     margin-bottom: 1em;
     padding: 0.3em 1em;
@@ -109,7 +122,7 @@ hr {
     background-color: #d6b8ff;
 }
 
-.btn:hover{
+.btn:hover {
     color: #d6b8ff;;
     background-color: #323232;
 }
@@ -126,7 +139,7 @@ hr {
 }
 
 
-/* ---NAVIGATION--- */
+/* --- NAVIGATION --- */
 .nav, .navbar {
     display: block;
 }
@@ -135,20 +148,16 @@ hr {
     .nav, .navbar {
         display: flex;
     }
-    .flex-item-2 {
-        display: flex;
-    }
-}
 
-.flex-item-1, .flex-item-2 {
-    text-align: center;
-    margin: 0 auto;
+    .navbar-flex-item {
+        display: flex;
+        align-items: baseline;
+    }
 }
 
 .nav-btn {
     font-size: 0.9rem;
     color: #f8f9fa;
-    letter-spacing: 1px;
     text-decoration: none;
     background-color: #212529;
 }
@@ -156,7 +165,6 @@ hr {
 .nav-link {
     font-size: 0.9rem;
     color: #f8f9fa;
-    letter-spacing: 1px;
 }
 
 .nav-link:hover {
@@ -165,7 +173,7 @@ hr {
 }
 
 
-/* ---SIDEBAR--- */
+/* --- SIDEBAR --- */
 .sidebar {
     min-height: 100%;
     max-height: 100%;
@@ -182,10 +190,6 @@ hr {
     background-color: #27292c;
 }
 
-.sidebar button {
-    margin-bottom: 2.5em;
-}
-
 .sidebar__title {
     font-size: 1.1rem;
     line-height: 32px;
@@ -200,6 +204,41 @@ hr {
     padding: 0.5em;
 }
 
+.sidebar__category__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.1s ease-in-out;
+}
+
+.sidebar__category__btn:hover {
+    color: #d6b8ff;
+}
+
+/* Sidebar dropdown container and items */
+.dropdown {
+    display: none;
+    cursor: pointer;
+    margin-top: 0.5em;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    background-color: #262b2f;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+}
+
+.dropdown-item {
+    color: #f8f9fa;
+}
+
+.dropdown-visible {
+    display: block;
+}
+
+
+/* --- ARROW AND CROSS ICONS --- */
 .icon {
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -213,19 +252,20 @@ hr {
     color: red;
 }
 
-
-.margin-left {
-    margin-left: 30px;
-    transition: margin-left .5s;
+/* --- CATEGORIES PAGE --- */
+.categories {
+    width: 95%;
+    max-width: 600px;
+    margin: 2em auto 0;
 }
 
-@media (min-width: 850px) {
-    .margin-left {
-        margin-left: 200px;
+
+@media (min-width: 500px) {
+    .categories {
+        display: flex;
+        gap: 1em;
     }
 }
-
-
 
 .categories__item {
     width: 80%;
@@ -236,7 +276,6 @@ hr {
 
 .categories__item a {
     color: #27292c;
-    letter-spacing: 1px;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
 }
@@ -246,45 +285,12 @@ hr {
     font-size: 1.01rem;
 }
 
-.category__btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: all 0.1s ease-in-out;
-}
 
-.category__btn:hover {
-    color: #d6b8ff;
-}
-
-.category__drop-down {
-    display: none;
-    cursor: pointer;
-    margin-top: 0.5em;
-    padding: 0.5em 1em;
-    border-radius: 10px;
-    background-color: #262b2f;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-
-.dropdown-item {
-    letter-spacing: 1px;
-    color: #f8f9fa;
-}
-
+/* --- ITEM DETAILS PAGE --- */
 .item {
     width: 95%;
     max-width: 700px;
     margin: 0 auto;
-
-}
-
-.item h2 {
-    text-align: center;
-    margin-bottom: 0.5em;
 }
 
 .item table {
@@ -293,43 +299,22 @@ hr {
     margin: 0 auto;
 }
 
-.item__clr {
-    width: 25px;
-    height: 25px;
-}
 
-
-.item-form {
-    width: 100%;
-    max-width: 300px;
-    margin: 1em auto 0;
-}
-
-/* Selects all .item-forms direct children that are divs */
-.item-form > div {
-    margin-bottom: 1em;
-}
-
-.flex-container {
-    display: flex;
-    gap: 1em;
-    justify-content: space-between;
-}
-
-.flex-container__item {
-    width: 100%;
-}
-
-
-.dropDownVisible {
-    display: block;
-}
-
-.rotateIcon {
+.rotate-icon {
     transition: all 0.3s ease-in-out;
     transform: rotate(180deg);
 }
 
+.bolder_font {
+    font-weight: bolder;
+    color: #d6b8ff;
+}
+
+.transition {
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- CHAT BOT --- */
 .chat-container {
     width: 100%;
     max-width: 300px;
@@ -339,7 +324,6 @@ hr {
     right: 2em;
     border: 1px solid #a1a1a1;
 }
-
 
 .chat-container__open {
     max-height: 500px;
@@ -365,10 +349,6 @@ hr {
     color: #f8f9fa;
 }
 
-.bolder_font {
-    font-weight: bolder;
-    color: #d6b8ff;
-}
 
 
 
