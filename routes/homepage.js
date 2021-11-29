@@ -7,7 +7,8 @@ router.get('/', async (req, res) => {
     try {
         const categories = await Category.find({}).lean();
         const inventory = await StuffedAnimal.find({}).sort({createdAt: -1}).lean();
-        
+        const cookies = req.cookies;
+        console.log('current user:', cookies.currentUser);
         res.render('inventoryTable', {
             title: "Rafael's stuffed animals",
             info: {
@@ -19,6 +20,7 @@ router.get('/', async (req, res) => {
             items: inventory,
             sidebarIsNeeded: true,
             moveElementToRight: 'margin-left',
+            currentUser: cookies.currentUser
         })
     } catch (e) {
         console.log('Error happened during category and inventory fetching:', e)

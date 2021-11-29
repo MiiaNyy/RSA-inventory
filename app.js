@@ -4,6 +4,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 
 const createStuffedAnimalDoc = require("./helpers/populateDB/createStuffedAnimalDoc").createStuffedAnimalDoc;
 const createCategoryDoc = require("./helpers/populateDB/createStuffedAnimalDoc").createCategoryDoc;
@@ -41,6 +42,8 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: false}));
+
+app.use(cookieParser());
 
 app.use('/', homepageRouter);
 app.use('/login', loginRouter);

@@ -162,7 +162,7 @@ hr {
     background-color: #212529;
 }
 
-.nav-link {
+.nav-link, .nav-text {
     font-size: 0.9rem;
     color: #f8f9fa;
 }

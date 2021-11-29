@@ -28,6 +28,7 @@ router.post('/', validateUser(), async (req, res) => {
             signUpUser.save()
                       .then(data => {
                           console.log('signing new user success!', data);
+                          res.cookie('currentUser', signUpUser.username)
                           res.redirect('/');
                       })
                       .catch(e => console.log(e))

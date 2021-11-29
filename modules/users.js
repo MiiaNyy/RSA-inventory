@@ -28,6 +28,7 @@ const userSchema = new Schema({
     }
 });
 
+// If user document is saved or updated, run decryption to the password and return that has psw to database
 userSchema.pre("save", function (next) {
     const user = this;
     
