@@ -47,6 +47,10 @@ hr {
     margin: 0 auto 0.5em;
 }
 
+.error {
+    background-color: #ff8888;
+}
+
 /* --- GENERAL --- */
 .box {
     border-radius: 10px;

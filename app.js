@@ -15,14 +15,17 @@ const app = express();
 const homepageRouter = require("./routes/homepage");
 const categoryRouter = require("./routes/categories/categories");
 const itemRouter = require("./routes/items/items");
-const apiRouter = require("./routes/api/api")
+
+const apiRouter = require("./routes/api/api");
+
 const loginRouter = require("./routes/login");
 const signUpRouter = require("./routes/signUp");
+const logoutRouter = require("./routes/logout");
 
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
             app.listen(process.env.PORT || 3000);
-            
+    
             //createCategoryDoc();
             /*
              //Generate random stuffed animal document
@@ -48,6 +51,7 @@ app.use(cookieParser());
 app.use('/', homepageRouter);
 app.use('/login', loginRouter);
 app.use('/sign-up', signUpRouter);
+app.use('/logout', logoutRouter);
 
 app.use('/category', categoryRouter);
 app.use('/item', itemRouter);
