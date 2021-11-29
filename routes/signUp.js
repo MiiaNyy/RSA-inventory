@@ -18,8 +18,8 @@ router.post('/', validateUser(), async (req, res) => {
     if ( !errors.isEmpty() ) {
         return res.status(400).json({errors: errors.array()});
     } else {
-        // Data from form is valid.
         try {
+            // Data from form is valid.
             const signUpUser = new UserTemplate({
                 username: `${ req.body.firstName } ${ req.body.lastName }`,
                 email: req.body.email,
@@ -32,7 +32,6 @@ router.post('/', validateUser(), async (req, res) => {
                           res.redirect('/');
                       })
                       .catch(e => console.log(e))
-            
         } catch (e) {
             console.log(e);
         }

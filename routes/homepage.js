@@ -7,8 +7,9 @@ router.get('/', async (req, res) => {
     try {
         const categories = await Category.find({}).lean();
         const inventory = await StuffedAnimal.find({}).sort({createdAt: -1}).lean();
+        
         const cookies = req.cookies;
-        console.log('current user:', cookies.currentUser);
+        
         res.render('inventoryTable', {
             title: "Rafael's stuffed animals",
             info: {
