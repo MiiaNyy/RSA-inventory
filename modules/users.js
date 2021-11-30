@@ -15,6 +15,7 @@ const userSchema = new Schema({
         minlength: 5,
         maxlength: 255,
         unique: true,
+        lowercase: true,
     },
     password: {
         type: String,
@@ -33,6 +34,7 @@ userSchema.pre("save", function (next) {
     const user = this;
     
     if ( this.isModified("password") || this.isNew ) {
+        // Generates salt to the hash so it is more secure
         bcrypt.genSalt(10, (saltError, salt) => {
             if ( saltError ) {
                 return next(saltError)
