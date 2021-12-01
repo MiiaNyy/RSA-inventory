@@ -4,22 +4,45 @@ const jwt = require("jsonwebtoken");
 
 const maxTokenAge = 60 * 60 * 24 * 3 * 1000; // s * min * day * 3 * ms = three days in milliseconds
 
+// Create error messages that can be send to handlebars
+function handleErrors (err) {
+    if ( err.code === 11000 ) {// duplicate email error
+        return {email: ['That email is already registered. Please login.']}
+    } else if ( err ) {
+        return {
+            firstName: err.map(item => item.param === 'firstName' ? item.msg : ''),
+            lastName: err.map(item => item.param === 'lastName' ? item.msg : ''),
+            email: err.map(item => item.param === 'email' ? item.msg : ''),
+            password: err.map(item => item.param === 'password' ? item.msg : ''),
+        }
+    }
+}
+
+function handleLoginErrors (loginError) {
+    switch (loginError) {
+        case 'loginError':
+            return {loginError: ['Something went wrong in our end. Please try again.']}
+        case 'userError':
+            return {loginError: ['Could not find user by that email. Try again or register if you are not registered yet.']}
+        case 'passwordError':
+            return {password: ['Wrong password. Please try again.']}
+    }
+    
+}
+
 function createToken (id) {
     return jwt.sign({id}, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES
     });
 }
 
-// handle errors
-const handleDuplicateEmailError = (err) => {
-    
-    // duplicate email error
-    if ( err.code === 11000 ) {
-        return {email: 'That email is already registered. Please login.'};
-        
-    }
-    
+// Create web token that you can save current user info securely
+function signInSuccessful (id, res) {
+    const token = createToken(id);
+    res.cookie('jwt', token, {httpOnly: true, maxAge: maxTokenAge});
+    res.redirect('/');
 }
+
 
 function signup_get (req, res) {
     try {
@@ -29,50 +52,37 @@ function signup_get (req, res) {
     }
 }
 
-// Create error messages that can be send to handlebars
-function createErrorMsg(err) {
-    return err.map(errItem => {
-    
-    })
-    
-}
 
-function signup_post (req, res) {
+async function signup_post (req, res) {
     const errors = validationResult(req);
+    
     // Error happened during validation
     if ( !errors.isEmpty() ) {
-        console.log('error happened during validation', errors);
-        /*res.render('signup', {errors})*/
-        return res.status(400).json({errors: errors.array()});
+        console.log('Errors are not empty');
+        res.render('signup', {
+            errors: handleErrors(errors.array()),
+            values: req.body, // values for input fields
+        })
     } else {
         // Data from form is valid.
-        signupUser(req, res)
-            .then(() => console.log('user is signing up...'));
+        try {
+            const newUser = await User.create({
+                username: `${ req.body.firstName } ${ req.body.lastName }`,
+                email: req.body.email,
+                password: req.body.password,
+            });
+            signInSuccessful(newUser._id, res);
+            
+        } catch (err) {
+            console.log('Error in catch', err);
+            res.render("signup", {
+                errors: handleLoginErrors('loginError'),
+                values: req.body,
+            })
+        }
     }
 }
 
-async function signupUser (req, res) {
-    try {
-        const newUser = await User.create({
-            username: `${ req.body.firstName } ${ req.body.lastName }`,
-            email: req.body.email,
-            password: req.body.password,
-        });
-        
-        console.log('signing new user success!', newUser);
-        
-        const token = createToken(newUser._id);
-        res.cookie('jwt', token, {httpOnly: true, maxAge: maxTokenAge});
-        res.redirect('/');
-    } catch (err) {
-        res.render("signup", {
-            errors: handleDuplicateEmailError(err),
-            firstName: req.body.firstName, // Put this values to input fields so user don't have fill every field
-            lastName: req.body.lastName,
-        })
-        console.log(err)
-    }
-}
 
 function login_get (req, res) {
     try {
@@ -89,33 +99,30 @@ function login_post (req, res) {
     try {
         User.findOne({email}).exec(function (error, user) {
             if ( error ) {
+                
                 res.render('login', {
-                    errors: {
-                        defaultError: 'Error occurred. Please try again.'
-                    }
+                    errors: handleLoginErrors('loginError')
                 })
+                
             } else if ( !user ) {
                 res.render('login', {
-                    errors: {
-                        user: 'Could not find user by that email. Try again or register if you are not signed in yet.'
-                    }
+                    errors: handleLoginErrors('userError')
                 })
             } else {
                 user.comparePassword(password, (matchError, isMatch) => {
+                    
                     if ( matchError ) {
                         res.render('login', {
-                            errors: {
-                                defaultError: 'Match error happened. Please try again.'
-                            }
+                            errors: handleLoginErrors('loginError')
                         })
                     } else if ( !isMatch ) {
                         res.render('login', {
-                            errors: {password: 'Wrong password. Please try again.'},
-                            user: email,
+                            errors: handleLoginErrors('passwordError'),
+                            values: req.body,
                         })
                     } else {
-                        res.cookie('currentUser', user.username);
-                        res.redirect('/');
+                        
+                        signInSuccessful(user._id, res);
                     }
                 })
             }
