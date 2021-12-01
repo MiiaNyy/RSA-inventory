@@ -3,7 +3,9 @@ const StuffedAnimal = require("../modules/stuffedAnimal");
 const Category = require("../modules/categories");
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+const requireAuth = require('../middleware/authMiddleware');
+
+router.get('/', requireAuth, async (req, res) => {
     try {
         const categories = await Category.find({}).lean();
         const inventory = await StuffedAnimal.find({}).sort({createdAt: -1}).lean();

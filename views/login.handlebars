@@ -4,18 +4,25 @@
 
         <div class="form-group mt-3">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value={{user}}>
-            <small class="error">{{errors.user}}</small>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"
+                   value={{values.email}}>
+            {{#each errors.email}}
+                <small class="form-text error">{{this}}</small>
+            {{/each}}
 
         </div>
         <div class="form-group mt-3">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-            <small class="error">{{errors.password}}</small>
+            {{#each errors.password}}
+                <small class="form-text error">{{this}}</small>
+            {{/each}}
         </div>
-        <div class="text-center ">
+        {{#each errors.loginError}}
+            <small class="form-text error">{{this}}</small>
+        {{/each}}
+        <div class="text-center">
             <button type="submit" class="btn mt-5 mb-2">Login</button>
-            <small class="error">{{errors.defaultError}}</small>
 
             <div>
                 <small class="form-text text-muted">Don't have account yet? Sign up <a

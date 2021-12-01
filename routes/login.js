@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    authController.login_post(req, res);
+    authController.login_post(req, res).then(r => console.log('inside login post request...'));
     
 })
 

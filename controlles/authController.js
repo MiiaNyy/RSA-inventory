@@ -23,7 +23,7 @@ function handleLoginErrors (loginError) {
         case 'loginError':
             return {loginError: ['Something went wrong in our end. Please try again.']}
         case 'userError':
-            return {loginError: ['Could not find user by that email. Try again or register if you are not registered yet.']}
+            return {email: ['Could not find user by that email. Try again or register if you are not registered yet.']}
         case 'passwordError':
             return {password: ['Wrong password. Please try again.']}
     }
@@ -37,12 +37,30 @@ function createToken (id) {
 }
 
 // Create web token that you can save current user info securely
-function signInSuccessful (id, res) {
+function signingSuccessful (id, res) {
+    console.log('signing in successful!');
     const token = createToken(id);
     res.cookie('jwt', token, {httpOnly: true, maxAge: maxTokenAge});
     res.redirect('/');
 }
 
+async function signUpFormValuesAreValid (req, res) {
+    try {
+        const newUser = await User.create({
+            username: `${ req.body.firstName } ${ req.body.lastName }`,
+            email: req.body.email,
+            password: req.body.password,
+        });
+        signingSuccessful(newUser._id, res);
+        
+    } catch (err) {
+        console.log('Error in catch', err);
+        res.render("signup", {
+            errors: handleLoginErrors('loginError'),
+            values: req.body,
+        })
+    }
+}
 
 function signup_get (req, res) {
     try {
@@ -65,21 +83,8 @@ async function signup_post (req, res) {
         })
     } else {
         // Data from form is valid.
-        try {
-            const newUser = await User.create({
-                username: `${ req.body.firstName } ${ req.body.lastName }`,
-                email: req.body.email,
-                password: req.body.password,
-            });
-            signInSuccessful(newUser._id, res);
-            
-        } catch (err) {
-            console.log('Error in catch', err);
-            res.render("signup", {
-                errors: handleLoginErrors('loginError'),
-                values: req.body,
-            })
-        }
+        signUpFormValuesAreValid(req, res)
+            .then(r => console.log('Signing user in...'))
     }
 }
 
@@ -92,44 +97,44 @@ function login_get (req, res) {
     }
 }
 
-function login_post (req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
-    
-    try {
-        User.findOne({email}).exec(function (error, user) {
-            if ( error ) {
-                
+function validateUserLogin (error, user, req, res) {
+    if ( error ) {
+        res.render('login', {
+            errors: handleLoginErrors('loginError')
+        })
+        
+    } else if ( !user ) {
+        res.render('login', {
+            errors: handleLoginErrors('userError'),
+            values: req.body
+        })
+    } else {
+        user.comparePassword(req.body.password, (matchError, isMatch) => {
+            if ( matchError ) {
                 res.render('login', {
                     errors: handleLoginErrors('loginError')
                 })
-                
-            } else if ( !user ) {
+            } else if ( !isMatch ) {
                 res.render('login', {
-                    errors: handleLoginErrors('userError')
+                    errors: handleLoginErrors('passwordError'),
+                    values: req.body,
                 })
             } else {
-                user.comparePassword(password, (matchError, isMatch) => {
-                    
-                    if ( matchError ) {
-                        res.render('login', {
-                            errors: handleLoginErrors('loginError')
-                        })
-                    } else if ( !isMatch ) {
-                        res.render('login', {
-                            errors: handleLoginErrors('passwordError'),
-                            values: req.body,
-                        })
-                    } else {
-                        
-                        signInSuccessful(user._id, res);
-                    }
-                })
+                signingSuccessful(user._id, res);
             }
         })
-    } catch (e) {
+    }
+}
+
+async function login_post (req, res) {
+    try {
+        User.findOne({email: req.body.email}).exec(function (error, user) {
+            validateUserLogin(error, user, req, res)
+        })
+    } catch (err) {
         console.log(e);
     }
+    
     
 }
 
