@@ -33,5 +33,4 @@ function validateUser () {
     ]
 }
 
-module.exports = validateNewItemForm;
-module.exports = validateUser;
+module.exports = {validateNewItemForm, validateUser};

@@ -7,13 +7,15 @@ function requireAuth (req, res, next) {
         jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
             if ( err ) {
                 console.log('err occurred while verifying the token', err.message);
+                next()
             } else {
-                console.log('token verify successful.', decodedToken);
+                req.currentUser = decodedToken.id;
                 next();
             }
         })
     } else {
-        console.log('no token')
+        console.log('no token');
+        next()
     }
 }
 

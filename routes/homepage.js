@@ -9,11 +9,9 @@ router.get('/', requireAuth, async (req, res) => {
     try {
         const categories = await Category.find({}).lean();
         const inventory = await StuffedAnimal.find({}).sort({createdAt: -1}).lean();
-        
-        const cookies = req.cookies;
-        
+    
         res.render('inventoryTable', {
-            title: "Rafael's stuffed animals",
+            title: "Rafael's Stuffed Animals",
             info: {
                 title: 'Welcome to the stores inventory app',
                 text: 'Below you can browse all of the items in the current store inventory. You can' +
@@ -23,10 +21,10 @@ router.get('/', requireAuth, async (req, res) => {
             items: inventory,
             sidebarIsNeeded: true,
             moveElementToRight: 'margin-left',
-            currentUser: cookies.currentUser
+            currentUser: req.currentUser,
         })
     } catch (e) {
-        console.log('Error happened during category and inventory fetching:', e)
+        console.log('Error happened during category and inventory fetching:', e);
     }
 })
 

@@ -46,15 +46,14 @@ function signingSuccessful (id, res) {
 
 async function signUpFormValuesAreValid (req, res) {
     try {
-        const newUser = await User.create({
+        const user = await User.create({
             username: `${ req.body.firstName } ${ req.body.lastName }`,
             email: req.body.email,
             password: req.body.password,
         });
-        signingSuccessful(newUser._id, res);
+        signingSuccessful(user.username, res);
         
     } catch (err) {
-        console.log('Error in catch', err);
         res.render("signup", {
             errors: handleLoginErrors('loginError'),
             values: req.body,
@@ -120,7 +119,7 @@ function validateUserLogin (error, user, req, res) {
                     values: req.body,
                 })
             } else {
-                signingSuccessful(user._id, res);
+                signingSuccessful(user.username, res);
             }
         })
     }
