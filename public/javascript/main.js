@@ -5,36 +5,19 @@ function toggleDropDown (e) {
     
 }
 
-function openNav () {
-    moveNavAndMainContentToRight(200);
+function openSidebar () {
+    moveNavAndMainContentToRight();
     document.getElementById("sidebar").style.width = "200px";
     document.getElementById("sidebar__content").style.visibility = "visible";
-    document.getElementById("openNav").style.display = 'none';
+    document.getElementById("open-sidebar__btn").style.display = 'none';
 }
 
-function closeNav () {
-    moveNavAndMainContentToRight(30);
+function closeSidebar () {
+    moveNavAndMainContentToRight();
     
-    document.getElementById("sidebar").style.width = screen.width >= 700 ? "50px" : "30px";
+    document.getElementById("sidebar").style.width = screen.width <= 400 ? "40px" : "50px";
     document.getElementById("sidebar__content").style.visibility = "hidden";
-    document.getElementById("openNav").style.display = "inline-block";
-}
-
-function openChatBot (e) {
-    document.querySelector('.chat-api').classList.add('chat-bot__open');
-    document.querySelector('.toggle-chat-api').style.display = 'none';
-    document.querySelector('.chat-container').classList.remove('chat-container__closed');
-    document.querySelector('.chat-container').classList.add('chat-container__open');
-    
-    
-}
-
-function closeChatBot () {
-    document.querySelector('.chat-api').classList.remove('chat-bot__open');
-    document.querySelector('.toggle-chat-api').style.display = 'block';
-    
-    document.querySelector('.chat-container').classList.add('chat-container__closed');
-    document.querySelector('.chat-container').classList.remove('chat-container__open');
+    document.getElementById("open-sidebar__btn").style.display = "block";
 }
 
 function rearrangeItemOrder (item) {
@@ -42,16 +25,16 @@ function rearrangeItemOrder (item) {
 }
 
 // On smaller screens put sidebar on top of the main content. Bigger screens, move contents margin to left
-function moveNavAndMainContentToRight(amount) {
+function moveNavAndMainContentToRight () {
     if ( screen.width >= 850 ) {
         // nav bar and main content. Elements that need to move when sidebar opens/closes
         const elements = document.querySelectorAll(".margin-left");
         elements.forEach(e => {
-            e.style.marginLeft = `${amount}px`;
+            e.style.marginLeft = `200px`;
         })
     }
 }
 
-function goBackToPreviousPage() {
+function goBackToPreviousPage () {
     window.history.back();
 }
