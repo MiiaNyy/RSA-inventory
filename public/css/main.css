@@ -26,11 +26,6 @@ button {
     letter-spacing: 1px;
     transition: all 0.2s ease-in-out;
 }
-/*
-nav {
-    padding: 2em;
-    gap: 2em
-}*/
 
 nav {
     margin: 0 auto;
@@ -50,6 +45,16 @@ a {
 hr {
     width: 80%;
     margin: 0 auto 0.5em;
+}
+
+table {
+    font-size: 0.85rem;
+}
+
+@media (min-width: 500px) {
+    table {
+        font-size: 0.9rem;
+    }
 }
 
 .error {
@@ -127,6 +132,7 @@ hr {
 }
 
 .btn {
+    font-size: 0.9rem;
     color: #27292c;
     background-color: #d6b8ff;
 }
@@ -136,12 +142,18 @@ hr {
     background-color: #323232;
 }
 
-
 @media (min-width: 700px) {
     .btn {
+        font-size: 1rem;
         margin-bottom: 0;
     }
+
+    .nav-btn {
+        color: #27292c;
+        background-color: #d6b8ff;
+    }
 }
+
 
 /* --- NAVIGATION --- */
 .navbar {
@@ -161,8 +173,8 @@ hr {
 .nav-btn {
     font-size: 0.9rem;
     color: #f8f9fa;
-    text-decoration: none;
     background-color: #212529;
+    text-decoration: none;
 }
 
 .nav-link, .nav-text {
@@ -263,6 +275,12 @@ hr {
     color: #f8f9fa;
 }
 
+/* when user clicks the item */
+.dropdown-item:active {
+    color: #d0abff;
+    background-color: initial;
+}
+
 .dropdown-visible {
     display: block;
 }
@@ -322,7 +340,7 @@ hr {
 .item {
     width: 95%;
     max-width: 700px;
-    margin: 0 auto;
+    margin: 0 auto 2em;
 }
 
 .item table {
@@ -331,6 +349,25 @@ hr {
     margin: 0 auto;
 }
 
+/* Delete button and its container */
+.container__btn-delete {
+    width: 95%;
+    max-width: 350px;
+    margin: 0 auto 2em;
+    text-align: right;
+}
+
+.btn-delete {
+    letter-spacing: 1px;
+    font-weight: bolder;
+    background-color: #a1a1a16e;
+    color: #4d4d4d;
+}
+
+.btn-delete:hover {
+    color: #fd7676;
+    background-color: #343434;
+}
 
 .rotate-icon {
     transition: all 0.3s ease-in-out;
@@ -344,41 +381,6 @@ hr {
 
 .transition {
     transition: all 0.3s ease-in-out;
-}
-
-/* --- CHAT BOT --- */
-.chat-container {
-    width: 100%;
-    max-width: 300px;
-
-    position: fixed;
-    bottom: 0;
-    right: 2em;
-    border: 1px solid #a1a1a1;
-}
-
-.chat-container__open {
-    max-height: 500px;
-    min-height: 500px;
-}
-
-.chat-bot {
-    display: none;
-}
-
-.chat-bot__open {
-    display: block;
-}
-
-.toggle-chat-bot {
-    background-color: cornflowerblue;
-    font-weight: bolder;
-    margin-bottom: 0;
-    min-height: 100%;
-}
-
-.toggle-chat-bot:hover {
-    color: #f8f9fa;
 }
 
 
