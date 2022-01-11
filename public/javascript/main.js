@@ -20,10 +20,6 @@ function closeSidebar () {
     document.getElementById("open-sidebar__btn").style.display = "block";
 }
 
-function rearrangeItemOrder (item) {
-    console.log('clicked little arrow')
-}
-
 // On smaller screens put sidebar on top of the main content. Bigger screens, move contents margin to left
 function moveNavAndMainContentToRight (amount) {
     if ( screen.width >= 850 ) {

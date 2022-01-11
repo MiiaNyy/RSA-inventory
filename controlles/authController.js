@@ -37,28 +37,11 @@ function createToken (id) {
 }
 
 // Create web token that you can save current user info securely
-function signingSuccessful (id, res) {
+function createTokenAndRedirect (id, res) {
     console.log('signing in successful!');
     const token = createToken(id);
     res.cookie('jwt', token, {httpOnly: true, maxAge: maxTokenAge});
     res.redirect('/');
-}
-
-async function signUpFormValuesAreValid (req, res) {
-    try {
-        const user = await User.create({
-            username: `${ req.body.firstName } ${ req.body.lastName }`,
-            email: req.body.email,
-            password: req.body.password,
-        });
-        signingSuccessful(user.username, res);
-        
-    } catch (err) {
-        res.render("signup", {
-            errors: handleLoginErrors('loginError'),
-            values: req.body,
-        })
-    }
 }
 
 function signup_get (req, res) {
@@ -80,24 +63,22 @@ function signup_post (req, res) {
             values: req.body, // values for input fields
         })
     } else {
-        formDataValidSignUserIn(req, res)
-            .then(r => console.log('outside of valid data func'))
+        // Data from form is valid.
+        console.log('Data from form is valid.')
+        signUserUpAndCreateToken(req, res)
+            .then(r => console.log('user signup successful!'))
     }
 }
 
-async function formDataValidSignUserIn(req, res) {
-    // Data from form is valid.
-    console.log('Data from form is valid.')
+async function signUserUpAndCreateToken(req, res) {
     try {
         const user = await User.create({
             username: `${ req.body.firstName } ${ req.body.lastName }`,
             email: req.body.email,
             password: req.body.password,
         });
-        // Signing in successful
-        const token = createToken(user.username);
-        res.cookie('jwt', token, {httpOnly: true, maxAge: maxTokenAge});
-        res.redirect('/');
+        // Creating user successful
+        createTokenAndRedirect(user.username, res);
     } catch (err) {
         res.render("signup", {
             errors: handleLoginErrors('loginError'),
@@ -137,7 +118,7 @@ function validateUserLogin (error, user, req, res) {
                     values: req.body,
                 })
             } else {
-                signingSuccessful(user.username, res);
+                createTokenAndRedirect(user.username, res);
             }
         })
     }
@@ -151,8 +132,6 @@ async function login_post (req, res) {
     } catch (err) {
         console.log(e);
     }
-    
-    
 }
 
 module.exports = {

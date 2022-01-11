@@ -32,6 +32,8 @@ nav {
     padding: 2em;
 }
 
+
+
 /* --- TYPOGRAPHY --- */
 
 h1, h2, h3, h4, h5, h6, p {
@@ -131,7 +133,7 @@ table {
 
 @media (min-width: 400px) {
     .margin-left {
-        margin-left: 50px;
+        margin-left: 30px;
     }
 }
 
@@ -199,20 +201,24 @@ table {
 }
 
 
-
 /* --- NAVIGATION --- */
+.user-greeting {
+    color: #f8f9fa;
+    letter-spacing: 1px;
+    margin-right: 1em;
+}
+
 .navbar {
     display: block;
 }
 
 .navbar-brand {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 
-
 .nav-icon__bars, .nav-icon__cross {
-    color: #e3e3e3;;
+    color: #e3e3e3;
     font-size: 1.4rem;
     cursor: pointer;
 }
@@ -226,12 +232,10 @@ table {
     text-decoration: none;
 }
 
-.nav-link, .nav-text, .nav-btn {
+.nav-link, .nav-btn {
     font-size: 0.8rem;
     color: #f8f9fa;
-
 }
-
 
 .nav-link:hover {
     color: #d0abff;
@@ -249,8 +253,7 @@ table {
 }
 
 @media (min-width: 400px) {
-    .navbar-brand {
-        font-size: 1.2rem;
+    nav {
     }
 
     .nav-link, .nav-text, .nav-btn {
@@ -264,6 +267,11 @@ table {
         justify-content: center;
         padding: 1em;
     }
+
+    .navbar {
+        padding: 1em 1em 1em 2em;
+    }
+
 }
 
 /* --- SIDEBAR --- */

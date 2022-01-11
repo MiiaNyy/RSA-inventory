@@ -3,12 +3,13 @@ const router = express.Router();
 
 const StuffedAnimal = require("../../modules/stuffedAnimal");
 const Category = require("../../modules/categories");
+const requireAuth = require("../../middleware/authMiddleware");
 
 router.get('/', (req, res) => {
     res.send('<h1>Prices page</h1>')
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', requireAuth, async (req, res) => {
     try {
         const id = req.params.id;
         const [minPrice, maxPrice] = getPriceRange(id);
@@ -23,6 +24,7 @@ router.get('/:id', async (req, res) => {
             items,
             sidebarIsNeeded: true,
             moveElementToRight: 'margin-left',
+            currentUser: req.currentUser,
         })
     } catch (e) {
         console.log(e);

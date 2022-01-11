@@ -22,6 +22,8 @@ const loginRouter = require("./routes/login");
 const signUpRouter = require("./routes/signUp");
 const logoutRouter = require("./routes/logout");
 
+const requireAuth = require('./middleware/authMiddleware');
+
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
             app.listen(process.env.PORT || 3000);

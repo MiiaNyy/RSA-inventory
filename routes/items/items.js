@@ -5,6 +5,7 @@ const {validationResult} = require('express-validator');
 const StuffedAnimal = require("../../modules/stuffedAnimal");
 const Category = require("../../modules/categories");
 const {validateNewItemForm} = require("../../middleware/formValidation");
+const requireAuth = require("../../middleware/authMiddleware");
 
 router.post('/', validateNewItemForm(), async (req, res) => {
     // Extract the validation errors from a request.
@@ -27,7 +28,7 @@ router.post('/', validateNewItemForm(), async (req, res) => {
     }
 })
 
-router.get('/create', async (req, res) => {
+router.get('/create', requireAuth, async (req, res) => {
     try {
         const animalSizes = await Category.find({name: 'Sizes'}).lean();
         const animalBreeds = await Category.find({name: 'Animals'}).lean();
@@ -36,13 +37,14 @@ router.get('/create', async (req, res) => {
             animalSizes,
             animalBreeds,
             moveElementToRight: '',
+            currentUser: req.currentUser,
         })
     } catch (e) {
         console.log(e);
     }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', requireAuth, async (req, res) => {
     try {
         const item = await StuffedAnimal.findById(req.params.id).lean();
         const categories = await Category.find({}).lean();
@@ -54,6 +56,7 @@ router.get('/:id', async (req, res) => {
             categories,
             sidebarIsNeeded: true,
             moveElementToRight: 'margin-left',
+            currentUser: req.currentUser,
         })
     } catch (e) {
         console.log(e);
