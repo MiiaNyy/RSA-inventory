@@ -15,7 +15,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark margin-left">
+    <nav class="navbar navbar-dark bg-dark {{#if sidebarIsNeeded}} margin-left{{/if}}">
         <div class="navbar">
             <div class="text-center">
                 <a class="navbar-brand">Rafael's Stuffed Animals</a>
@@ -35,56 +35,56 @@
         </div>
 
         {{#if currentUser }}
-        <ul class="navbar nav mx-auto text-center">
-            <li class="nav-item user-greeting ">
-                Hello {{currentUser}}
-            </li>
-            <li class="nav-item active">
-                <a class="nav-btn" href="/logout">Log out</a>
-            </li>
-        </ul>
+            <ul class="navbar nav mx-auto text-center">
+                <li class="nav-item user-greeting ">
+                    Hello {{currentUser}}
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-btn" href="/logout">Log out</a>
+                </li>
+            </ul>
         {{else}}
-        <ul class="navbar nav text-center pb-4 nav__list">
-            <li class="nav-item">
-                <a class="nav-link" href="/signup">Sign up</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-btn" href="/login">Log in</a>
-            </li>
-        </ul>
+            <ul class="navbar nav text-center pb-4 nav__list">
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">Sign up</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-btn" href="/login">Log in</a>
+                </li>
+            </ul>
         {{/if}}
     </nav>
 
     {{#if sidebarIsNeeded}}
 
-    <div id="sidebar" class="sidebar ">
-        <div id="open-sidebar__btn" class="text-center" onclick="openSidebar()">
-            <i class="fas fa-bars icon"></i>
-        </div>
-        <div id="sidebar__content">
-            <div class="text-center" onclick="closeSidebar()">
-                <i class="fas fa-times icon__cross icon"></i>
+        <div id="sidebar" class="sidebar ">
+            <div id="open-sidebar__btn" class="text-center" onclick="openSidebar()">
+                <i class="fas fa-bars icon"></i>
             </div>
-            <p class="text-center sidebar__title">Categories</p>
-
-            <hr>
-
-            {{# each categories}}
-            <div class="sidebar__category">
-                <p class="sidebar__category__btn" onclick="toggleDropDown(this)">{{this.name}}
-                    <i class="fas fa-sort-down transition"></i>
-                </p>
-                <div class="dropdown">
-                    {{# each this.subcategories}}
-                        <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
-                    {{/each}}
+            <div id="sidebar__content">
+                <div class="text-center" onclick="closeSidebar()">
+                    <i class="fas fa-times icon__cross icon"></i>
                 </div>
+                <p class="text-center sidebar__title">Categories</p>
+
+                <hr>
+
+                {{# each categories}}
+                    <div class="sidebar__category">
+                        <p class="sidebar__category__btn" onclick="toggleDropDown(this)">{{this.name}}
+                            <i class="fas fa-sort-down transition"></i>
+                        </p>
+                        <div class="dropdown">
+                            {{# each this.subcategories}}
+                                <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
+                            {{/each}}
+                        </div>
+                    </div>
+
+                {{/each}}
             </div>
 
-            {{/each}}
         </div>
-
-    </div>
     {{/if}}
 
 

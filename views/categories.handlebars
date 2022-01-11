@@ -1,5 +1,7 @@
 <div class="container-flex">
+
     <button class="btn" onclick="goBackToPreviousPage()"><i class="fas fa-arrow-left"></i> Back</button>
+
     <div class="container-flex__item">
         <h2 class="text-center">All of the categories listed</h2>
         <div class="categories">
@@ -7,7 +9,7 @@
                 <div class="categories__item box mb-2">
                     <p class="text-center"><a style="font-weight: bolder" href={{this.url}}>{{this.name}}</a></p>
                     <hr>
-                    <ul>
+                    <ul class="categories__item-list">
                         {{# each this.subcategories}}
                             <li>
                                 <a href={{this.url}}>{{this.name}}</a>

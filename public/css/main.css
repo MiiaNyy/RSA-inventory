@@ -33,11 +33,21 @@ nav {
 }
 
 
-
 /* --- TYPOGRAPHY --- */
 
 h1, h2, h3, h4, h5, h6, p {
     margin-top: 0;
+}
+
+h2 {
+    font-size: 1.4rem;
+
+}
+
+@media (min-width: 400px) {
+    h2 {
+        font-size: 1.6rem;
+    }
 }
 
 a {
@@ -114,13 +124,16 @@ table {
     margin-left: 1em
 }
 
+.container-flex {
+    width: 95%;
+    margin: 2em auto;
+}
+
+.container-flex__item {
+    margin: 2em 0;
+}
 
 @media (min-width: 800px) {
-    .container-flex {
-        display: flex;
-        align-items: baseline;
-    }
-
     .container-flex__item {
         width: 80%;
         margin: 0 auto;
@@ -170,7 +183,6 @@ table {
         background-color: #d6b8ff;
     }
 }
-
 
 /* --- INVENTORY TABLE ---  */
 
@@ -381,8 +393,8 @@ table {
 
 /* --- CATEGORIES PAGE --- */
 .categories {
-    width: 95%;
-    max-width: 600px;
+    width: 100%;
+    max-width: 800px;
     margin: 2em auto 0;
 }
 
@@ -390,14 +402,14 @@ table {
 @media (min-width: 500px) {
     .categories {
         display: flex;
-        gap: 1em;
+        gap: 2em;
     }
 }
 
 .categories__item {
     width: 80%;
-    margin: 0 auto;
     padding: 0.5em;
+    margin: 0 auto;
     border-radius: 5px;
 }
 
@@ -412,6 +424,10 @@ table {
     font-size: 1.01rem;
 }
 
+.categories__item-list {
+    max-width: 150px;
+    margin: 0 auto;
+}
 
 /* --- ITEM DETAILS PAGE --- */
 .item {
