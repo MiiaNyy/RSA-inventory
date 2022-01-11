@@ -71,9 +71,7 @@ function signup_get (req, res) {
 
 
 function signup_post (req, res) {
-    console.log('signup post request detected')
     const errors = validationResult(req);
-    
     // Error happened during validation
     if ( !errors.isEmpty() ) {
         console.log('Errors are not empty');
@@ -82,12 +80,31 @@ function signup_post (req, res) {
             values: req.body, // values for input fields
         })
     } else {
-        // Data from form is valid.
-        signUpFormValuesAreValid(req, res)
-            .then(r => console.log('Signing user in...'))
+        formDataValidSignUserIn(req, res)
+            .then(r => console.log('outside of valid data func'))
     }
 }
 
+async function formDataValidSignUserIn(req, res) {
+    // Data from form is valid.
+    console.log('Data from form is valid.')
+    try {
+        const user = await User.create({
+            username: `${ req.body.firstName } ${ req.body.lastName }`,
+            email: req.body.email,
+            password: req.body.password,
+        });
+        // Signing in successful
+        const token = createToken(user.username);
+        res.cookie('jwt', token, {httpOnly: true, maxAge: maxTokenAge});
+        res.redirect('/');
+    } catch (err) {
+        res.render("signup", {
+            errors: handleLoginErrors('loginError'),
+            values: req.body,
+        })
+    }
+}
 
 function login_get (req, res) {
     try {

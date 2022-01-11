@@ -50,7 +50,7 @@ app.use(cookieParser());
 
 app.use('/', homepageRouter);
 app.use('/login', loginRouter);
-app.use('/sign-up', signUpRouter);
+app.use('/signup', signUpRouter);
 app.use('/logout', logoutRouter);
 
 app.use('/category', categoryRouter);
