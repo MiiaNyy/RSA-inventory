@@ -70,7 +70,8 @@ function signup_get (req, res) {
 }
 
 
-async function signup_post (req, res) {
+function signup_post (req, res) {
+    console.log('signup post request detected')
     const errors = validationResult(req);
     
     // Error happened during validation

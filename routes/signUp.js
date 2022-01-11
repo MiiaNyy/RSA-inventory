@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', validateUser, (req, res) => {
-    authController.signup_post(req, res);
+    authController.signup_post(req, res).then(r => console.log('outside of signup post controller'));
 })
 
 

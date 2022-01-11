@@ -48,7 +48,7 @@ hr {
 }
 
 table {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 @media (min-width: 500px) {
@@ -62,6 +62,10 @@ table {
 }
 
 /* --- GENERAL --- */
+.container {
+    padding: 0;
+}
+
 .box {
     border-radius: 10px;
     background-color: #f8f9fa;
@@ -69,18 +73,30 @@ table {
     box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
 }
 
-/* Cube that holds stuffed animals color */
-.clr-box {
-    width: 25px;
-    height: 25px;
-}
-
 /* Universal form styles */
 .form-template {
-    width: 100%;
+    width: 95%;
     max-width: 400px;
     padding: 1em 1em 1.5em;
     margin: 3em auto 2em;
+}
+
+.form-template h2 {
+    font-size: 1.3rem;
+}
+
+.form-group input, .form-group label {
+    font-size: 0.85rem;
+}
+
+@media (min-width: 400px) {
+    .form-template h2 {
+        font-size: 1.4rem;
+    }
+
+    .form-group input, .form-group label {
+        font-size: 0.95rem;
+    }
 }
 
 .flex {
@@ -110,7 +126,6 @@ table {
 }
 
 .margin-left {
-    margin-left: 35px;
     transition: margin-left .5s;
 }
 
@@ -155,10 +170,46 @@ table {
 }
 
 
+/* --- INVENTORY TABLE ---  */
+
+/* text above inventory table */
+.container__info-txt {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.container__inventory-table {
+    width: 95%;
+    max-width: 800px;
+    padding: 0;
+}
+
+/* Cube that holds stuffed animals color */
+.clr-box {
+    width: 20px;
+    height: 20px;
+}
+
+@media (min-width: 400px) {
+    .clr-box {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+
 /* --- NAVIGATION --- */
 .navbar {
     display: block;
 }
+
+.navbar-brand {
+    font-size: 1rem;
+}
+
+
 
 .nav-icon__bars, .nav-icon__cross {
     color: #e3e3e3;;
@@ -171,16 +222,16 @@ table {
 }
 
 .nav-btn {
-    font-size: 0.9rem;
-    color: #f8f9fa;
     background-color: #212529;
     text-decoration: none;
 }
 
-.nav-link, .nav-text {
-    font-size: 0.9rem;
+.nav-link, .nav-text, .nav-btn {
+    font-size: 0.8rem;
     color: #f8f9fa;
+
 }
+
 
 .nav-link:hover {
     color: #d0abff;
@@ -197,6 +248,16 @@ table {
     display: block;
 }
 
+@media (min-width: 400px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-link, .nav-text, .nav-btn {
+        font-size: 0.9rem;
+    }
+}
+
 @media (min-width: 900px) {
     nav, .nav, .navbar {
         display: flex;
@@ -207,24 +268,25 @@ table {
 
 /* --- SIDEBAR --- */
 .sidebar {
-    min-height: 100%;
-    max-height: 100%;
-    position: fixed;
-    width: 40px;
-    max-width: 200px;
-    padding: 0.5em;
-    color: #f8f9fa;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    transition: 0.5s;
-    z-index: 10;
-    background-color: #27292c;
+    display: none;
 }
 
 @media (min-width: 400px) {
     .sidebar {
-        width: 50px;
+        min-height: 100%;
+        max-height: 100%;
+        position: fixed;
+        width: 40px;
+        max-width: 200px;
+        padding: 0.5em;
+        color: #f8f9fa;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        transition: 0.5s;
+        z-index: 10;
+        background-color: #27292c;
+        display: block;
     }
 }
 
@@ -290,6 +352,13 @@ table {
 .icon {
     cursor: pointer;
     font-size: 20px;
+    display: none;
+}
+
+@media (min-width: 400px) {
+    .icon {
+        display: block;
+    }
 }
 
 .icon:hover {

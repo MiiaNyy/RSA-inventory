@@ -6,14 +6,14 @@ function toggleDropDown (e) {
 }
 
 function openSidebar () {
-    moveNavAndMainContentToRight();
+    moveNavAndMainContentToRight(200);
     document.getElementById("sidebar").style.width = "200px";
     document.getElementById("sidebar__content").style.visibility = "visible";
     document.getElementById("open-sidebar__btn").style.display = 'none';
 }
 
 function closeSidebar () {
-    moveNavAndMainContentToRight();
+    moveNavAndMainContentToRight(50);
     
     document.getElementById("sidebar").style.width = screen.width <= 400 ? "40px" : "50px";
     document.getElementById("sidebar__content").style.visibility = "hidden";
@@ -25,12 +25,12 @@ function rearrangeItemOrder (item) {
 }
 
 // On smaller screens put sidebar on top of the main content. Bigger screens, move contents margin to left
-function moveNavAndMainContentToRight () {
+function moveNavAndMainContentToRight (amount) {
     if ( screen.width >= 850 ) {
         // nav bar and main content. Elements that need to move when sidebar opens/closes
         const elements = document.querySelectorAll(".margin-left");
         elements.forEach(e => {
-            e.style.marginLeft = `200px`;
+            e.style.marginLeft = `${amount}px`;
         })
     }
 }

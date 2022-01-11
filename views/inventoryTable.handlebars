@@ -1,5 +1,5 @@
 <div class="container">
-    <div style="max-width: 600px;" class="container mb-4">
+    <div class="container mb-4 container__info-txt">
         <h5 class="text-center mb-4"> {{info.title}}</h5>
         <hr>
         <p>{{info.text}}</p>
@@ -7,35 +7,28 @@
 </div>
 
 
-<div style="max-width: 800px" class="container">
+<div class="container container__inventory-table">
     <table class="table table-hover box">
         <thead class="box">
         <tr>
             <th scope="col"></th>
-            <th id="animal-category" scope="col">Animal
-                <a href="/"></a>
-                <i class="fas fa-sort-down transition" onclick="rearrangeItemOrder(this)"></i>
-            </th>
-            <th id="size-category" scope="col">Size
-                <i class="fas fa-sort-down transition" onclick="rearrangeItemOrder(this)"></i>
-            </th>
-            <th id="price-category" scope="col">€
-                <i class="fas fa-sort-down transition" onclick="rearrangeItemOrder(this)"></i>
-            </th>
+            <th id="animal-category" scope="col">Name</th>
+            <th id="size-category" scope="col">Size</th>
+            <th id="price-category" scope="col">€ </th>
             <th scope="col">Color</th>
         </tr>
         </thead>
         <tbody class="box">
         {{#each items}}
-            <tr onclick="window.location=`/item/{{this._id}}`;" style="cursor: pointer">
-                <td></td>
-                <td>{{this.name}} the {{this.animal}}</td>
-                <td>{{this.size}}</td>
-                <td>{{this.price}}€</td>
-                <td>
-                    <div style="background-color: {{this.color}}" class="clr-box"></div>
-                </td>
-            </tr>
+        <tr onclick="window.location=`/item/{{this._id}}`;" style="cursor: pointer">
+            <td></td>
+            <td>{{this.name}} the {{this.animal}}</td>
+            <td>{{this.size}}</td>
+            <td>{{this.price}}</td>
+            <td>
+                <div style="background-color: {{this.color}}" class="clr-box"></div>
+            </td>
+        </tr>
         {{/each}}
         </tbody>
     </table>
