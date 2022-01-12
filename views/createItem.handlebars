@@ -4,7 +4,11 @@
 
         <div class="form-group mt-2">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Give it a name" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Give it a name"
+                   value="{{values.name}}" required>
+            {{#each errors.name}}
+                <p class="form-text error">{{this}}</p>
+            {{/each}}
         </div>
 
         <div class="form-group mt-2">
@@ -16,6 +20,9 @@
                     {{/this.subcategories}}
                 {{/animalBreeds}}
             </select>
+            {{#each errors.animal}}
+                <p class="form-text error">{{this}}</p>
+            {{/each}}
         </div>
 
 
@@ -25,15 +32,24 @@
                 <select class="form-control" id="size" name="size" required>
                     {{# animalSizes}}
                         {{# this.subcategories}}
-                            <option>{{this.name}}</option>
+                            <option>
+                                {{this.name}}
+                            </option>
                         {{/this.subcategories}}
                     {{/animalSizes}}
                 </select>
+                {{#each errors.size}}
+                    <p class="form-text error">{{this}}</p>
+                {{/each}}
             </div>
 
             <div class="form-group row-item">
                 <label for="color">Color</label>
-                <input type="color" value="#ffa8a8" class="form-control" id="color" name="color" required>
+                <input type="color" class="form-control" id="color" name="color" required
+                       value="{{# if values}}{{values.color}}{{else}}#ffa8a8{{/if}}">
+                {{#each errors.color}}
+                    <p class="form-text error">{{this}}</p>
+                {{/each}}
             </div>
         </div>
 
@@ -41,13 +57,20 @@
 
             <div class="form-group row-item">
                 <label for="price">Price €</label>
-                <input type="number" min="1" class="form-control" id="price" name="price" placeholder="25" required>
+                <input type="number" min="1" class="form-control" id="price" name="price" placeholder="25"
+                       value="{{values.price}}" required>
+                {{#each errors.price}}
+                    <p class="form-text error">{{this}}</p>
+                {{/each}}
             </div>
 
             <div class="form-group row-item">
                 <label for="numberInStock">Number in stock</label>
                 <input type="number" min="1" class="form-control" id="numberInStock" name="numberInStock"
-                       placeholder="5" required>
+                       placeholder="5" value="{{values.numberInStock}}" required>
+                {{#each errors.numberInStock}}
+                    <p class="form-text error">{{this}}</p>
+                {{/each}}
             </div>
         </div>
 
@@ -55,11 +78,11 @@
         <div class="form-group mt-2">
             <label for="description">Description</label>
             <textarea class="form-control" id="description" rows="3" name="description"
-                      placeholder="Enter short description..." required></textarea>
+                      placeholder="Enter short description..." required>{{values.description}}</textarea>
         </div>
 
         <div class="text-center">
-            <input class="btn mt-5" type="submit" value="Create new">
+            <input class="btn mt-4" type="submit" value="Create new">
         </div>
 
     </form>

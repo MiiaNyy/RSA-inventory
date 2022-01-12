@@ -13,9 +13,9 @@ router.get('/', requireAuth, async (req, res) => {
         res.render('inventoryTable', {
             title: "Rafael's Stuffed Animals",
             info: {
-                title: 'Welcome to the stores inventory app',
-                text: 'Below you can browse all of the items in the current store inventory. You can' +
-                    ' search specific items by three different category: size, price or animal.'
+                title: 'Welcome to the stores inventory.',
+                text: 'Below you can browse all of the items in the store inventory. Click specific item to know' +
+                    ' more information about it. If you like to create new or delete current items, please login first!'
             },
             categories,
             items: inventory,

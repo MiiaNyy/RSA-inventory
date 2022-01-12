@@ -54,6 +54,10 @@ a {
     letter-spacing: 1px;
 }
 
+small {
+    font-size: 0.7rem !important;
+}
+
 hr {
     width: 80%;
     margin: 0 auto 0.5em;
@@ -70,13 +74,14 @@ table {
 }
 
 .error {
-    background-color: #ff8888;
+    font-size: 0.7rem;
+    color: #f64949;
+    letter-spacing: 1px;
+    padding: 0 1em;
+    margin: 0.5em 0 0;
 }
 
 /* --- GENERAL --- */
-.container {
-    padding: 0;
-}
 
 .box {
     border-radius: 10px;
@@ -188,7 +193,7 @@ table {
 
 /* text above inventory table */
 .container__info-txt {
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -293,20 +298,26 @@ table {
 
 @media (min-width: 400px) {
     .sidebar {
+        display: block;
         min-height: 100%;
         max-height: 100%;
-        position: fixed;
         width: 40px;
         max-width: 200px;
-        padding: 0.5em;
-        color: #f8f9fa;
+        position: fixed;
         top: 0;
         left: 0;
+        padding: 0.5em;
+        color: #f8f9fa;
+        background-color: #27292c;
         overflow-x: hidden;
         transition: 0.5s;
         z-index: 10;
-        background-color: #27292c;
-        display: block;
+    }
+}
+
+@media (min-width: 600px) {
+    .sidebar {
+        width: 50px;
     }
 }
 
@@ -430,8 +441,14 @@ table {
 }
 
 /* --- ITEM DETAILS PAGE --- */
+.container__item-details {
+    border: 1px solid #ff8888;
+    width: 90%;
+    margin: 0 auto 2em;
+}
+
 .item {
-    width: 95%;
+    width: 100%;
     max-width: 700px;
     margin: 0 auto 2em;
 }

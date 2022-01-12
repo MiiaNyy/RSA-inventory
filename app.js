@@ -22,8 +22,6 @@ const loginRouter = require("./routes/login");
 const signUpRouter = require("./routes/signUp");
 const logoutRouter = require("./routes/logout");
 
-const requireAuth = require('./middleware/authMiddleware');
-
 mongoose.connect(process.env.CONNECTIONSTRING)
         .then(() => {
             app.listen(process.env.PORT || 3000);
@@ -43,6 +41,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout: "main"}));
 app.set('view engine', 'handlebars');
 
+const hbs = exphbs.create({});
+
+hbs.handlebars.registerHelper('ifEqual', function(a, b) {
+    if (a === b) {
+        console.log('equal pairs found! a is: ' + a + ' and b is: ' + b)
+        return "selected"
+    } else {
+        console.log('a is: ' + a + ' and b is: ' + b)
+    }
+})
+
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -57,7 +66,8 @@ app.use('/logout', logoutRouter);
 
 app.use('/category', categoryRouter);
 app.use('/item', itemRouter);
-app.use('/api', apiRouter)
+app.use('/api', apiRouter);
+
 
 
 

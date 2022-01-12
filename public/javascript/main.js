@@ -15,7 +15,7 @@ function openSidebar () {
 function closeSidebar () {
     moveNavAndMainContentToRight(50);
     
-    document.getElementById("sidebar").style.width = screen.width <= 400 ? "40px" : "50px";
+    document.getElementById("sidebar").style.width = screen.width <= 600 ? "40px" : "50px";
     document.getElementById("sidebar__content").style.visibility = "hidden";
     document.getElementById("open-sidebar__btn").style.display = "block";
 }

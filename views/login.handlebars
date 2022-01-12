@@ -7,7 +7,7 @@
             <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"
                    value={{values.email}}>
             {{#each errors.email}}
-                <small class="form-text error">{{this}}</small>
+                <p class="form-text error">{{this}}</p>
             {{/each}}
 
         </div>
@@ -15,14 +15,14 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
             {{#each errors.password}}
-                <small class="form-text error">{{this}}</small>
+                <p class="form-text error">{{this}}</p>
             {{/each}}
         </div>
         {{#each errors.loginError}}
-            <small class="form-text error">{{this}}</small>
+            <p class="form-text error">{{this}}</p>
         {{/each}}
         <div class="text-center">
-            <button type="submit" class="btn mt-5 mb-2">Login</button>
+            <button type="submit" class="btn mt-4 mb-2">Login</button>
 
             <div>
                 <small class="form-text text-muted">Don't have account yet? Sign up <a

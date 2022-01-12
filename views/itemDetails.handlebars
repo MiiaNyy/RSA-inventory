@@ -1,53 +1,56 @@
-<button class="btn" onclick="goBackToPreviousPage()"><i class="fas fa-arrow-left"></i> Back</button>
+<div class="container__item-details">
+    <button class="btn" onclick="goBackToPreviousPage()"><i class="fas fa-arrow-left"></i> Back</button>
 
-<div class="item">
-    <h2 class="text-center mb-3">{{{item.name}}} the {{item.animal}}</h2>
-    <table class="table table-bordered ">
+    <div class="item">
+        <h2 class="text-center mb-3">{{{item.name}}} the {{item.animal}}</h2>
+        <table class="table table-bordered ">
 
-        <thead class="box">
-        <tr>
-            <th scope="col">Key</th>
-            <th scope="col">Value</th>
-        </tr>
-        </thead>
-        <tbody class="box">
-        <tr>
-            <th scope="row">Name</th>
-            <td>{{item.name}}</td>
-        </tr>
-        <tr>
-            <th scope="row">Animal</th>
-            <td>{{item.animal}}</td>
-        </tr>
-        <tr>
-            <th scope="row">Size</th>
-            <td>{{item.size}}</td>
-        </tr>
-        <tr>
-            <th scope="row">Color</th>
-            <td style="gap: 1em" class="d-flex">
-                <div style="background-color: {{item.color}}" class="clr-box"></div>
-                <span>{{item.color}}</span>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">Description</th>
-            <td>{{item.description}}</td>
-        </tr>
-        <tr>
-            <th scope="row">Price</th>
-            <td>{{item.price}}€</td>
-        </tr>
-        <tr>
-            <th scope="row">In stock</th>
-            <td>{{item.numberInStock}}</td>
-        </tr>
+            <thead class="box">
+            <tr>
+                <th scope="col">Key</th>
+                <th scope="col">Value</th>
+            </tr>
+            </thead>
+            <tbody class="box">
+            <tr>
+                <th scope="row">Name</th>
+                <td>{{item.name}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Animal</th>
+                <td>{{item.animal}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Size</th>
+                <td>{{item.size}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Color</th>
+                <td style="gap: 1em" class="d-flex">
+                    <div style="background-color: {{item.color}}" class="clr-box"></div>
+                    <span>{{item.color}}</span>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td>{{item.description}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Price</th>
+                <td>{{item.price}}€</td>
+            </tr>
+            <tr>
+                <th scope="row">In stock</th>
+                <td>{{item.numberInStock}}</td>
+            </tr>
 
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
 
-<div class="container__btn-delete">
-    <button class="btn btn-delete">Delete</button>
+    <div class="container__btn-delete">
+        <button class="btn btn-delete">Delete</button>
+    </div>
+
 </div>
 

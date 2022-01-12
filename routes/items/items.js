@@ -7,15 +7,41 @@ const Category = require("../../modules/categories");
 const {validateNewItemForm} = require("../../middleware/formValidation");
 const requireAuth = require("../../middleware/authMiddleware");
 
+// Create error messages that can be send to handlebars
+function getErrorMessagesFromValidation (err) {
+    return {
+        name: getErrorMessages(err, 'name'),
+        animal: getErrorMessages(err, 'animal'),
+        size: getErrorMessages(err, 'size'),
+        color: getErrorMessages(err, 'color'),
+        price: getErrorMessages(err, 'price'),
+        numberInStock: getErrorMessages(err, 'numberInStock'),
+    }
+    
+}
+
+function getErrorMessages(errors, itemName) {
+    return errors.map(item => item.param === itemName ? item.msg : '')
+}
+
+// {{#when this.name 'eq' values.size}}selected{{/when}}
 router.post('/', validateNewItemForm(), async (req, res) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
-    console.log('New post request! Body is: ', req.body)
-    
     if ( !errors.isEmpty() ) {
         // There are errors. Render form again with sanitized values/errors messages.
         // Error messages can be returned in an array using `errors.array()`.
-        return res.status(400).json({errors: errors.array()});
+        const animalSizes = await Category.find({name: 'Sizes'}).lean();
+        const animalBreeds = await Category.find({name: 'Animals'}).lean();
+        
+        res.render('createItem', {
+            title: "Create new item",
+            errors: getErrorMessagesFromValidation(errors.array()),
+            values: req.body, // values for input fields
+            currentUser: req.currentUser,
+            animalSizes,
+            animalBreeds,
+        })
     } else {
         // Data from form is valid.
         try {
@@ -36,7 +62,6 @@ router.get('/create', requireAuth, async (req, res) => {
             title: "Create new item to inventory",
             animalSizes,
             animalBreeds,
-            moveElementToRight: '',
             currentUser: req.currentUser,
         })
     } catch (e) {
