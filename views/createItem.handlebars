@@ -16,7 +16,7 @@
             <select class="form-control" id="animal" name="animal" required>
                 {{# animalBreeds}}
                     {{# this.subcategories}}
-                        <option>{{this.name}}</option>
+                        <option {{ifEqualReturnSelected this.name ../../values.animal}}>{{this.name}}</option>
                     {{/this.subcategories}}
                 {{/animalBreeds}}
             </select>
@@ -32,7 +32,7 @@
                 <select class="form-control" id="size" name="size" required>
                     {{# animalSizes}}
                         {{# this.subcategories}}
-                            <option>
+                            <option {{ifEqualReturnSelected this.name ../../values.size}}>
                                 {{this.name}}
                             </option>
                         {{/this.subcategories}}

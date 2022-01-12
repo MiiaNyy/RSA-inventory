@@ -43,12 +43,9 @@ app.set('view engine', 'handlebars');
 
 const hbs = exphbs.create({});
 
-hbs.handlebars.registerHelper('ifEqual', function(a, b) {
+hbs.handlebars.registerHelper('ifEqualReturnSelected', function(a, b) {
     if (a === b) {
-        console.log('equal pairs found! a is: ' + a + ' and b is: ' + b)
         return "selected"
-    } else {
-        console.log('a is: ' + a + ' and b is: ' + b)
     }
 })
 
