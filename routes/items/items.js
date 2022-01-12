@@ -20,7 +20,7 @@ function getErrorMessagesFromValidation (err) {
     
 }
 
-function getErrorMessages(errors, itemName) {
+function getErrorMessages (errors, itemName) {
     return errors.map(item => item.param === itemName ? item.msg : '')
 }
 
@@ -87,6 +87,19 @@ router.get('/:id', requireAuth, async (req, res) => {
         console.log(e);
     }
     
+})
+
+// Delete button is pressed
+router.post('/:id', requireAuth, async (req, res) => {
+    try {
+        if ( req.currentUser ) {
+            res.send('Item delete can happen');
+        } else {
+            res.send('Login required before deleting item!')
+        }
+    } catch (e) {
+        console.log(e);
+    }
 })
 
 

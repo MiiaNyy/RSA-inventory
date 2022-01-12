@@ -442,7 +442,6 @@ table {
 
 /* --- ITEM DETAILS PAGE --- */
 .container__item-details {
-    border: 1px solid #ff8888;
     width: 90%;
     margin: 0 auto 2em;
 }
@@ -493,6 +492,18 @@ table {
     transition: all 0.3s ease-in-out;
 }
 
-
+.pop-up {
+    position: fixed;
+    width: 90%;
+    max-width: 400px;
+    padding: 1em 1em 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #252424;
+    background-color: rgb(241, 241, 241);
+    text-align: center;
+    z-index: 100;
+}
 
 
