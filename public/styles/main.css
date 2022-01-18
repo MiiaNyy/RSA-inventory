@@ -162,9 +162,66 @@ table {
 }
 
 /* --- BUTTONS --- */
+.light-btn {
+    background-color: #d6b8ff;
+    color: #27292c;
+}
+
+.light-btn:hover {
+    background-color: #27292c;
+    color: #d6b8ff;
+}
+
+.dark-btn {
+    background-color: #27292C;
+    color: #d6b8ff;
+}
+
+.dark-btn:hover {
+    background-color: #d6b8ff;
+    color: #27292c;
+}
+
+.dark-link-btn {
+    background-color: rgb(43, 44, 47);
+    color: #d6b8ff;
+    font-weight: bolder;
+}
+
+.dark-link-btn:hover {
+    color: #d6b8ff;
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+.light-link-btn {
+    background-color: #d6b8ff;
+    color: #252424;
+    font-weight: bolder;
+}
+
+.light-link-btn:hover {
+    background-color: #27292c;
+    color: #d6b8ff;
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+.danger-btn {
+    background-color: #343434;
+    color: #fd7676;
+}
+
+.danger-btn:hover {
+    background-color: #fd7676;
+    color: #343434;
+}
+
+
 .btn, .nav-btn {
     margin-bottom: 1em;
     padding: 0.3em 1em;
+    font-size: 0.9rem;
     letter-spacing: 1px;
     border: none;
     border-radius: 5px;
@@ -172,26 +229,9 @@ table {
     transition: all 0.2s ease-in-out;
 }
 
-.btn {
-    font-size: 0.9rem;
-    color: #27292c;
-    background-color: #d6b8ff;
-}
-
-.btn:hover {
-    color: #d6b8ff;;
-    background-color: #323232;
-}
-
 @media (min-width: 700px) {
     .btn {
-        font-size: 1rem;
         margin-bottom: 0;
-    }
-
-    .nav-btn {
-        color: #27292c;
-        background-color: #d6b8ff;
     }
 }
 
@@ -202,4 +242,58 @@ table {
 
 .transition {
     transition: all 0.3s ease-in-out;
+}
+
+.pop-up-message {
+    width: 90%;
+    max-width: 325px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5em 0;
+    text-align: center;
+    border: 10px solid #d6b8ff;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.88);
+    -webkit-box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
+    -moz-box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
+    box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
+    transition: all 0.8s ease-in-out;
+    opacity: 0;
+    cursor: default;
+}
+
+.pop-up-message p {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+@keyframes slide-down-and-up {
+    0% {
+        opacity: 0;
+        top: -10%;
+    }
+    25% {
+        opacity: 1;
+        top: 30%;
+    }
+    60% {
+        opacity: 1;
+        top: 30%;
+    }
+    100% {
+        opacity: 0;
+        top: -10%;
+    }
+}
+
+.hidden {
+    display: none;
+}
+.pop-up-message_animation {
+    animation: slide-down-and-up 2500ms;
+    opacity: 0;
 }

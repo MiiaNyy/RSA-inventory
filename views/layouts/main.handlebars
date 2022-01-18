@@ -50,7 +50,7 @@
                     <a class="nav-link" href="/signup">Sign up</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-btn" href="/login">Log in</a>
+                    <a style="background-color: #27292C" class="btn dark-btn" href="/login">Log in</a>
                 </li>
             </ul>
         {{/if}}
@@ -89,6 +89,10 @@
             <!-- Where we want to output the rest of the template/views use triple curly braces -->
             {{{body}}}
         </div>
+    </div>
+
+    <div class="pop-up-message {{#if itemIsDeleted}}pop-up-message_animation {{else}} hidden{{/if}}">
+        <p>Item deleted</p>
     </div>
 
     <script src="../../javascript/main.js"></script>

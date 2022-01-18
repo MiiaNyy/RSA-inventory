@@ -9,7 +9,7 @@ router.get('/', requireAuth, async (req, res) => {
     try {
         const categories = await Category.find({}).lean();
         const inventory = await StuffedAnimal.find({}).sort({createdAt: -1}).lean();
-    
+        console.log('Homepage query is:', req.query)
         res.render('inventoryTable', {
             title: "Rafael's Stuffed Animals",
             info: {
@@ -22,6 +22,7 @@ router.get('/', requireAuth, async (req, res) => {
             sidebarIsNeeded: true,
             moveElementToRight: 'margin-left',
             currentUser: req.currentUser,
+            itemIsDeleted: req.query.itemIsDeleted,
         })
     } catch (e) {
         console.log('Error happened during category and inventory fetching:', e);

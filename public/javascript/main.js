@@ -35,14 +35,14 @@ function goBackToPreviousPage () {
 }
 
 function openPopUp (popUpElementName) {
-    document.getElementsByClassName(popUpElementName).style.display = 'block';
+    document.querySelector(`.${popUpElementName}`).style.display = 'block';
     document.querySelector('nav').classList.add('blur-background');
     document.querySelector('.sidebar').classList.add('blur-background');
     document.querySelector('.container__item-details').classList.add('blur-background');
 }
 
 function closePopUp (popUpElementName) {
-    document.getElementsByClassName(popUpElementName).style.display = 'none';
+    document.querySelector(`.${popUpElementName}`).style.display = 'none';
     document.querySelector('nav').classList.remove('blur-background');
     document.querySelector('.sidebar').classList.remove('blur-background');
     document.querySelector('.container__item-details').classList.remove('blur-background');

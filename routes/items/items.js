@@ -7,6 +7,9 @@ const Category = require("../../modules/categories");
 const {validateNewItemForm} = require("../../middleware/formValidation");
 const requireAuth = require("../../middleware/authMiddleware");
 
+const querystring = require('querystring');
+
+
 // Create error messages that can be send to handlebars
 function getErrorMessagesFromValidation (err) {
     return {
@@ -92,7 +95,10 @@ router.get('/:id', requireAuth, async (req, res) => {
 router.post('/:id', requireAuth, async (req, res) => {
     try {
         if ( req.currentUser ) {
-            res.send('Item delete can happen');
+            const query = querystring.stringify({
+                "itemIsDeleted": true,
+            });
+            res.redirect('/?' + query);
         } else {
             res.send('Login required before deleting item!')
         }

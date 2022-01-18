@@ -29,6 +29,13 @@
     text-decoration: none;
 }
 
+@media (min-width: 700px) {
+    .nav-btn {
+        color: #27292c;
+        background-color: #d6b8ff;
+    }
+}
+
 .nav-link, .nav-btn {
     font-size: 0.8rem;
     color: #f8f9fa;
