@@ -1,0 +1,27 @@
+/* --- INVENTORY TABLE ---  */
+
+/* text above inventory table */
+.container__info-txt {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.container__inventory-table {
+    width: 95%;
+    max-width: 800px;
+    padding: 0;
+}
+
+/* Cube that holds stuffed animals color */
+.clr-box {
+    width: 20px;
+    height: 20px;
+}
+
+@media (min-width: 400px) {
+    .clr-box {
+        width: 25px;
+        height: 25px;
+    }
+}

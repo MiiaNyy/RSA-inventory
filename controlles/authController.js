@@ -2,33 +2,9 @@ const {validationResult} = require("express-validator");
 const User = require("../modules/users");
 const jwt = require("jsonwebtoken");
 
-const maxTokenAge = 60 * 60 * 24 * 3 * 1000; // s * min * day * 3 * ms = three days in milliseconds
+const handleLoginErrors = require("../helpers/authentication/handleLoginErrors");
+const handleErrors = require("../helpers/authentication/handleErrors");
 
-// Create error messages that can be send to handlebars
-function handleErrors (err) {
-    if ( err.code === 11000 ) {// duplicate email error
-        return {email: ['That email is already registered. Please login.']}
-    } else if ( err ) {
-        return {
-            firstName: err.map(item => item.param === 'firstName' ? item.msg : ''),
-            lastName: err.map(item => item.param === 'lastName' ? item.msg : ''),
-            email: err.map(item => item.param === 'email' ? item.msg : ''),
-            password: err.map(item => item.param === 'password' ? item.msg : ''),
-        }
-    }
-}
-
-function handleLoginErrors (loginError) {
-    switch (loginError) {
-        case 'loginError':
-            return {loginError: ['Something went wrong in our end. Please try again.']}
-        case 'userError':
-            return {email: ['Could not find user by that email. Try again or register if you are not registered yet.']}
-        case 'passwordError':
-            return {password: ['Wrong password. Please try again.']}
-    }
-    
-}
 
 function createToken (id) {
     return jwt.sign({id}, process.env.JWT_SECRET, {
@@ -38,7 +14,7 @@ function createToken (id) {
 
 // Create web token that you can save current user info securely
 function createTokenAndRedirect (id, res) {
-    console.log('signing in successful!');
+    const maxTokenAge = 60 * 60 * 24 * 3 * 1000; // s * min * day * 3 * ms = three days in milliseconds
     const token = createToken(id);
     res.cookie('jwt', token, {httpOnly: true, maxAge: maxTokenAge});
     res.redirect('/');

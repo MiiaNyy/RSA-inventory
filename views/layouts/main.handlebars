@@ -10,12 +10,13 @@
             integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
             crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/86237f722d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../styles/main.css">
     <title>{{title}}</title>
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark {{#if sidebarIsNeeded}} margin-left{{/if}}">
+    <nav class="navbar navbar-dark bg-dark {{#if popUp}}blur-background{{/if}}
+        {{#if sidebarIsNeeded}} margin-left{{/if}}">
         <div class="navbar">
             <div class="text-center">
                 <a class="navbar-brand">Rafael's Stuffed Animals</a>
@@ -57,7 +58,7 @@
 
     {{#if sidebarIsNeeded}}
 
-        <div id="sidebar" class="sidebar ">
+        <div id="sidebar" class="sidebar {{#if popUp}}blur-background{{/if}}">
             <div id="open-sidebar__btn" class="text-center" onclick="openSidebar()">
                 <i class="fas fa-bars icon"></i>
             </div>
@@ -66,9 +67,7 @@
                     <i class="fas fa-times icon__cross icon"></i>
                 </div>
                 <p class="text-center sidebar__title">Categories</p>
-
                 <hr>
-
                 {{# each categories}}
                     <div class="sidebar__category">
                         <p class="sidebar__category__btn" onclick="toggleDropDown(this)">{{this.name}}
@@ -80,24 +79,17 @@
                             {{/each}}
                         </div>
                     </div>
-
                 {{/each}}
             </div>
-
         </div>
     {{/if}}
 
-
-
     <div id="content" class="{{moveElementToRight}}">
-
         <div style="position: relative;" class="container mt-4">
             <!-- Where we want to output the rest of the template/views use triple curly braces -->
             {{{body}}}
-
         </div>
     </div>
-
 
     <script src="../../javascript/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

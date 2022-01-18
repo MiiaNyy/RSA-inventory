@@ -1,0 +1,71 @@
+/* --- NAVIGATION --- */
+.user-greeting {
+    color: #f8f9fa;
+    letter-spacing: 1px;
+    margin-right: 1em;
+}
+
+.navbar {
+    display: block;
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+}
+
+
+.nav-icon__bars, .nav-icon__cross {
+    color: #e3e3e3;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.nav-icon__cross {
+    display: none;
+}
+
+.nav-btn {
+    background-color: #212529;
+    text-decoration: none;
+}
+
+.nav-link, .nav-btn {
+    font-size: 0.8rem;
+    color: #f8f9fa;
+}
+
+.nav-link:hover {
+    color: #d0abff;
+    text-decoration: underline;
+}
+
+.nav-btn:hover {
+    color: #27292c;
+    background-color: #d6b8ff;
+}
+
+/* In smaller screens navigation is only visible when this class is called on it */
+.visible {
+    display: block;
+}
+
+@media (min-width: 400px) {
+    nav {
+    }
+
+    .nav-link, .nav-text, .nav-btn {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 900px) {
+    nav, .nav, .navbar {
+        display: flex;
+        justify-content: center;
+        padding: 1em;
+    }
+
+    .navbar {
+        padding: 1em 1em 1em 2em;
+    }
+}

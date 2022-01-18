@@ -86,7 +86,6 @@ router.get('/:id', requireAuth, async (req, res) => {
     } catch (e) {
         console.log(e);
     }
-    
 })
 
 // Delete button is pressed

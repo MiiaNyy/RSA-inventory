@@ -1,0 +1,38 @@
+
+/* --- CATEGORIES PAGE --- */
+.categories {
+    width: 100%;
+    max-width: 800px;
+    margin: 2em auto 0;
+}
+
+
+@media (min-width: 500px) {
+    .categories {
+        display: flex;
+        gap: 2em;
+    }
+}
+
+.categories__item {
+    width: 80%;
+    padding: 0.5em;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.categories__item a {
+    color: #27292c;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.categories__item a:hover {
+    color: #e4a6ff;
+    font-size: 1.01rem;
+}
+
+.categories__item-list {
+    max-width: 150px;
+    margin: 0 auto;
+}

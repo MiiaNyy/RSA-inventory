@@ -14,7 +14,6 @@ function openSidebar () {
 
 function closeSidebar () {
     moveNavAndMainContentToRight(50);
-    
     document.getElementById("sidebar").style.width = screen.width <= 600 ? "40px" : "50px";
     document.getElementById("sidebar__content").style.visibility = "hidden";
     document.getElementById("open-sidebar__btn").style.display = "block";
@@ -26,11 +25,25 @@ function moveNavAndMainContentToRight (amount) {
         // nav bar and main content. Elements that need to move when sidebar opens/closes
         const elements = document.querySelectorAll(".margin-left");
         elements.forEach(e => {
-            e.style.marginLeft = `${amount}px`;
+            e.style.marginLeft = `${ amount }px`;
         })
     }
 }
 
 function goBackToPreviousPage () {
     window.history.back();
+}
+
+function openPopUp (popUpElementName) {
+    document.getElementsByClassName(popUpElementName).style.display = 'block';
+    document.querySelector('nav').classList.add('blur-background');
+    document.querySelector('.sidebar').classList.add('blur-background');
+    document.querySelector('.container__item-details').classList.add('blur-background');
+}
+
+function closePopUp (popUpElementName) {
+    document.getElementsByClassName(popUpElementName).style.display = 'none';
+    document.querySelector('nav').classList.remove('blur-background');
+    document.querySelector('.sidebar').classList.remove('blur-background');
+    document.querySelector('.container__item-details').classList.remove('blur-background');
 }

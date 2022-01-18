@@ -48,16 +48,29 @@
         </table>
     </div>
 
-    <form class="container__btn-delete" action="/item/{{item._id}}" method="post">
-        <input class="btn btn-delete" type="submit" value="Delete" />
-    </form>
-
+    <div class="container__btn-delete">
+        <button onclick="{{#if currentUser}}openPopUp('pop-up__delete-item'){{else}} openPopUp('pop-up__log-user-in'){{/if}}" class="btn
+        btn-delete">Delete
+        </button>
+    </div>
 </div>
 
-<div class="pop-up">
-    <h2>You are about to remove item <span>{{item.name}} the {{item.animal}}</span></h2>
+<div class="pop-up pop-up__delete-item">
+    <h2>You are about to remove item</h2>
+    <h2><span>{{item.name}} the {{item.animal}}</span></h2>
     <p>Are you sure?</p>
-    <button class="btn">Delete</button>
-    <button class="btn">Cancel</button>
+    <div class="pop-up__container">
+        <form action="/item/{{item._id}}" method="post">
+            <input class="btn btn-delete pop-up__btn" type="submit" value="Delete"/>
+        </form>
+        <button onclick="closePopUp('pop-up__delete-item')" class="btn pop-up__btn">Cancel</button>
+    </div>
 </div>
 
+<div class="pop-up pop-up__log-user-in">
+    <h2>You must log in before you can delete the item!</h2>
+    <div class="pop-up__container">
+        <a href="/login" class="btn pop-up__btn">Log in</a>
+        <button onclick="closePopUp('pop-up__log-user-in')" class="btn pop-up__btn">Cancel</button>
+    </div>
+</div>

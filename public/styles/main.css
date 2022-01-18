@@ -1,0 +1,205 @@
+@import "navigation.css";
+@import "sidebar.css";
+@import "inventoryTable.css";
+@import "categories.css";
+@import "itemDetails.css";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    background-color: #e3e3e3;
+}
+
+@media (min-width: 600px) {
+    body {
+        font-size: 1rem;
+    }
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    letter-spacing: 1px;
+    transition: all 0.2s ease-in-out;
+}
+
+nav {
+    margin: 0 auto;
+    padding: 2em;
+}
+
+
+/* --- TYPOGRAPHY --- */
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.4rem;
+
+}
+
+@media (min-width: 400px) {
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+
+a {
+    letter-spacing: 1px;
+}
+
+small {
+    font-size: 0.7rem !important;
+}
+
+hr {
+    width: 80%;
+    margin: 0 auto 0.5em;
+}
+
+table {
+    font-size: 0.8rem;
+}
+
+@media (min-width: 500px) {
+    table {
+        font-size: 0.9rem;
+    }
+}
+
+.error {
+    font-size: 0.7rem;
+    color: #f64949;
+    letter-spacing: 1px;
+    padding: 0 1em;
+    margin: 0.5em 0 0;
+}
+
+/* --- GENERAL --- */
+
+.box {
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    border-color: #bfbebe;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
+}
+
+/* Universal form styles */
+.form-template {
+    width: 95%;
+    max-width: 400px;
+    padding: 1em 1em 1.5em;
+    margin: 3em auto 2em;
+}
+
+.form-template h2 {
+    font-size: 1.3rem;
+}
+
+.form-group input, .form-group label {
+    font-size: 0.85rem;
+}
+
+@media (min-width: 400px) {
+    .form-template h2 {
+        font-size: 1.4rem;
+    }
+
+    .form-group input, .form-group label {
+        font-size: 0.95rem;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+/* Used in forms when two inputs are in the same row */
+.row-item {
+    width: 100%;
+}
+
+.row-item + .row-item {
+    margin-left: 1em
+}
+
+.container-flex {
+    width: 95%;
+    margin: 2em auto;
+}
+
+.container-flex__item {
+    margin: 2em 0;
+}
+
+@media (min-width: 800px) {
+    .container-flex__item {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+.margin-left {
+    transition: margin-left .5s;
+}
+
+@media (min-width: 400px) {
+    .margin-left {
+        margin-left: 30px;
+    }
+}
+
+/* --- BUTTONS --- */
+.btn, .nav-btn {
+    margin-bottom: 1em;
+    padding: 0.3em 1em;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn {
+    font-size: 0.9rem;
+    color: #27292c;
+    background-color: #d6b8ff;
+}
+
+.btn:hover {
+    color: #d6b8ff;;
+    background-color: #323232;
+}
+
+@media (min-width: 700px) {
+    .btn {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+
+    .nav-btn {
+        color: #27292c;
+        background-color: #d6b8ff;
+    }
+}
+
+.bolder_font {
+    font-weight: bolder;
+    color: #d6b8ff;
+}
+
+.transition {
+    transition: all 0.3s ease-in-out;
+}

@@ -1,0 +1,75 @@
+/* --- ITEM DETAILS PAGE --- */
+.container__item-details {
+    width: 90%;
+    margin: 0 auto 2em;
+}
+
+.item {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 2em;
+}
+
+.item table {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+/* Delete button and its container */
+.container__btn-delete {
+    width: 95%;
+    max-width: 350px;
+    margin: 0 auto 2em;
+    text-align: right;
+}
+
+.btn-delete {
+    letter-spacing: 1px;
+    font-weight: bolder;
+
+    color: #fd7676;
+    background-color: #343434;
+}
+
+.btn-delete:hover {
+    background-color: #fd7676;
+    color: #343434;
+}
+
+
+.pop-up {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 350px;
+    padding: 3em 0;
+    border-radius: 10px;
+    background-color: rgb(43, 44, 47);
+    color: #f8f9fa;
+    text-align: center;
+    z-index: 100;
+    filter: none !important;
+}
+
+.pop-up h2 {
+    font-size: 1.1rem;
+    color: #ff8888;
+}
+
+.pop-up__container {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    margin: 1.5em 0 0;
+}
+
+.pop-up__btn {
+    font-size: 0.9rem;
+}
+.blur-background {
+    filter: blur(5px);
+}
