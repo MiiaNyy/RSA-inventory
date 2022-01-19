@@ -1,4 +1,3 @@
-const Category = require("../modules/categories");
 const StuffedAnimal = require("../modules/stuffedAnimal");
 
 const querystring = require("querystring");
@@ -10,8 +9,7 @@ async function create_item_get (req, res) {
     try {
         res.render('createItem', {
             title: "Create new item to inventory",
-            animalSizes: await Category.find({name: 'Sizes'}).lean(),
-            animalBreeds: await Category.find({name: 'Animals'}).lean(),
+            categories: req.itemCategories,
             currentUser: req.currentUser,
         })
     } catch (e) {
@@ -29,14 +27,14 @@ async function create_item_post (req, res) {
             errors: getErrorMessagesFromValidation(errors.array()),
             values: req.body, // values for input fields
             currentUser: req.currentUser,
-            animalSizes: await Category.find({name: 'Sizes'}).lean(),
-            animalBreeds: await Category.find({name: 'Animals'}).lean(),
+            categories: req.itemCategories,
         })
     } else {
         // Data from form is valid.
         try {
             const newStuffedAnimal = new StuffedAnimal(req.body)
             await newStuffedAnimal.save();
+            
             const query = querystring.stringify({
                 "popUpMessage": true,
                 "newItemCreated": true,
@@ -53,10 +51,10 @@ async function item_details_get (req, res) {
         res.render('itemDetails', {
             title: "Rafael's stuffed animals",
             item: await StuffedAnimal.findById(req.params.id).lean(),
-            categories: await Category.find({}).lean(),
             sidebarIsNeeded: true,
             moveElementToRight: 'margin-left',
             currentUser: req.currentUser,
+            categories: req.itemCategories.all,
         })
     } catch (e) {
         console.log(e);

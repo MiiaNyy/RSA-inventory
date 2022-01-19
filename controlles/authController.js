@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const handleLoginErrors = require("../helpers/authentication/handleLoginErrors");
 const handleErrors = require("../helpers/authentication/handleErrors");
 
-
 function createToken (id) {
     return jwt.sign({id}, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES

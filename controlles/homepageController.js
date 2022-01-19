@@ -1,4 +1,3 @@
-const Category = require("../modules/categories");
 const StuffedAnimal = require("../modules/stuffedAnimal");
 
 async function homepage_get(req, res) {
@@ -10,11 +9,11 @@ async function homepage_get(req, res) {
                 text: 'Below you can browse all of the items in the store inventory. Click specific item to know' +
                     ' more information about it. If you like to create new or delete current items, please login first!'
             },
-            categories: await Category.find({}).lean(),
             items: await StuffedAnimal.find({}).sort({createdAt: -1}).lean(),
+            currentUser: req.currentUser,
+            categories: req.itemCategories.all,
             sidebarIsNeeded: true,
             moveElementToRight: 'margin-left',
-            currentUser: req.currentUser,
             query: req.query,
         })
     } catch (e) {

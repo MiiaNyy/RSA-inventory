@@ -14,11 +14,11 @@
         <div class="form-group mt-2">
             <label for="animal">Animal breed</label>
             <select class="form-control" id="animal" name="animal" required>
-                {{# animalBreeds}}
+                {{# categories.breeds}}
                     {{# this.subcategories}}
                         <option {{ifEqualReturnSelected this.name ../../values.animal}}>{{this.name}}</option>
                     {{/this.subcategories}}
-                {{/animalBreeds}}
+                {{/categories.breeds}}
             </select>
             {{#each errors.animal}}
                 <p class="form-text error">{{this}}</p>
@@ -30,13 +30,13 @@
             <div class="form-group row-item">
                 <label for="size">Size</label>
                 <select class="form-control" id="size" name="size" required>
-                    {{# animalSizes}}
+                    {{# categories.sizes}}
                         {{# this.subcategories}}
                             <option {{ifEqualReturnSelected this.name ../../values.size}}>
                                 {{this.name}}
                             </option>
                         {{/this.subcategories}}
-                    {{/animalSizes}}
+                    {{/categories.sizes}}
                 </select>
                 {{#each errors.size}}
                     <p class="form-text error">{{this}}</p>

@@ -2,7 +2,12 @@
 .user-greeting {
     color: #f8f9fa;
     letter-spacing: 1px;
-    margin-right: 1em;
+}
+
+@media (min-width: 950px) {
+    .user-greeting {
+        margin-right: 1em;
+    }
 }
 
 .navbar {
@@ -18,12 +23,13 @@
     color: #d0abff;
     text-decoration: none;
     background-color: #212529;
+}
 
-}.nav-btn:hover {
-     color: #27292c;
-     text-decoration: underline;
-     background-color: #d6b8ff;
- }
+.nav-btn:hover {
+    color: #27292c;
+    text-decoration: underline;
+    background-color: #d6b8ff;
+}
 
 .nav-link {
     font-size: 0.8rem;
@@ -34,7 +40,6 @@
     color: #d0abff;
     text-decoration: underline;
 }
-
 
 
 /* In smaller screens navigation is only visible when this class is called on it */
