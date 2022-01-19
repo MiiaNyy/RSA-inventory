@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+const {logout_get} = require("../controlles/authController");
+
 router.get('/', (req, res) => {
-    // Deletes json web token cookie from browser.
-    res.cookie('jwt', '', {expires: new Date(0)});
-    res.redirect('/');
+    logout_get(req, res);
 })
 
 module.exports = router;

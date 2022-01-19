@@ -5,7 +5,7 @@ const requireAuth = require('../middleware/authMiddleware');
 const homepage_get = require("../controlles/homepageController");
 
 router.get('/', requireAuth, (req, res) => {
-    homepage_get(req, res).then(() => console.log('homepage get'))
+    homepage_get(req, res);
 })
 
 

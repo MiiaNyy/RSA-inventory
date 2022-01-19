@@ -4,21 +4,12 @@ const router = express.Router();
 const sizesRouter = require("./sizes");
 const pricesRouter = require("./prices");
 const animalRouter = require("./animals");
-const Category = require("../../modules/categories");
-const requireAuth = require("../../middleware/authMiddleware");
 
-router.get('/', requireAuth, async (req, res) => {
-    console.log('current user name:', req.currentUser)
-    try {
-        const categories = await Category.find({}).lean();
-        res.render('categories', {
-            title: "Categories",
-            categories,
-            currentUser: req.currentUser,
-        })
-    } catch (e) {
-        console.log('Error happened:', e)
-    }
+const requireAuth = require("../../middleware/authMiddleware");
+const {categories_get} = require("../../controlles/categoriesController");
+
+router.get('/', requireAuth, (req, res) => {
+    categories_get(req.res).then(r => console.log('categories get'));
 })
 
 router.get('/create', requireAuth, (req, res) => {
