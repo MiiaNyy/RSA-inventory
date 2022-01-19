@@ -23,11 +23,6 @@ body {
     }
 }
 
-img {
-    display: block;
-    max-width: 100%;
-}
-
 button {
     letter-spacing: 1px;
     transition: all 0.2s ease-in-out;
@@ -120,10 +115,6 @@ table {
     }
 }
 
-.flex {
-    display: flex;
-}
-
 /* Used in forms when two inputs are in the same row */
 .row-item {
     width: 100%;
@@ -133,21 +124,6 @@ table {
     margin-left: 1em
 }
 
-.container-flex {
-    width: 95%;
-    margin: 2em auto;
-}
-
-.container-flex__item {
-    margin: 2em 0;
-}
-
-@media (min-width: 800px) {
-    .container-flex__item {
-        width: 80%;
-        margin: 0 auto;
-    }
-}
 
 .margin-left {
     transition: margin-left .5s;

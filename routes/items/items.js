@@ -10,7 +10,6 @@ const {
     create_item_post
 } = require("../../controlles/itemController");
 
-
 router.post('/', validateNewItemForm(), (req, res) => {
     create_item_post(req, res)
         .then(() => console.log('create item post'))

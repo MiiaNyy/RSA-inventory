@@ -1,6 +1,22 @@
 
 /* --- CATEGORIES PAGE --- */
-.categories {
+.categories__content {
+    width: 95%;
+    margin: 2em auto;
+}
+
+.categories__container {
+    margin: 2em 0;
+}
+
+@media (min-width: 800px) {
+    .categories__container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+.categories__flex {
     width: 100%;
     max-width: 800px;
     margin: 2em auto 0;
@@ -8,7 +24,7 @@
 
 
 @media (min-width: 500px) {
-    .categories {
+    .categories__flex {
         display: flex;
         gap: 2em;
     }

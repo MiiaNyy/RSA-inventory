@@ -10,10 +10,10 @@ async function homepage_get(req, res) {
                     ' more information about it. If you like to create new or delete current items, please login first!'
             },
             items: await StuffedAnimal.find({}).sort({createdAt: -1}).lean(),
-            currentUser: req.currentUser,
-            categories: req.itemCategories.all,
             sidebarIsNeeded: true,
             moveElementToRight: 'margin-left',
+            currentUser: req.currentUser,
+            categories: req.itemCategories.all,
             query: req.query,
         })
     } catch (e) {
