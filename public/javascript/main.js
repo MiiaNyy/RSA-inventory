@@ -38,12 +38,12 @@ function openPopUp (popUpElementName) {
     document.querySelector(`.${popUpElementName}`).style.display = 'block';
     document.querySelector('nav').classList.add('blur-background');
     document.querySelector('.sidebar').classList.add('blur-background');
-    document.querySelector('.container__item-details').classList.add('blur-background');
+    document.querySelector('.item__content').classList.add('blur-background');
 }
 
 function closePopUp (popUpElementName) {
     document.querySelector(`.${popUpElementName}`).style.display = 'none';
     document.querySelector('nav').classList.remove('blur-background');
     document.querySelector('.sidebar').classList.remove('blur-background');
-    document.querySelector('.container__item-details').classList.remove('blur-background');
+    document.querySelector('.item__content').classList.remove('blur-background');
 }

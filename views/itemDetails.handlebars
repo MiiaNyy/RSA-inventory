@@ -1,9 +1,9 @@
-<div class="container__item-details">
+<div class="item__content mx-auto mb-4 mt-0">
     <button class="btn light-btn" onclick="goBackToPreviousPage()"><i class="fas fa-arrow-left"></i> Back</button>
 
-    <div class="item">
+    <div class="item mx-auto mb-4 mt-0">
         <h2 class="text-center mb-3">{{item.name}} the {{item.animal}}</h2>
-        <table class="table table-bordered ">
+        <table class="table table-bordered mx-auto">
 
             <thead class="box">
             <tr>
@@ -43,35 +43,33 @@
                 <th scope="row">In stock</th>
                 <td>{{item.numberInStock}}</td>
             </tr>
-
             </tbody>
         </table>
     </div>
 
-    <div class="container__btn-delete">
-        <button onclick="{{#if currentUser}}openPopUp('pop-up__delete-item'){{else}} openPopUp('pop-up__log-user-in'){{/if}}"
+    <div class="item__btn-cont mx-auto mb-4 mt-0">
+        <button onclick="{{#if currentUser}}openPopUp('pop-up__delete'){{else}} openPopUp('pop-up__login'){{/if}}"
                 class="btn danger-btn">Delete
         </button>
     </div>
 </div>
 
-<div class="pop-up pop-up__delete-item">
+<div class="pop-up pop-up__delete">
     <h2>You are about to remove item</h2>
     <h2><span>{{item.name}} the {{item.animal}}</span></h2>
     <p>Are you sure?</p>
-    <div class="pop-up__container">
+    <div style="gap: 2em" class="d-flex justify-content-center mt-4">
         <form action="/item/{{item._id}}" method="post">
             <input class="btn danger-btn" type="submit" value="Delete"/>
         </form>
-        <button onclick="closePopUp('pop-up__delete-item')" class="btn dark-link-btn">Cancel</button>
+        <button onclick="closePopUp('pop-up__delete')" class="btn dark-link-btn">Cancel</button>
     </div>
 </div>
 
-<div class="pop-up pop-up__log-user-in">
-
+<div class="pop-up pop-up__login">
     <h2>You must log in before you can delete the item!</h2>
-    <div class="pop-up__container">
+    <div style="gap: 2em" class="d-flex justify-content-center mt-4">
         <a href="/login" class="btn light-link-btn">Log in</a>
-        <button onclick="closePopUp('pop-up__log-user-in')" class="btn dark-link-btn">Cancel</button>
+        <button onclick="closePopUp('pop-up__login')" class="btn dark-link-btn">Cancel</button>
     </div>
 </div>

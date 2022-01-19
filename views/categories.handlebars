@@ -4,12 +4,12 @@
 
     <div class="categories__container">
         <h2 class="text-center">All of the categories listed</h2>
-        <div class="categories__flex">
+        <div class="mt-4 mx-auto categories__flex">
             {{#each categories}}
-            <div class="categories__item box mb-2">
+            <div class="categories__item box mb-2 mx-auto p-3">
                 <p class="text-center"><a style="font-weight: bolder" href={{this.url}}>{{this.name}}</a></p>
                 <hr>
-                <ul class="categories__item-list">
+                <ul class="categories__item-list mx-auto">
                     {{# each this.subcategories}}
                     <li>
                         <a href={{this.url}}>{{this.name}}</a>

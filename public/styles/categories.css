@@ -19,7 +19,6 @@
 .categories__flex {
     width: 100%;
     max-width: 800px;
-    margin: 2em auto 0;
 }
 
 
@@ -32,8 +31,6 @@
 
 .categories__item {
     width: 80%;
-    padding: 0.5em;
-    margin: 0 auto;
     border-radius: 5px;
 }
 
@@ -50,5 +47,4 @@
 
 .categories__item-list {
     max-width: 150px;
-    margin: 0 auto;
 }

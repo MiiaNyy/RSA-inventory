@@ -1,13 +1,12 @@
 /* --- INVENTORY TABLE ---  */
 
 /* text above inventory table */
-.container__info-txt {
+.info-txt {
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
 }
 
-.container__inventory-table {
+.inventory-table {
     width: 95%;
     max-width: 800px;
     padding: 0;

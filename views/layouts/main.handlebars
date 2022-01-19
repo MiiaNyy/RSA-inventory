@@ -66,11 +66,13 @@
                 <div class="text-center" onclick="closeSidebar()">
                     <i class="fas fa-times icon__cross icon"></i>
                 </div>
-                <p class="text-center sidebar__title">Categories</p>
+                <p class="text-center mb-2 mt-4 sidebar__title">Categories</p>
                 <hr>
                 {{# each categories}}
-                    <div class="sidebar__category">
-                        <p class="sidebar__category__btn" onclick="toggleDropDown(this)">{{this.name}}
+                    <div class="sidebar__category mx-auto p-2">
+                        <p class="sidebar__category__btn d-flex justify-content-between align-items-baseline mb-0"
+                           onclick="toggleDropDown(this)">
+                            {{this.name}}
                             <i class="fas fa-sort-down transition"></i>
                         </p>
                         <div class="dropdown">
@@ -91,13 +93,14 @@
         </div>
     </div>
 
-    <div class="pop-up-message {{#if query.popUpMessage}} pop-up-message_animation {{else}}hidden{{/if}}">
+    <div class="pop-up-message text-center {{#if query.popUpMessage}} pop-up-message_animation {{else}}hidden{{/if}}">
         {{#if query.itemIsDeleted}}
             <p>Item deleted</p>
         {{else if query.newItemCreated}}
             <p>New item created</p>
         {{/if}}
     </div>
+
     <script src="../../javascript/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

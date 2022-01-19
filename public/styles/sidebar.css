@@ -37,21 +37,13 @@
     font-size: 1.1rem;
     line-height: 32px;
     letter-spacing: 1px;
-    margin-bottom: 0.5em;
-    margin-top: 2.5em;
 }
 
 .sidebar__category {
     width: 80%;
-    margin: 0 auto;
-    padding: 0.5em;
 }
 
 .sidebar__category__btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0;
     cursor: pointer;
     letter-spacing: 1px;
     transition: all 0.1s ease-in-out;
