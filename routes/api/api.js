@@ -25,8 +25,6 @@ router.post('/', validateNewItemForm(), async (req, res) => {
 })
 
 router.post('/delete/:id', async (req, res) => {
-    console.log('Delete request received...');
-    console.log('ID:', req.params.id);
     try {
         StuffedAnimal.findByIdAndRemove(req.params.id, (err, docs) => {
             if ( err ) {

@@ -50,7 +50,7 @@
                     <a class="nav-link" href="/signup">Sign up</a>
                 </li>
                 <li class="nav-item active">
-                    <a style="background-color: #27292C" class="btn dark-btn" href="/login">Log in</a>
+                    <a class="nav-btn" href="/login">Log in</a>
                 </li>
             </ul>
         {{/if}}
@@ -91,10 +91,13 @@
         </div>
     </div>
 
-    <div class="pop-up-message {{#if itemIsDeleted}}pop-up-message_animation {{else}} hidden{{/if}}">
-        <p>Item deleted</p>
+    <div class="pop-up-message {{#if query.popUpMessage}} pop-up-message_animation {{else}}hidden{{/if}}">
+        {{#if query.itemIsDeleted}}
+            <p>Item deleted</p>
+        {{else if query.newItemCreated}}
+            <p>New item created</p>
+        {{/if}}
     </div>
-
     <script src="../../javascript/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

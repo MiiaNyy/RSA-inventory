@@ -38,9 +38,7 @@ nav {
     padding: 2em;
 }
 
-
 /* --- TYPOGRAPHY --- */
-
 h1, h2, h3, h4, h5, h6, p {
     margin-top: 0;
 }
@@ -221,12 +219,15 @@ table {
 .btn, .nav-btn {
     margin-bottom: 1em;
     padding: 0.3em 1em;
-    font-size: 0.9rem;
     letter-spacing: 1px;
     border: none;
     border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
     transition: all 0.2s ease-in-out;
+}
+
+.btn {
+    font-size: 0.9rem;
 }
 
 @media (min-width: 700px) {
@@ -246,29 +247,34 @@ table {
 
 .pop-up-message {
     width: 90%;
-    max-width: 325px;
+    max-width: 200px;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     padding: 0.5em 0;
     text-align: center;
-    border: 10px solid #d6b8ff;
+    border: 5px solid #fd7676;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.88);
-    -webkit-box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
-    -moz-box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
-    box-shadow: 3px 3px 12px 0 rgba(50, 50, 50, 0.45);
+    color: #f8f9fa;
+    background-color: rgba(37, 36, 36, 0.92);
     transition: all 0.8s ease-in-out;
     opacity: 0;
     cursor: default;
 }
 
 .pop-up-message p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 0;
+}
+
+@media (min-width: 400px) {
+    .pop-up-message p {
+        font-size: 1rem;
+    }
+
 }
 
 @keyframes slide-down-and-up {
@@ -278,11 +284,11 @@ table {
     }
     25% {
         opacity: 1;
-        top: 30%;
+        top: 20%;
     }
     60% {
         opacity: 1;
-        top: 30%;
+        top: 20%;
     }
     100% {
         opacity: 0;
@@ -294,6 +300,6 @@ table {
     display: none;
 }
 .pop-up-message_animation {
-    animation: slide-down-and-up 2500ms;
+    animation: slide-down-and-up 3000ms;
     opacity: 0;
 }
