@@ -1,6 +1,6 @@
 <div class="form-template box">
     <h2 class="text-center ">New user registration</h2>
-    <form method="post" action="/signup">
+    <form method="POST" action="/signup">
         <div class="d-flex justify-content-between mt-3">
 
             <div class="form-group row-item">
@@ -26,21 +26,23 @@
         <div class="form-group mt-3">
             <label for="email">Email address</label>
             <input type="email" class="form-control" id="email" name="email"
-                   placeholder="Enter email" value={{values.email}}>
-
+                   placeholder="Enter email" value="{{values.email}}" required>
             {{#each errors.email}}
                 <p class="form-text error">{{this}}</p>
             {{/each}}
         </div>
         <div class="form-group mt-3">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             {{#each errors.password}}
                 <p class="form-text error">{{this}}</p>
             {{/each}}
-            <small class="form-text text-muted">
-                Must be at min 10 characters long, must contain uppercase and lowercase character.
-            </small>
+            {{#unless errors}} {{! reverse of if statement}}
+                <small class="form-text text-muted">
+                    Must be at min 10 characters long, must contain uppercase and lowercase character.
+                </small>
+            {{/unless}}
+
         </div>
 
         <div class="text-center ">

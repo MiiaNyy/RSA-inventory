@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', validateUser, (req, res) => {
+    console.log('signup post request!');
     signup_post(req, res);
 })
 

@@ -53,6 +53,10 @@ a {
     letter-spacing: 1px;
 }
 
+a:active {
+    color: #d0abff;
+}
+
 small {
     font-size: 0.7rem !important;
 }
@@ -182,8 +186,8 @@ table {
 }
 
 .danger-btn {
-    background-color: #343434;
-    color: #fd7676;
+    background-color: #444444;
+    color: #cccccc;
 }
 
 .danger-btn:hover {
@@ -210,15 +214,6 @@ table {
     .btn {
         margin-bottom: 0;
     }
-}
-
-.bolder_font {
-    font-weight: bolder;
-    color: #d6b8ff;
-}
-
-.transition {
-    transition: all 0.3s ease-in-out;
 }
 
 .pop-up-message {

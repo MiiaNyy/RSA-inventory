@@ -32,7 +32,7 @@ function signup_post (req, res) {
     const errors = validationResult(req);
     // Error happened during validation
     if ( !errors.isEmpty() ) {
-        console.log('Errors are not empty');
+        console.log('Errors are not empty', errors.array());
         res.render('signup', {
             errors: handleErrors(errors.array()),
             values: req.body, // values for input fields

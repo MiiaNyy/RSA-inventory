@@ -78,7 +78,6 @@
     display: block;
 }
 
-
 /* --- ARROW AND CROSS ICONS ON SIDEBAR --- */
 .icon {
     cursor: pointer;
@@ -96,7 +95,7 @@
     transform: scale(1.1);
 }
 
-.icon__cross:hover {
+.icon-times:hover {
     color: red;
     transition: all 0.1s ease-in-out;
 }
@@ -104,4 +103,12 @@
 .rotate-icon {
     transition: all 0.3s ease-in-out;
     transform: rotate(180deg);
+}
+.bolder_font {
+    font-weight: bolder;
+    color: #d6b8ff;
+}
+
+.transition {
+    transition: all 0.3s ease-in-out;
 }

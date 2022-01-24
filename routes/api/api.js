@@ -8,7 +8,7 @@ const {
     api_item_get
 } = require("../../controlles/apiController");
 
-router.post('/', validateNewItemForm(), async (req, res) => {
+router.post('/', validateNewItemForm, async (req, res) => {
     api_item_post(req, res);
 })
 
