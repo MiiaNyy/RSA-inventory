@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const {validateNewItemForm} = require("../../middleware/formValidation");
+const {validateNewItemForm} = require("../middleware/formValidation");
 
 const {
     create_item_get,
     item_details_get,
     item_details_post,
     create_item_post
-} = require("../../controlles/itemController");
+} = require("../controlles/itemController");
 
 router.post('/', validateNewItemForm, (req, res) => {
     create_item_post(req, res)

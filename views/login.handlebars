@@ -4,7 +4,7 @@
 
         <div class="form-group mt-3">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"
+            <input type="email" class="form-control" id="email" name="email" required placeholder="Enter email"
                    value={{values.email}}>
             {{#each errors.email}}
                 <p class="form-text error">{{this}}</p>
@@ -13,7 +13,7 @@
         </div>
         <div class="form-group mt-3">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             {{#each errors.password}}
                 <p class="form-text error">{{this}}</p>
             {{/each}}

@@ -11,7 +11,7 @@ const app = express();
 
 const homepageRouter = require("./routes/homepage");
 const categoryRouter = require("./routes/categories/categories");
-const itemRouter = require("./routes/items/items");
+const itemRouter = require("./routes/items");
 
 const apiRouter = require("./routes/api/api");
 
