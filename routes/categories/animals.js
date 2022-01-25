@@ -1,21 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const {animal_category_get} = require("../../controlles/categoriesController");
-const Category = require("../../modules/categories");
+const {animal_category_get, category_get} = require("../../controlles/categoriesController");
 
-router.get('/', async (req, res) => {
-    try {
-        const animals = await Category.find({name: 'Animals'}).lean();
-        console.log(animals.url);
-        res.render('categoryList', {
-            title: "RSA - inventory",
-            category: animals,
-            currentUser: req.currentUser,
-        })
-    } catch (e) {
-        console.log('Error happened:', e)
-    }
+router.get('/',  (req, res) => {
+    req.categoryName = 'breed';
+    category_get(req, res);
 })
 
 router.get('/:id', (req, res) => {

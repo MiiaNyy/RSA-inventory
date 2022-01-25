@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const {size_category_get} = require("../../controlles/categoriesController");
+const {size_category_get, category_get} = require("../../controlles/categoriesController");
 
 router.get('/', (req, res) => {
-    res.send('<h1>Sizes page</h1>')
+    req.categoryName = 'size';
+    category_get(req, res);
 })
 
 router.get('/:id', (req, res) => {

@@ -1,12 +1,23 @@
 /* --- NAVIGATION --- */
-.nav-icon-cont {
-    display: flex;
-    gap: 2em;
-    justify-content: center;
+.nav-icon {
+    margin: 0 auto 1em;
+    width: 30px;
+    height: 30px;
 }
 
-.nav-icon {
-    width: 50px;
+@media (min-width: 500px) {
+    .nav-icon-cont {
+        display: flex;
+        gap: 2em;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-icon {
+        margin: 0;
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .user-greeting {
@@ -20,6 +31,7 @@
         margin-bottom: 0;
         margin-right: 1em;
     }
+
 }
 
 .navbar {

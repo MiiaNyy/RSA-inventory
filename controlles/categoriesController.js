@@ -2,7 +2,26 @@ const StuffedAnimal = require("../modules/stuffedAnimal");
 
 const getPriceRange = require("../helpers/getPriceRange");
 
-async function categories_get (req, res) {
+function getCategoryObj (req) {
+    return req.categoryName === 'breed' ? req.itemCategories.breeds : req.categoryName === 'size' ?
+        req.itemCategories.sizes : req.categoryName === 'price' ? req.itemCategories.prices : undefined;
+}
+
+// Page where single category is listed
+function category_get (req, res) {
+    try {
+        
+        res.render('categoryList', {
+            title: "RSA - inventory",
+            category: getCategoryObj(req),
+            currentUser: req.currentUser,
+        })
+    } catch (e) {
+        console.log('Error happened:', e)
+    }
+}
+
+function categories_get (req, res) {
     try {
         res.render('allCategories', {
             title: "Categories",
@@ -75,4 +94,5 @@ module.exports = {
     animal_category_get,
     price_category_get,
     size_category_get,
+    category_get,
 }

@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const {price_category_get} = require("../../controlles/categoriesController");
+const {price_category_get, category_get} = require("../../controlles/categoriesController");
 
 router.get('/', (req, res) => {
-    res.send('<h1>Prices page</h1>')
+    req.categoryName = 'price';
+    category_get(req, res)
 })
 
 router.get('/:id', (req, res) => {

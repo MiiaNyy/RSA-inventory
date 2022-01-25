@@ -8,11 +8,7 @@ const animalRouter = require("./animals");
 const {categories_get} = require("../../controlles/categoriesController");
 
 router.get('/', (req, res) => {
-    categories_get(req, res).then(r => console.log('categories get'));
-})
-
-router.get('/create', (req, res) => {
-    res.send('<h2>create new category</h2>')
+    categories_get(req, res);
 })
 
 router.use('/size', sizesRouter);

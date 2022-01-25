@@ -58,6 +58,7 @@ app.use( async (req, res, next) => {
     req.itemCategories = {
         sizes: await Category.find({name: 'Sizes'}).lean(),
         breeds: await Category.find({name: 'Animals'}).lean(),
+        prices: await Category.find({name: 'Prices'}).lean(),
         all: await Category.find({}).lean(),
     }
     next();
