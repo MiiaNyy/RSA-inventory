@@ -4,7 +4,7 @@ const router = express.Router();
 const {animal_category_get, category_get} = require("../../controlles/categoriesController");
 
 router.get('/',  (req, res) => {
-    req.categoryName = 'breed';
+    req.categoryName = 'Animal';
     category_get(req, res);
 })
 

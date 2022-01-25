@@ -4,11 +4,12 @@ const querystring = require("querystring");
 const {validationResult} = require("express-validator");
 
 const getErrorMessagesFromValidation = require("../helpers/authentication/handleNewItemValidation");
+const getSidebarOptions = require("../helpers/getSidebarOptions");
 
 async function create_item_get (req, res) {
     try {
         res.render('createItem', {
-            title: "Create new item to inventory",
+            title: "RSA - New item",
             categories: req.itemCategories,
             currentUser: req.currentUser,
         })
@@ -23,7 +24,7 @@ async function create_item_post (req, res) {
     if ( !errors.isEmpty() ) {
         // There are errors. Render form again with sanitized values/errors messages.
         res.render('createItem', {
-            title: "Create new item",
+            title: "RSA - New item",
             errors: getErrorMessagesFromValidation(errors.array()),
             values: req.body, // values for input fields
             currentUser: req.currentUser,
@@ -48,13 +49,11 @@ async function create_item_post (req, res) {
 
 async function item_details_get (req, res) {
     try {
+        const sidebarOptions = getSidebarOptions(req);
         res.render('itemDetails', {
-            title: "Rafael's stuffed animals",
+            title: "RSA - Item details",
             item: await StuffedAnimal.findById(req.params.id).lean(),
-            sidebarIsNeeded: true,
-            moveElementToRight: 'margin-left',
-            currentUser: req.currentUser,
-            categories: req.itemCategories.all,
+            ...sidebarOptions,
         })
     } catch (e) {
         console.log(e);

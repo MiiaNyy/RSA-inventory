@@ -21,7 +21,9 @@ function createTokenAndRedirect (id, res) {
 
 function signup_get (req, res) {
     try {
-        res.render('signUp')
+        res.render('signUp', {
+            title: "RSA - Sign up"
+        })
     } catch (err) {
         console.log(err);
     }
@@ -34,6 +36,7 @@ function signup_post (req, res) {
     if ( !errors.isEmpty() ) {
         console.log('Errors are not empty', errors.array());
         res.render('signup', {
+            title: "RSA - Sign up",
             errors: handleErrors(errors.array()),
             values: req.body, // values for input fields
         })
@@ -56,6 +59,7 @@ async function signUserUpAndCreateToken(req, res) {
         createTokenAndRedirect(user.username, res);
     } catch (err) {
         res.render("signup", {
+            title: "RSA - Sign up",
             errors: handleLoginErrors('loginError'),
             values: req.body,
         })
@@ -64,7 +68,9 @@ async function signUserUpAndCreateToken(req, res) {
 
 function login_get (req, res) {
     try {
-        res.render('login');
+        res.render('login', {
+            title: "RSA - Login",
+        });
     } catch (e) {
         console.log(e);
     }
@@ -73,11 +79,13 @@ function login_get (req, res) {
 function validateUserLogin (error, user, req, res) {
     if ( error ) {
         res.render('login', {
+            title: "RSA - Login",
             errors: handleLoginErrors('loginError')
         })
         
     } else if ( !user ) {
         res.render('login', {
+            title: "RSA - Login",
             errors: handleLoginErrors('userError'),
             values: req.body
         })
@@ -85,10 +93,12 @@ function validateUserLogin (error, user, req, res) {
         user.comparePassword(req.body.password, (matchError, isMatch) => {
             if ( matchError ) {
                 res.render('login', {
+                    title: "RSA - Login",
                     errors: handleLoginErrors('loginError')
                 })
             } else if ( !isMatch ) {
                 res.render('login', {
+                    title: "RSA - Login",
                     errors: handleLoginErrors('passwordError'),
                     values: req.body,
                 })

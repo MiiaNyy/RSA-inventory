@@ -1,10 +1,11 @@
 const StuffedAnimal = require("../modules/stuffedAnimal");
 
 const getPriceRange = require("../helpers/getPriceRange");
+const getSidebarOptions = require("../helpers/getSidebarOptions");
 
 function getCategoryObj (req) {
-    return req.categoryName === 'breed' ? req.itemCategories.breeds : req.categoryName === 'size' ?
-        req.itemCategories.sizes : req.categoryName === 'price' ? req.itemCategories.prices : undefined;
+    return req.categoryName === 'Animal' ? req.itemCategories.breeds : req.categoryName === 'Size' ?
+        req.itemCategories.sizes : req.categoryName === 'Price' ? req.itemCategories.prices : undefined;
 }
 
 // Page where single category is listed
@@ -12,7 +13,7 @@ function category_get (req, res) {
     try {
         
         res.render('categoryList', {
-            title: "RSA - inventory",
+            title: `RSA - ${ req.categoryName }s`,
             category: getCategoryObj(req),
             currentUser: req.currentUser,
         })
@@ -24,7 +25,7 @@ function category_get (req, res) {
 function categories_get (req, res) {
     try {
         res.render('allCategories', {
-            title: "Categories",
+            title: "RSA - Categories",
             categories: req.itemCategories.all,
             currentUser: req.currentUser,
         })
@@ -33,17 +34,16 @@ function categories_get (req, res) {
     }
 }
 
+
 async function animal_category_get (req, res) {
     try {
+        const sidebarOptions = getSidebarOptions(req);
         const id = req.params.id;
         res.render('inventoryTable', {
-            title: `Animals`,
+            title: `RSA - Animals`,
             info: {title: `Animals: ${ id.toUpperCase() }`},
-            categories: req.itemCategories.all,
             items: await StuffedAnimal.find({animal: id}).sort({animal: 1}).lean(),
-            sidebarIsNeeded: true,
-            moveElementToRight: 'margin-left',
-            currentUser: req.currentUser,
+            ...sidebarOptions,
         })
     } catch (e) {
         console.log(e);
@@ -54,16 +54,14 @@ async function price_category_get (req, res) {
     try {
         const id = req.params.id;
         const [minPrice, maxPrice] = getPriceRange(id);
-        
+        const sidebarOptions = getSidebarOptions(req);
+    
         res.render('inventoryTable', {
-            title: `Category price`,
+            title: `RSA - Prices`,
             info:
                 {title: `Category price: ${ id.toUpperCase() }`},
             items: await StuffedAnimal.find({price: {$gte: minPrice, $lte: maxPrice}}).sort({price: 1}).lean(),
-            sidebarIsNeeded: true,
-            moveElementToRight: 'margin-left',
-            categories: req.itemCategories.all,
-            currentUser: req.currentUser,
+            ...sidebarOptions,
         })
     } catch (e) {
         console.log(e);
@@ -73,16 +71,13 @@ async function price_category_get (req, res) {
 async function size_category_get (req, res) {
     try {
         const size = req.params.id;
-        
+        const sizeUpperCase = size.charAt(0).toUpperCase() + size.slice(1);
+        const sidebarOptions = getSidebarOptions(req);
         res.render('inventoryTable', {
-            title: `Sizes`,
-            info:
-                {title: `Size: ${ size.toUpperCase() }`},
+            title: `RSA - ${ sizeUpperCase }`,
+            info: {title: `Size: ${ sizeUpperCase }`},
             items: await StuffedAnimal.find({size}).sort({createdAt: -1}).lean(),
-            sidebarIsNeeded: true,
-            moveElementToRight: 'margin-left',
-            currentUser: req.currentUser,
-            categories: req.itemCategories.all,
+            ...sidebarOptions,
         })
     } catch (e) {
         console.log(e);

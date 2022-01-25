@@ -1,9 +1,11 @@
 const StuffedAnimal = require("../modules/stuffedAnimal");
+const getSidebarOptions = require("../helpers/getSidebarOptions");
 
 async function homepage_get(req, res) {
     try {
+        const sidebarOptions = getSidebarOptions(req);
         res.render('inventoryTable', {
-            title: "Rafael's Stuffed Animals",
+            title: "RSA - Inventory",
             info: {
                 title: "Welcome to Rafael's inventory.",
                 text: 'Below you can browse all of the items in the store inventory. Click specific item to know' +
@@ -11,11 +13,8 @@ async function homepage_get(req, res) {
                 text2: ' If you like to create new or delete current items, please login first!'
             },
             items: await StuffedAnimal.find({}).sort({createdAt: -1}).lean(),
-            sidebarIsNeeded: true,
-            moveElementToRight: 'margin-left',
-            currentUser: req.currentUser,
-            categories: req.itemCategories.all,
             query: req.query,
+            ...sidebarOptions,
         })
     } catch (e) {
         console.log('Error happened during category and inventory fetching:', e);

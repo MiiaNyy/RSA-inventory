@@ -95,7 +95,7 @@
         </div>
     {{/if}}
 
-    <div id="content" class="{{moveElementToRight}}">
+    <div id="content" class="{{#if sidebarIsNeeded}}margin-left{{/if}}">
         <div style="position: relative;" class="container mt-4">
             <!-- Where we want to output the rest of the template/views use triple curly braces -->
             {{{body}}}
