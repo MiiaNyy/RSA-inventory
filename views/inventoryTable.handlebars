@@ -3,7 +3,10 @@
         <h5 class="mb-4"> {{info.title}}</h5>
         <hr>
         <p>{{info.text}}</p>
-        <em>{{info.text2}}</em>
+        {{#unless currentUser}}
+            <em>{{info.text2}}</em>
+        {{/unless}}
+
     </div>
 </div>
 

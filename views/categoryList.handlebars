@@ -1,0 +1,23 @@
+<div class="categories__content">
+
+    <button class="btn light-btn" onclick="goBackToPreviousPage()"><i class="fas fa-arrow-left"></i> Back</button>
+
+    <div class="categories__container">
+        <div class="mt-4 mx-auto">
+            {{#each category}}
+            <div class="categories__item box mb-2 mx-auto p-3">
+                <h2 class="text-center" style="font-weight: bolder">{{this.name}}</h2>
+                <hr>
+                <ul class="categories__item-list mx-auto">
+                    {{# each this.subcategories}}
+                    <li>
+                        <a href={{this.url}}>{{this.name}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{/each}}
+        </div>
+
+    </div>
+</div>

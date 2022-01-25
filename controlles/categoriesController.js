@@ -4,7 +4,7 @@ const getPriceRange = require("../helpers/getPriceRange");
 
 async function categories_get (req, res) {
     try {
-        res.render('categories', {
+        res.render('allCategories', {
             title: "Categories",
             categories: req.itemCategories.all,
             currentUser: req.currentUser,
