@@ -55,10 +55,12 @@ h2 {
 }
 
 a {
+    position: relative;
     letter-spacing: 1px;
 }
 
 a:active {
+    top: 1px;
     color: #d0abff;
 }
 
