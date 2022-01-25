@@ -13,8 +13,7 @@ function requireAuth (req, res, next) {
                 next();
             }
         })
-    } else {
-        console.log('no token');
+    } else { // No token
         next()
     }
 }

@@ -23,6 +23,11 @@ body {
     }
 }
 
+img {
+    display: block;
+    max-width: 100%;
+}
+
 button {
     letter-spacing: 1px;
     transition: all 0.2s ease-in-out;
@@ -72,7 +77,7 @@ table {
 
 @media (min-width: 500px) {
     table {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }
 

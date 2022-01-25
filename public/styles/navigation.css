@@ -1,4 +1,15 @@
 /* --- NAVIGATION --- */
+.nav-icon-cont {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+
+.nav-icon {
+    width: 50px;
+}
+
+
 .user-greeting {
     color: #f8f9fa;
     letter-spacing: 1px;
@@ -53,7 +64,7 @@
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 800px) {
     nav, .nav, .navbar {
         display: flex;
         justify-content: center;
