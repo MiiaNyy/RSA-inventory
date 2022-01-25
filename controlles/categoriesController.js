@@ -8,6 +8,10 @@ function getCategoryObj (req) {
         req.itemCategories.sizes : req.categoryName === 'Price' ? req.itemCategories.prices : undefined;
 }
 
+function firstLetterToUpper (str) {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 // Page where single category is listed
 function category_get (req, res) {
     try {
@@ -37,12 +41,13 @@ function categories_get (req, res) {
 
 async function animal_category_get (req, res) {
     try {
+        const animal = req.params.id;
         const sidebarOptions = getSidebarOptions(req);
-        const id = req.params.id;
+        const animalToUpper = firstLetterToUpper(animal);
         res.render('inventoryTable', {
-            title: `RSA - Animals`,
-            info: {title: `Animals: ${ id.toUpperCase() }`},
-            items: await StuffedAnimal.find({animal: id}).sort({animal: 1}).lean(),
+            title: `RSA - ${ animalToUpper }`,
+            info: {title: `Animals: ${ animalToUpper }`},
+            items: await StuffedAnimal.find({animal: animal}).sort({animal: 1}).lean(),
             ...sidebarOptions,
         })
     } catch (e) {
@@ -52,14 +57,15 @@ async function animal_category_get (req, res) {
 
 async function price_category_get (req, res) {
     try {
-        const id = req.params.id;
-        const [minPrice, maxPrice] = getPriceRange(id);
+        const price = req.params.id;
+        
+        const [minPrice, maxPrice] = getPriceRange(price);
         const sidebarOptions = getSidebarOptions(req);
-    
+        const priceToUpper = firstLetterToUpper(price);
+        
         res.render('inventoryTable', {
-            title: `RSA - Prices`,
-            info:
-                {title: `Category price: ${ id.toUpperCase() }`},
+            title: `RSA - ${ priceToUpper }`,
+            info: {title: `Price: ${ priceToUpper }`},
             items: await StuffedAnimal.find({price: {$gte: minPrice, $lte: maxPrice}}).sort({price: 1}).lean(),
             ...sidebarOptions,
         })
@@ -71,7 +77,7 @@ async function price_category_get (req, res) {
 async function size_category_get (req, res) {
     try {
         const size = req.params.id;
-        const sizeUpperCase = size.charAt(0).toUpperCase() + size.slice(1);
+        const sizeUpperCase = firstLetterToUpper(size);
         const sidebarOptions = getSidebarOptions(req);
         res.render('inventoryTable', {
             title: `RSA - ${ sizeUpperCase }`,
@@ -83,6 +89,8 @@ async function size_category_get (req, res) {
         console.log(e);
     }
 }
+
+
 
 module.exports = {
     categories_get,
