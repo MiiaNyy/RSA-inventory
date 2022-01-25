@@ -170,7 +170,6 @@ table {
 .dark-link-btn {
     background-color: rgb(43, 44, 47);
     color: #d6b8ff;
-    font-weight: bolder;
 }
 
 .dark-link-btn:hover {
@@ -182,7 +181,6 @@ table {
 .light-link-btn {
     background-color: #d6b8ff;
     color: #252424;
-    font-weight: bolder;
 }
 
 .light-link-btn:hover {

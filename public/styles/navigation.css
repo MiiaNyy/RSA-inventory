@@ -9,14 +9,15 @@
     width: 50px;
 }
 
-
 .user-greeting {
     color: #f8f9fa;
     letter-spacing: 1px;
+    margin-bottom: 0.5em;
 }
 
-@media (min-width: 950px) {
+@media (min-width: 800px) {
     .user-greeting {
+        margin-bottom: 0;
         margin-right: 1em;
     }
 }

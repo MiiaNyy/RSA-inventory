@@ -1,3 +1,5 @@
+{{#if currentUser}}
+
 <div class="form-template box">
     <h2 class="text-center">Create new stuffed animal</h2>
     <form action="/item" method="POST">
@@ -85,4 +87,12 @@
         </div>
     </form>
 </div>
-
+{{else}}
+<div class="pop-up-create">
+    <p>You must login or sign up first to be able to create new items to inventory</p>
+    <div style="gap: 2em" class="d-flex justify-content-center mt-4">
+        <a href="/login" class="btn light-btn">Log in</a>
+        <a href="/signup" class="btn dark-btn">Sign up</a>
+    </div>
+</div>
+{{/if}}
