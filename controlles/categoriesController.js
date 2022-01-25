@@ -1,21 +1,11 @@
 const StuffedAnimal = require("../modules/stuffedAnimal");
 
-const getPriceRange = require("../helpers/getPriceRange");
 const getSidebarOptions = require("../helpers/getSidebarOptions");
-
-function getCategoryObj (req) {
-    return req.categoryName === 'Animal' ? req.itemCategories.breeds : req.categoryName === 'Size' ?
-        req.itemCategories.sizes : req.categoryName === 'Price' ? req.itemCategories.prices : undefined;
-}
-
-function firstLetterToUpper (str) {
-    return str.charAt(0).toUpperCase() + str.slice(1)
-}
+const {getCategoryObj, firstLetterToUpper, getPriceRange} = require("../helpers/categoryControllerHelpers");
 
 // Page where single category is listed
 function category_get (req, res) {
     try {
-        
         res.render('categoryList', {
             title: `RSA - ${ req.categoryName }s`,
             category: getCategoryObj(req),
@@ -38,12 +28,13 @@ function categories_get (req, res) {
     }
 }
 
-
 async function animal_category_get (req, res) {
     try {
         const animal = req.params.id;
+        
         const sidebarOptions = getSidebarOptions(req);
         const animalToUpper = firstLetterToUpper(animal);
+        
         res.render('inventoryTable', {
             title: `RSA - ${ animalToUpper }`,
             info: {title: `Animals: ${ animalToUpper }`},
@@ -58,9 +49,9 @@ async function animal_category_get (req, res) {
 async function price_category_get (req, res) {
     try {
         const price = req.params.id;
+        const sidebarOptions = getSidebarOptions(req);
         
         const [minPrice, maxPrice] = getPriceRange(price);
-        const sidebarOptions = getSidebarOptions(req);
         const priceToUpper = firstLetterToUpper(price);
         
         res.render('inventoryTable', {
@@ -77,8 +68,10 @@ async function price_category_get (req, res) {
 async function size_category_get (req, res) {
     try {
         const size = req.params.id;
+        
         const sizeUpperCase = firstLetterToUpper(size);
         const sidebarOptions = getSidebarOptions(req);
+        
         res.render('inventoryTable', {
             title: `RSA - ${ sizeUpperCase }`,
             info: {title: `Size: ${ sizeUpperCase }`},
@@ -89,8 +82,6 @@ async function size_category_get (req, res) {
         console.log(e);
     }
 }
-
-
 
 module.exports = {
     categories_get,
