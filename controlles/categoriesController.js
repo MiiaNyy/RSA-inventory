@@ -1,10 +1,4 @@
-const {getCategoryObj, firstLetterToUpper} = require("../helpers/categoryControllerHelpers");
-
-function getCategoryNameFromUrl (url) {
-    const arrFromUrl = url.split("/"); // First make array of url splitting them from /
-    // take last element, add s to the end and return
-    return arrFromUrl[arrFromUrl.length - 1] + 's';
-}
+const {getCategoryObj, firstLetterToUpper, getCategoryNameFromUrl} = require("../helpers/categoryControllerHelpers");
 
 // Single category is listed
 function category_get (req, res) {

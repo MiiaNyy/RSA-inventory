@@ -37,7 +37,6 @@ async function api_item_get(req, res) {
         res.json(item);
     } catch (e) {
         res.status(404).send(`No item found by ID: ${ req.params.id }`);
-        console.log(e);
     }
 }
 

@@ -1,4 +1,3 @@
-
 function handleLoginErrors (loginError) {
     switch (loginError) {
         case 'loginError':
@@ -8,7 +7,6 @@ function handleLoginErrors (loginError) {
         case 'passwordError':
             return {password: ['Wrong password. Please try again.']}
     }
-    
 }
 
 module.exports = handleLoginErrors;

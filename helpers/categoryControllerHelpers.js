@@ -7,6 +7,12 @@ function firstLetterToUpper (str) {
     return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
+function getCategoryNameFromUrl (url) {
+    const arrFromUrl = url.split("/"); // First make array of url splitting them from /
+    // take last element, add s to the end and return
+    return arrFromUrl[arrFromUrl.length - 1] + 's';
+}
+
 function getPriceRange (query) {
     switch (query) {
         case 'budget':
@@ -26,4 +32,5 @@ module.exports = {
     getCategoryObj,
     firstLetterToUpper,
     getPriceRange,
+    getCategoryNameFromUrl,
 }
