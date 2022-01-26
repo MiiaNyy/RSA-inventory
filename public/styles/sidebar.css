@@ -30,8 +30,9 @@
 
 #sidebar__content {
     visibility: hidden;
+    min-height: 0;
+    /*min-height: 95vh;*/
 }
-
 
 
 .sidebar__link {
