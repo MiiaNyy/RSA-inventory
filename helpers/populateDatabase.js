@@ -1,7 +1,9 @@
+
+// At start I used these functions to create stuffed animals inventory, items and categories
 const faker = require("faker");
 
-const StuffedAnimal = require("../../modules/stuffedAnimal");
-const Category = require("../../modules/categories");
+const StuffedAnimal = require("../modules/stuffedAnimal");
+const Category = require("../modules/categories");
 
 const animals = ['unicorn', 'crocodile', 'snake', 'bear', 'kitten', 'rabbit', 'lion', 'horse', 'fly', 'dog'];
 const sizes = ['tiny', 'small', 'medium', 'large', 'huge'];
@@ -83,6 +85,3 @@ function createStuffedAnimalDoc () {
           })
           .catch(e => console.log(e))
 }
-
-
-module.exports = {createStuffedAnimalDoc, createCategoryDoc};
