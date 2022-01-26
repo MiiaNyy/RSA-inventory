@@ -1,4 +1,3 @@
-
 /* --- SIDEBAR --- */
 .sidebar {
     display: none;
@@ -31,6 +30,17 @@
 
 #sidebar__content {
     visibility: hidden;
+}
+
+.sidebar__link {
+    color: #F8F9FA;
+    font-size: 0.7rem;
+    text-decoration: none;
+}
+
+.sidebar__link:hover {
+    color: #d6b8ff;
+    text-decoration: underline
 }
 
 .sidebar__title {
@@ -104,6 +114,7 @@
     transition: all 0.3s ease-in-out;
     transform: rotate(180deg);
 }
+
 .bolder_font {
     font-weight: bolder;
     color: #d6b8ff;

@@ -2,7 +2,6 @@ function toggleDropDown (e) {
     e.nextElementSibling.classList.toggle('dropdown-visible');
     e.children[0].classList.toggle('rotate-icon');
     e.classList.toggle('bolder_font');
-    
 }
 
 function openSidebar () {

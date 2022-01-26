@@ -3,8 +3,8 @@ const User = require("../modules/users");
 const {handleLoginErrors} = require("../helpers/formValidation/handleUserAuthErros");
 const createTokenAndRedirect = require("../helpers/createToken");
 
+// Deletes json web token cookie from browser.
 function logout_get (req, res) {
-    // Deletes json web token cookie from browser.
     res.cookie('jwt', '', {expires: new Date(0)});
     res.redirect('/');
 }

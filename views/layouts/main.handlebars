@@ -71,27 +71,40 @@
             <div id="open-sidebar__btn" class="text-center" onclick="openSidebar()">
                 <i class="fas fa-bars icon"></i>
             </div>
-            <div id="sidebar__content">
-                <div class="text-center" onclick="closeSidebar()">
-                    <i class="fas fa-times icon-times icon"></i>
-                </div>
-                <p class="text-center mb-2 mt-4 sidebar__title">Categories</p>
-                <hr>
-                {{# each categories}}
-                    <div class="sidebar__category mx-auto p-2">
-                        <p class="sidebar__category__btn d-flex justify-content-between align-items-baseline mb-0"
-                           onclick="toggleDropDown(this)">
-                            {{this.name}}
-                            <i class="fas fa-sort-down transition"></i>
-                        </p>
-                        <div class="dropdown">
-                            {{# each this.subcategories}}
-                                <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
-                            {{/each}}
-                        </div>
+            <div style="min-height: 95vh;" id="sidebar__content" class="d-flex flex-column justify-content-between ">
+                <div>
+                    <div class="text-center" onclick="closeSidebar()">
+                        <i class="fas fa-times icon-times icon"></i>
                     </div>
-                {{/each}}
+                    <p class="text-center mb-2 mt-4 sidebar__title">Categories</p>
+                    <hr>
+                    {{# each categories}}
+                        <div class="sidebar__category mx-auto p-2">
+                            <p class="sidebar__category__btn d-flex justify-content-between align-items-baseline mb-0"
+                               onclick="toggleDropDown(this)">
+                                {{this.name}}
+                                <i class="fas fa-sort-down transition"></i>
+                            </p>
+                            <div class="dropdown">
+                                {{# each this.subcategories}}
+                                    <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
+                                {{/each}}
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+                <div>
+                    <p style="font-size: 0.8rem" class="text-center mb-1">Please visit</p>
+                        <a style="gap: 0.5em" class="sidebar__link d-flex justify-content-center align-content-center
+                        mb-0"
+                           href="">
+                            <img height="20px" width="20px" src="../../assets/apple-touch-icon.png" alt="logo">
+                            RSA homepage
+                        </a>
+
+                </div>
             </div>
+
         </div>
     {{/if}}
 
