@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const sizesRouter = require("./sizes");
-const pricesRouter = require("./prices");
-const animalRouter = require("./animals");
+const sizesRouter = require("./inventoryTables/sizes");
+const pricesRouter = require("./inventoryTables/prices");
+const animalRouter = require("./inventoryTables/animals");
 
-const {categories_get} = require("../../controlles/categoriesController");
+const {categories_get} = require("../controlles/categoriesController");
 
 router.get('/', (req, res) => {
     categories_get(req, res);

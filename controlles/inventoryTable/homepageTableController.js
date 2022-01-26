@@ -1,6 +1,7 @@
-const StuffedAnimal = require("../modules/stuffedAnimal");
-const getSidebarOptions = require("../helpers/getSidebarOptions");
+const StuffedAnimal = require("../../modules/stuffedAnimal");
+const getSidebarOptions = require("../../helpers/getSidebarOptions");
 
+// Main inventory table on the homepage
 async function homepage_get(req, res) {
     try {
         const sidebarOptions = getSidebarOptions(req);

@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const {animal_category_get, category_get} = require("../../controlles/categoriesController");
+const {category_get} = require("../../controlles/categoriesController");
+const {animal_category_get} = require("../../controlles/inventoryTable/categoryTableControllers");
 
-router.get('/',  (req, res) => {
-    req.categoryName = 'Animal';
+router.get('/', (req, res) => {
     category_get(req, res);
 })
 

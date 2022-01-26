@@ -9,15 +9,15 @@ const cookieParser = require("cookie-parser");
 dotenv.config();
 const app = express();
 
-const homepageRouter = require("./routes/homepage");
-const categoryRouter = require("./routes/categories/categories");
+const homepageRouter = require("./routes/inventoryTables/homepage");
+const categoryRouter = require("./routes/categories");
 const itemRouter = require("./routes/items");
 
 const apiRouter = require("./routes/api/api");
 
-const loginRouter = require("./routes/login");
-const signUpRouter = require("./routes/signUp");
-const logoutRouter = require("./routes/logout");
+const loginRouter = require("./routes/auth/login");
+const signUpRouter = require("./routes/auth/signUp");
+const logoutRouter = require("./routes/auth/logout");
 
 const requireAuth = require('./middleware/authMiddleware');
 const Category = require("./modules/categories");

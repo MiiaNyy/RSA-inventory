@@ -1,6 +1,6 @@
-function getCategoryObj (req) {
-    return req.categoryName === 'Animal' ? req.itemCategories.breeds : req.categoryName === 'Size' ?
-        req.itemCategories.sizes : req.categoryName === 'Price' ? req.itemCategories.prices : undefined;
+// Depending on where the calls comes (/animal, /size, /price), return right category obj
+function getCategoryObj (str, req) {
+    return str === 'animals' ? req.itemCategories.breeds : str === 'sizes' ? req.itemCategories.sizes : str === 'prices' ? req.itemCategories.prices : undefined;
 }
 
 function firstLetterToUpper (str) {
