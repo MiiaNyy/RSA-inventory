@@ -1,7 +1,7 @@
 const {validationResult} = require("express-validator");
 const querystring = require("querystring");
 
-const getErrorMessagesFromValidation = require("../../helpers/authentication/handleNewItemValidation");
+const handleNewItemValidation = require("../../helpers/formValidation/handleNewItemValidation");
 const StuffedAnimal = require("../../modules/stuffedAnimal");
 
 async function create_item_get (req, res) {
@@ -23,7 +23,7 @@ async function create_item_post (req, res) {
         // There are errors. Render form again with sanitized values/errors messages.
         res.render('createItem', {
             title: "RSA - New item",
-            errors: getErrorMessagesFromValidation(errors.array()),
+            errors: handleNewItemValidation(errors.array()),
             values: req.body, // values for input fields
             currentUser: req.currentUser,
             categories: req.itemCategories,

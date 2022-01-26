@@ -1,8 +1,11 @@
-const {animals, sizes, prices} = require("../animalsAndSizes");
 const faker = require("faker");
 
 const StuffedAnimal = require("../../modules/stuffedAnimal");
 const Category = require("../../modules/categories");
+
+const animals = ['unicorn', 'crocodile', 'snake', 'bear', 'kitten', 'rabbit', 'lion', 'horse', 'fly', 'dog'];
+const sizes = ['tiny', 'small', 'medium', 'large', 'huge'];
+const prices = ['budget', 'medium', 'high', 'premium']
 
 const sizeCategory = new Category({
     name: 'Sizes',

@@ -2,8 +2,7 @@ const {validationResult} = require("express-validator");
 
 const User = require("../modules/users");
 
-const handleLoginErrors = require("../helpers/authentication/handleLoginErrors");
-const handleErrors = require("../helpers/authentication/handleErrors");
+const {handleSignupErrors} = require("../helpers/formValidation/handleUserAuthErros");
 const createTokenAndRedirect = require("../helpers/createToken");
 
 function signup_get (req, res) {
@@ -22,31 +21,32 @@ function signup_post (req, res) {
     if ( !errors.isEmpty() ) {
         res.render('signup', {
             title: "RSA - Sign up",
-            errors: handleErrors(errors.array()),
+            errors: handleSignupErrors(errors.array()),
             values: req.body, // values for input fields
         })
     } else {
         // Data from form is valid.
         signUserUpAndCreateToken(req, res)
-            .then(r => console.log('user signup successful!'))
+            .then(() => console.log('user signup successful!'))
     }
 }
 
-
-async function signUserUpAndCreateToken(req, res) {
+async function signUserUpAndCreateToken (req, res) {
     try {
+        const formValues = req.body;
+        
         const user = await User.create({
-            username: `${ req.body.firstName } ${ req.body.lastName }`,
-            email: req.body.email,
-            password: req.body.password,
+            username: `${ formValues.firstName } ${ formValues.lastName }`,
+            email: formValues.email,
+            password: formValues.password,
         });
         // Creating user successful
         createTokenAndRedirect(user.username, res);
     } catch (err) {
         res.render("signup", {
             title: "RSA - Sign up",
-            errors: handleLoginErrors('loginError'),
-            values: req.body,
+            errors: handleSignupErrors('loginError'),
+            values: formValues,
         })
     }
 }

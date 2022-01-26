@@ -1,6 +1,6 @@
 const User = require("../modules/users");
 
-const handleLoginErrors = require("../helpers/authentication/handleLoginErrors");
+const {handleLoginErrors} = require("../helpers/formValidation/handleUserAuthErros");
 const createTokenAndRedirect = require("../helpers/createToken");
 
 function logout_get (req, res) {
@@ -21,17 +21,18 @@ function login_get (req, res) {
 
 function login_post (req, res) {
     try {
-        User.findOne({email: req.body.email}).exec(function (error, user) {
+        const formValues = req.body;
+        User.findOne({email: formValues.email}).exec(function (error, user) {
             if ( error || !user ) {
                 // There is no user by that email
                 const errorName = error ? 'loginError' : 'userError'
-                renderErrorLoginPage(errorName, req, res);
+                renderErrorLoginPage(errorName, formValues, res);
             } else {
-                user.comparePassword(req.body.password, (matchError, isMatch) => {
+                user.comparePassword(formValues.password, (matchError, isMatch) => {
                     if ( matchError || !isMatch ) {
                         // If user found but passwords don't match
                         const errorName = matchError ? 'loginError' : 'passwordError';
-                        renderErrorLoginPage(errorName, req, res)
+                        renderErrorLoginPage(errorName, formValues, res)
                     } else {
                         // User and password matches
                         createTokenAndRedirect(user.username, res);
@@ -44,11 +45,11 @@ function login_post (req, res) {
     }
 }
 
-function renderErrorLoginPage (errorsName, req, res) {
+function renderErrorLoginPage (errorsName, formValues, res) {
     res.render('login', {
         title: "RSA - Login",
         errors: handleLoginErrors(errorsName),
-        values: req.body,
+        values: formValues,
     })
 }
 
