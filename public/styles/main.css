@@ -83,6 +83,18 @@ table {
     }
 }
 
+.footer__link {
+    font-size: 0.7rem;
+    color: #c551fd;
+    text-decoration: none;
+}
+
+@media (min-width: 400px) {
+    footer {
+        display: none;
+    }
+}
+
 .error {
     font-size: 0.7rem;
     color: #f64949;
