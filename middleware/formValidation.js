@@ -5,7 +5,7 @@ const validateNewItemForm = [
     body('animal', 'Must choose animal breed').trim(),
     body('size', 'Must choose size').trim(),
     body('color', 'Must be hex color').isHexColor(),
-    body('price', 'Only numbers and must be over 0').isInt({min: 1}).escape(),
+    body('price', 'Only numbers and must be over 0').isInt({min: 1, max: 100000},).escape(),
     body('numberInStock', 'Only numbers and must be over 0').isInt({min: 1}).escape(),
 ]
 

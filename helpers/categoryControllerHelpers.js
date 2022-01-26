@@ -22,7 +22,7 @@ function getPriceRange (query) {
         case 'high':
             return [51, 100]
         case 'premium':
-            return [101, 520]
+            return [101, 100000]
         default:
             break;
     }
