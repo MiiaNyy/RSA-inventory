@@ -30,8 +30,6 @@ const stuffedAnimalSchema = new Schema({
         type: Number,
         required: true,
     },
-    
-    
 }, {timestamps: true});
 
 const StuffedAnimal = mongoose.model("StuffedAnimal", stuffedAnimalSchema);

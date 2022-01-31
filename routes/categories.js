@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
 
 router.use('/size', sizesRouter);
 router.use('/price', pricesRouter);
+
 router.use('/animal', animalRouter);
 
 module.exports = router;
