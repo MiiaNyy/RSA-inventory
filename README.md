@@ -1,15 +1,15 @@
-#RSA - Inventory
+# RSA - Inventory
 The goal of the project was to practice using Node.js Express and learn how to build an application based on the MVC architecture.
 ##[Live version](https://rafaels-inventory.herokuapp.com/)
 
-###General info
+### General info
 I created an inventory app for a company called “Rafael's Stuffed Animals”. The company sells stuffed animal toys. 
 
 The app allows users to browse the entire inventory of the company or find specific items 
 according to different categories; price, species or size of the item. 
 If the user is logged in to the application, they can also create or remove items from the inventory.
 
-###How I build it
+### How I build it
 
 As a database, I used MongoDB and Mongoose library. With the help of Mongoose, I wrote a schemas and 
 models for the different categories, items and users.
@@ -52,7 +52,7 @@ function requireAuth (req, res, next) {
 }
 ```
 
-###Technologies
+### Technologies
 - Node.js & Express
   - router, validation
   - custom middleware
