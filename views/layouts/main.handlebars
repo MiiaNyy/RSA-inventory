@@ -23,115 +23,116 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-dark {{#if popUp}}blur-background{{/if}}
-        {{#if sidebarIsNeeded}} margin-left{{/if}}">
-        <div class="navbar">
-            <div class="text-center nav-icon-cont">
-                <img class="nav-icon" src="../../assets/apple-touch-icon.png" alt="logo">
-                <a href="/" class="navbar-brand">Rafael's Stuffed Animals</a>
-            </div>
-
-            <ul class="navbar nav text-center nav__list">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/category">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/item/create">Create New</a>
-                </li>
-            </ul>
-        </div>
-
-        {{#if currentUser }}
-            <ul class="navbar nav mx-auto text-center">
-                <li class="nav-item user-greeting">
-                    Hello {{currentUser}}
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-btn" href="/logout">Log out</a>
-                </li>
-            </ul>
-        {{else}}
-            <ul class="navbar nav text-center pb-4 nav__list">
-                <li class="nav-item">
-                    <a class="nav-link" href="/signup">Sign up</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-btn" href="/login">Log in</a>
-                </li>
-            </ul>
-        {{/if}}
-    </nav>
-
-    {{#if sidebarIsNeeded}}
-
-        <div id="sidebar" class="sidebar {{#if popUp}}blur-background{{/if}}">
-            <div id="open-sidebar__btn" class="text-center" onclick="openSidebar()">
-                <i class="fas fa-bars icon"></i>
-            </div>
-            <div id="sidebar__content" class="d-flex flex-column justify-content-between ">
-                <div>
-                    <div class="text-center" onclick="closeSidebar()">
-                        <i class="fas fa-times icon-times icon"></i>
-                    </div>
-                    <p class="text-center mb-2 mt-4 sidebar__title">Categories</p>
-                    <hr>
-                    {{# each categories}}
-                        <div class="sidebar__category mx-auto p-2">
-                            <p class="sidebar__category__btn d-flex justify-content-between align-items-baseline mb-0"
-                               onclick="toggleDropDown(this)">
-                                {{this.name}}
-                                <i class="fas fa-sort-down transition"></i>
-                            </p>
-                            <div class="dropdown">
-                                {{# each this.subcategories}}
-                                    <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
-                                {{/each}}
-                            </div>
-                        </div>
-                    {{/each}}
+        <nav class="navbar navbar-dark bg-dark {{#if popUp}}blur-background{{/if}}
+            {{#if sidebarIsNeeded}} margin-left{{/if}}">
+            <div class="navbar">
+                <div class="text-center nav-icon-cont">
+                    <img class="nav-icon" src="../../assets/apple-touch-icon.png" alt="logo">
+                    <a href="/" class="navbar-brand">Rafael's Stuffed Animals</a>
                 </div>
-                <div>
-                    <p style="font-size: 0.8rem" class="text-center mb-1">Please visit</p>
+
+                <ul class="navbar nav text-center nav__list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/category">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/item/create">Create New</a>
+                    </li>
+                </ul>
+            </div>
+
+            {{#if currentUser }}
+                <ul class="navbar nav mx-auto text-center">
+                    <li class="nav-item user-greeting">
+                        Hello {{currentUser}}
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-btn" href="/logout">Log out</a>
+                    </li>
+                </ul>
+            {{else}}
+                <ul class="navbar nav text-center pb-4 nav__list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Sign up</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-btn" href="/login">Log in</a>
+                    </li>
+                </ul>
+            {{/if}}
+        </nav>
+
+        {{#if sidebarIsNeeded}}
+
+            <div id="sidebar" class="sidebar {{#if popUp}}blur-background{{/if}}">
+                <div id="open-sidebar__btn" class="text-center" onclick="openSidebar()">
+                    <i class="fas fa-bars icon"></i>
+                </div>
+                <div id="sidebar__content" class="d-flex flex-column justify-content-between ">
+                    <div>
+                        <div class="text-center" onclick="closeSidebar()">
+                            <i class="fas fa-times icon-times icon"></i>
+                        </div>
+                        <p class="text-center mb-2 mt-4 sidebar__title">Categories</p>
+                        <hr>
+                        {{# each categories}}
+                            <div class="sidebar__category mx-auto p-2">
+                                <p class="sidebar__category__btn d-flex justify-content-between align-items-baseline mb-0"
+                                   onclick="toggleDropDown(this)">
+                                    {{this.name}}
+                                    <i class="fas fa-sort-down transition"></i>
+                                </p>
+                                <div class="dropdown">
+                                    {{# each this.subcategories}}
+                                        <a class="dropdown-item" href="{{this.url}}">{{this.name}}</a>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <div>
+                        <p style="font-size: 0.8rem" class="text-center mb-1">Please visit</p>
                         <a style="gap: 0.5em" class="sidebar__link d-flex justify-content-center align-content-center
                         mb-0"
-                           href="">
+                           href="https://miianyy.github.io/rsa-homepage/">
                             <img height="20px" width="20px" src="../../assets/apple-touch-icon.png" alt="logo">
                             RSA homepage
                         </a>
 
+                    </div>
                 </div>
+
             </div>
-
-        </div>
-    {{/if}}
-
-    <div id="content" class="{{#if sidebarIsNeeded}}margin-left{{/if}}">
-        <div style="position: relative;" class="container mt-4">
-            <!-- Where we want to output the rest of the template/views use triple curly braces -->
-            {{{body}}}
-        </div>
-    </div>
-
-    <div class="pop-up-message text-center {{#if query.popUpMessage}} pop-up-message_animation {{else}}hidden{{/if}}">
-        {{#if query.itemIsDeleted}}
-            <p>Item deleted</p>
-        {{else if query.newItemCreated}}
-            <p>New item created</p>
         {{/if}}
-    </div>
 
-    <footer>
-        <p style="font-size: 0.8rem" class="text-center mb-1">Please visit</p>
-        <a style="gap: 0.5em" class="footer__link d-flex justify-content-center align-content-center mb-2"
-           href="">
-            <img height="20px" width="20px" src="../../assets/apple-touch-icon.png" alt="logo">
-            RSA homepage
-        </a>
+        <div id="content" class="{{#if sidebarIsNeeded}}margin-left{{/if}}">
+            <div style="position: relative;" class="container mt-4">
+                <!-- Where we want to output the rest of the template/views use triple curly braces -->
+                {{{body}}}
+            </div>
+        </div>
 
-    </footer>
+        <div class="pop-up-message text-center {{#if query.popUpMessage}} pop-up-message_animation {{else}}hidden{{/if}}">
+            {{#if query.itemIsDeleted}}
+                <p>Item deleted</p>
+            {{else if query.newItemCreated}}
+                <p>New item created</p>
+            {{/if}}
+        </div>
+
+        <footer>
+            <p style="font-size: 0.8rem" class="text-center mb-1">Please visit</p>
+            <a style="gap: 0.5em" class="footer__link d-flex justify-content-center align-content-center mb-2"
+               href="https://miianyy.github.io/rsa-homepage/">
+                <img height="20px" width="20px" src="../../assets/apple-touch-icon.png" alt="logo">
+                RSA homepage
+            </a>
+
+        </footer>
+
 
     <script src="../../javascript/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -12,6 +12,7 @@
 
 body {
     position: relative;
+    min-height: 100vh;
     margin: 0;
     line-height: 1.6;
     font-size: 0.9rem;
