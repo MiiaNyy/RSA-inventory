@@ -1,6 +1,6 @@
 # RSA - Inventory
 The goal of the project was to practice using Node.js Express and learn how to build an application based on the MVC architecture.
-##[Live version](https://rafaels-inventory.herokuapp.com/)
+## [Live version](https://rafaels-inventory.herokuapp.com/)
 
 ### General info
 I created an inventory app for a company called “Rafael's Stuffed Animals”. The company sells stuffed animal toys. 
