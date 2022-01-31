@@ -1,6 +1,5 @@
-<img src="public/assets/apple-touch-icon.png" width="40" height="40"/>
-![RSA-logo](public/assets/apple-touch-icon.png)
-# RSA - Inventory
+
+# <img src="public/assets/apple-touch-icon.png" width="40" height="40"/> RSA - Inventory 
 The goal of the project was to practice using Node.js Express and learn how to build an application based on the MVC architecture.
 ## [Live version](https://rafaels-inventory.herokuapp.com/)
 
