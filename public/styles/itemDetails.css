@@ -46,7 +46,8 @@
 
 .pop-up p {
     color: #ff8888;
-}
+    font-size: 1.1rem;
+    margin: 0;}
 
 .blur-background {
     filter: blur(5px);

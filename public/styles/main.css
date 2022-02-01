@@ -110,9 +110,10 @@ footer {
 
 @media (min-width: 400px) {
     footer {
-        display: none;
+        margin-top: 3em
     }
 }
+
 /* ---SCROLLBAR--- */
 
 /* width */
@@ -136,7 +137,13 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
     background: #262b2f;
 }
+
 /* --- GENERAL --- */
+
+/* Give space for footer */
+#content {
+    margin-bottom: 2em;
+}
 
 .error {
     font-size: 0.7rem;

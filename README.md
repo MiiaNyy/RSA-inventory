@@ -54,9 +54,6 @@ function requireAuth (req, res, next) {
 }
 ```
 
-in addition, I also created a homepage for Rafael's Stuffed Animals company. I created it using React, Bootstrap, CSS,
-and build it mobile-first.
-
 ## Bot
 With the help of this project, I also practiced building Azure chat bot. I made two pages for the project; RSA - 
 homepage and RSA - inventory. The idea was to build a bot that will appear on the homepage. Through the bot, the user 

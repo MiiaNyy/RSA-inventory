@@ -56,9 +56,8 @@
 </div>
 
 <div class="pop-up pop-up__delete">
-    <h2>You are about to remove item</h2>
+    <p>Are you sure you want to remove </p>
     <h2><span>{{item.name}} the {{item.animal}}</span></h2>
-    <p>Are you sure?</p>
     <div style="gap: 2em" class="d-flex justify-content-center mt-4">
         <form action="/item/{{item._id}}" method="post">
             <input class="btn danger-btn" type="submit" value="Delete"/>
