@@ -63,7 +63,7 @@ could view and retrieve individual items from the inventory, delete them, or add
 api, which the bot will contact and through which calls will be made to the database. In addition to this, the bot would
 be able to tell general information about the company (mock data), would be able to tell jokes and greet the users.
 
-#### Learn more about the bot [here](https://github.com/MiiaNyy/rsa-homepage)
+#### Learn more about the bot [here](https://github.com/MiiaNyy/ramses-the-chat-bot)
 
 ## Technologies
 
