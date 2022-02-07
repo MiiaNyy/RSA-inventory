@@ -1,6 +1,18 @@
 const {validationResult} = require("express-validator");
 const StuffedAnimal = require("../modules/stuffedAnimal");
 
+function valuesToLowerCase(obj) {
+    return {
+        name: obj.name.toLowerCase(),
+        animal: obj.animal.toLowerCase(),
+        size:obj.size.toLowerCase(),
+        description,
+        color,
+        price,
+        numberInStock,
+    }
+}
+
 async function api_item_post(req, res) {
     const errors = validationResult(req);
     
@@ -8,7 +20,8 @@ async function api_item_post(req, res) {
         return res.status(400).json({errors: errors.array()});
     } else {// Data from form is valid.
         try {
-            const newStuffedAnimal = new StuffedAnimal(req.body)
+            const values = valuesToLowerCase(req.body);
+            const newStuffedAnimal = new StuffedAnimal(values)
             await newStuffedAnimal.save();
             res.send('Success!! Added new item to inventory!')
         } catch (e) {
