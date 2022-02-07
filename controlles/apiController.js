@@ -3,7 +3,7 @@ const StuffedAnimal = require("../modules/stuffedAnimal");
 
 function valuesToLowerCase(obj) {
     return {
-        name: obj.name.toLowerCase(),
+        name,
         animal: obj.animal.toLowerCase(),
         size:obj.size.toLowerCase(),
         description,
@@ -20,8 +20,7 @@ async function api_item_post(req, res) {
         return res.status(400).json({errors: errors.array()});
     } else {// Data from form is valid.
         try {
-            const values = valuesToLowerCase(req.body);
-            const newStuffedAnimal = new StuffedAnimal(values)
+            const newStuffedAnimal = new StuffedAnimal(req.body)
             await newStuffedAnimal.save();
             res.send('Success!! Added new item to inventory!')
         } catch (e) {
