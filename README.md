@@ -1,7 +1,8 @@
 # <img src="public/assets/apple-touch-icon.png" width="40" height="40"/> RSA - Inventory
 
-The goal of the project was to practice using Node.js Express and learn how to build an application based on the MVC
-architecture.
+This project is an inventory application and its main goal was to
+practice using Node.js Express and learn how to build an application based on the MVC architecture. This project is 
+the first part of a larger project. The second part is the Azure chat bot.
 
 ## [Live version](https://rafaels-inventory.herokuapp.com/)
 
@@ -55,17 +56,21 @@ function requireAuth (req, res, next) {
 ```
 
 ## Bot
-With the help of this project, I also practiced building Azure chat bot. I made two pages for the project; RSA - 
-homepage and RSA - inventory. The idea was to build a bot that will appear on the homepage. Through the bot, the user 
-could view and retrieve individual items from the inventory, delete them, or add new ones. To do this, I made a 
-rest api, which the bot will contact and through which calls will be made to the database. In addition to this, the 
-bot would be able to tell general information about the company (mock data), would be able to tell jokes and greet 
-the users.
+
+With the help of this project, I also practiced building Azure chat bot. I made two pages for the project; RSA -
+homepage and RSA - inventory. The idea was to build a bot that will appear on the homepage. Through the bot, the user
+could view and retrieve individual items from the inventory, delete them, or add new ones. To do this, I made a REST
+api, which the bot will contact and through which calls will be made to the database. In addition to this, the bot would
+be able to tell general information about the company (mock data), would be able to tell jokes and greet the users.
+
+#### Learn more about the bot [here](https://github.com/MiiaNyy/rsa-homepage)
 
 ### Technologies
 
 - Node.js & Express
-    - router, validation
+    - router
+    - form validation
+    - error handling
     - custom middleware
 - Handlebars
     - variables, build in and custom functions
