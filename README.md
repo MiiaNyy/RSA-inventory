@@ -65,7 +65,7 @@ be able to tell general information about the company (mock data), would be able
 
 #### Learn more about the bot [here](https://github.com/MiiaNyy/rsa-homepage)
 
-### Technologies
+## Technologies
 
 - Node.js & Express
     - router
